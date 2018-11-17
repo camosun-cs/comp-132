@@ -158,6 +158,9 @@ samp, kbd, tt {
 	@include monospace;
 	vertical-align: baseline;
 }
+abbr {
+	text-decoration: none;
+}
 abbr[title]::after {
 	content: " ("attr(title)")";
 	opacity: .5;
