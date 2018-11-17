@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Variables &amp; Operators - COMP 132</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/template/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Variables &amp; Operators</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Input and Output</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Math with Money</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>
+			In this lab you will create some simple programs to practice what
+			you've learned about:
+		</p>
+		<ul>
+			<li>Use and re-use of variables</li>
+			<li>Numeric and string operators</li>
+			<li>Getting user input</li>
+			<li>Outputting results</li>
+		</ul>
+		<p>
+			You should pay special attention to using good <em>coding style</em>
+			so that your code is readable, consistant, and easy to understand.
+		</p>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: Input and Output</h2>
+		<p>Write a Java program that:</p>
+		<ul>
+			<li>Asks the user to enter their name</li>
+			<li>Asks for the number of credit hours they will take this semester</li>
+			<li>Asks for the fee per credit hour</li>
+			<li>Outputs their name, number of hours, and total tuition for the semester</li>
+		</ul>
+		<details>
+			<summary>Sample code for an input/output program</summary>
+			<p>
+				The sample code below asks the user to enter a few
+				pieces of information, stores them in variables, and
+				displays the stored values at the end.
+			</p>
+			<a class="sample language-java" href="WhatsUrName.java" download>Download example</a>
+		</details>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: Math with Money</h2>
+		<p>
+			Write a Java program that splits a given amount of money
+			into smaller monetary units. The program should let the
+			user enter an amount of money as a single decimal number,
+			and output a report listing the monetary equivalent in
+			dollars, quarters, dimes, nickels, and pennies, using the
+			largest denominations possible.
+		</p>
+		<p>
+			Your approach should be something like:
+		</p>
+		<ol>
+			<li>Prompt the user to enter an amount of money (eg. <samp>11.72</samp>)</li>
+			<li>Convert the amount into cents (eg. <samp>1156</samp>)</li>
+			<li>Divide by 100 to find the dollar amount (eg. <samp>11</samp>)</li>
+			<li>Divide the remainder by 25 to find the number of quarters (eg. <samp>2</samp>)</li>
+			<li>Divide the remainder of that by 10 for dimes (eg. <samp>1</samp>)</li>
+			<li>Divide the remainder of that by 5 for nickels (eg. <samp>1</samp>)</li>
+			<li>The final remainder is the number of pennies (eg. <samp>2</samp>)</li>
+		</ol>
+	</section>
+
+	<section id="submission">
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing <a href="#task1">Task 1</a> and <a href="#task2">Task 2</a>
+			should result in two separate Java files within a single package.
+			Compress the package directory into a ZIP archive and <b>upload it</b> to the D2L
+			Dropbox.  In addition, <b>print out your code</b> and hand in the physical copy
+			at the beginning of the next lab.
+		</p>
+		<p>
+			The marks for this lab are heavily weighted towards good coding
+			practice and style. Pay attention to each of the points in the
+			table below to ensure you get a good grade!
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						Code style <small>-
+						Identing and whitespace, logical code order</small>
+					</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>
+						No "magic numbers" <small>-
+						use constants to name known quantities</small>
+					</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Code comments</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>
+						Use (and reuse) of variables <small>-
+						meaningful names following conventions,
+							<abbr title="Don't Repeat Yourself">DRY</abbr>,
+							reused when appropriate</small>
+					</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>
+						Proper data types <small>-
+						<code>int</code> versus <code>float</code> etc</small>
+					</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Correct program output</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>Wow factor</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<th>Total</th>
+					<td>10</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
