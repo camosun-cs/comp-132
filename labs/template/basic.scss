@@ -246,7 +246,7 @@ table {
 td, th {
 	border: 1px solid;
 	border-color: inherit;
-	padding: 2px 4px;
+	padding: 2px $magic/2;
 	text-align: left;
 }
 th {
@@ -262,20 +262,23 @@ thead th {
 	width: 100%;
 	table-layout: fixed;
 
-	td, th {
-		text-indent: 1em;
-	}
 	th {
 		text-align: left;
 	}
+	td {
+		padding-left: $magic;
+	}
+	// marks column
 	td:last-child,
 	thead th:last-child,
 	tbody tr:last-child th:last-child  {
-		width: 4em;
+		width: 3em;
+		padding-left: $magic/2;
 		text-align: center;
 		text-indent: 0;
 	}
-	tr:last-child td:last-child { // total grade
+	// total row
+	tr:last-child td:last-child {
 		background-color: darken($info, 8%);
 		font-weight: bold;
 	}
