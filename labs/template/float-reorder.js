@@ -22,10 +22,10 @@
 	// Element.matches polyfill
 	if (!Element.prototype.matches) {
 		Element.prototype.matches = (
-			Element.prototype.matchesSelector || 
+			Element.prototype.matchesSelector ||
 			Element.prototype.mozMatchesSelector ||
-			Element.prototype.msMatchesSelector || 
-			Element.prototype.oMatchesSelector || 
+			Element.prototype.msMatchesSelector ||
+			Element.prototype.oMatchesSelector ||
 			Element.prototype.webkitMatchesSelector ||
 			function(s) {
 				var matches = document.querySelectorAll(s);
@@ -73,7 +73,7 @@
 
 	// wait for breakpoint changes
 	breakpoints.forEach(function(breakpt) {
-		enquire.register(breakpt.at, {
+		window.enquire.register(breakpt.at, {
 			match: function() {
 				reorder(breakpt.reorder, breakpt.except);
 			},

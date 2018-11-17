@@ -1,3 +1,6 @@
+/**
+ * Allow long URLS to wrap by inserting <wbr>
+ */
 (function() {
 	"use strict";
 
@@ -9,11 +12,11 @@
 		if (root.nodeType === type) fn(root);
 	}
 
-	var urlRex = /((?:https?|s?ftp):\/\/[\w-]+(?:\.[\w-]+)+)((?:\/[^\s\/]+)+)/g;
-	var pathRex = /[^\s\/]+\//g;
+	var urlRex = /((?:https?|s?ftp):\/\/[\w-]+(?:\.[\w-]+)+)((?:\/[^\s/]+)+)/g;
+	var pathRex = /[^\s/]+\//g;
 	function wordBreakURLsIn(text) {
-	    urlRex.lastIndex = 0;
-	    pathRex.lastIndex = 0;
+		urlRex.lastIndex = 0;
+		pathRex.lastIndex = 0;
 		var pieces = [];
 		var consumed = 0;
 		var urlMatch;

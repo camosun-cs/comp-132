@@ -1,3 +1,6 @@
+/**
+ * Make <details> work in dumb browsers
+ */
 (function() {
 	var MARKER_CLASS = "details-marker";
 
@@ -14,7 +17,7 @@
 		}
 	}
 
-	if (!Modernizr.details) {
+	if (!window.Modernizr.details) {
 		var nonEmptyRex = /\S/;
 		var ds = document.querySelectorAll('details');
 		var marker = document.createElement('span');

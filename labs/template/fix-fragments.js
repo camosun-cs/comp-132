@@ -1,3 +1,6 @@
+/**
+ * Keep in-page fragment links from navigating to GitHub when <base> is in effect
+ */
 (function() {
 	"use strict";
 	var inPage = document.querySelectorAll("a[href^='#']");
