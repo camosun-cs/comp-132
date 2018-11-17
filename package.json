@@ -1,0 +1,33 @@
+{
+  "name": "comp-132-139",
+  "version": "1.0.0",
+  "description": "Course materials for COMP132 and COMP139 at Camosun College",
+  "main": null,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camosun-cs/comp-132-139.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camosun-cs/comp-132-139/issues"
+  },
+  "homepage": "https://github.com/camosun-cs/comp-132-139#readme",
+  "dependencies": {
+    "stylelint": "^9.8.0",
+    "stylelint-config-recommended-scss": "^3.2.0",
+    "stylelint-scss": "^3.4.0"
+  },
+  "stylelint": {
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "extends": "stylelint-config-recommended-scss",
+    "rules": {
+      "indentation": "tab"
+    }
+  }
+}
