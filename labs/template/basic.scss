@@ -503,3 +503,19 @@ details pre,
 .instructions pre {
 	margin-right: 0;
 }
+
+.toolbar {
+	display: flex;
+	justify-content: flex-end;
+	font-size: smaller;
+}
+.toolbar-item {
+	margin: 0 $magic/2;
+	background: $code;
+	border-radius: 0.3rem;
+}
+.toolbar-item > * {
+	display: block;
+	padding: 0 $magic/2;
+	position: relative; // float above scroll bars
+}
