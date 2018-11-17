@@ -72,19 +72,18 @@ $breakpoints: (
 // extend background color without affecting positioning
 // note: uses box-shadow to do this in way that's probably not compatible
 // with other box-shadow uses...
-@mixin bg-bleed($color, $otherShadows...) {
+@mixin bg-bleed($color, $bothSides: true) {
 	@if alpha($color) != 1 {
 		@warn "bg-bleed only works properly with fully opaque colours (got `#{$color}`)";
 	}
 	background-color: $color;
-	box-shadow: join(
-		($otherShadows),
-		(
-			-$magic/2 0 0 $magic/2 $color,
-			$magic/2 0 0 $magic/2 $color
-		),
-		$separator: comma
-	);
+	$left: (-$magic/2 0 0 $magic/2 $color);
+	$right: ($magic/2 0 0 $magic/2 $color);
+	@if $bothSides {
+		box-shadow: ($left, $right);
+	} @else {
+		box-shadow: $left;
+	}
 }
 
 
@@ -428,7 +427,7 @@ figure {
 
 code,
 code[class*="language-"],
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*="language-"] { // extra spec needed to override Prism
 	@include monospace;
 	background: $code;
 	padding: 2px .4em;
@@ -439,11 +438,38 @@ code[class*="language-"],
 
 pre,
 pre[class*="language-"] {
+	$bgColor: blend($code, white);
 	@include monospace;
-	@include bg-bleed(blend($code, white));
+	@include bg-bleed($bgColor, $bothSides: false);
+	margin-right: -$magic;
 	clear: both;
+	// add scroll-fades at edges
+	position: relative;
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		width: $magic;
+		height: 100%;
+		top: 0;
+	}
+	&::before {
+		left: -$magic;
+		background: linear-gradient(to right, $bgColor, transparentize($bgColor, 1));
+	}
+	&::after {
+		right: 0;
+		background: linear-gradient(to left, $bgColor, transparentize($bgColor, 1));
+	}
 	details & {
-		@include bg-bleed(blend($code, $info));
+		$bgColor: blend($code, $info);
+		@include bg-bleed($bgColor, $bothSides: false);
+		&::before {
+			background: linear-gradient(to right, $bgColor, transparentize($bgColor, 1));
+		}
+		&::after {
+			background: linear-gradient(to left, $bgColor, transparentize($bgColor, 1));
+		}
 	}
 	& > code,
 	& > code[class*="language-"] {
@@ -452,7 +478,7 @@ pre[class*="language-"] {
 		overflow: auto;
 		// cover full bg-bleed area of pre so scrolling looks normal
 		display: inline-block; // don't collapse margins
-		width: 100%;
+		width: calc(100% - #{$magic});
 		margin: (-$magic/2) (-$magic);
 		padding: $magic/2 $magic;
 	}
@@ -460,4 +486,11 @@ pre[class*="language-"] {
 	line-height: $magic;
 	overflow: visible;
 	padding: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+details pre,
+.instructions pre {
+	margin-right: 0;
 }
