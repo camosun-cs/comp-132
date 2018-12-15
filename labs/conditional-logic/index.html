@@ -2,116 +2,95 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Conditional Logic- COMP 132</title>
+	<title>Conditional Logic - COMP 132</title>
 	<meta name="viewport" content="width=device-width"/>
 	<base href="https://camosun-cs.github.io/comp-132-139/labs/template/" target="_blank"/>
 	<link rel="stylesheet" href="../template/bundle.css"/>
 </head>
-    
+
 <body>
 	<header>
-		<h1>COMP 132-Conditional Logic</h1>
+		<h1>COMP 132 - Conditional Logic</h1>
 		<nav><ol>
 			<!-- every lab should start with this -->
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
 			<!-- repeat one for each task, adjusting @href for each -->
 			<li><a href="#task1"><strong>Task 1</strong>: Double The Number</a></li>
-            <li><a href="#task2"><strong>Task 2</strong>: Play The Game</a></li>
-            <li><a href="#task3"><strong>Task 3</strong>: Find My Team</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Play The Game</a></li>
+			<li><a href="#task3"><strong>Task 3</strong>: Find My Team</a></li>
 			<li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
 
 	<section id="outcomes">
 		<h2>Learning Outcomes and Introduction</h2>
-	
-    <p>In this lab you will create programs to solve the following problems using what 
-			you've learned about:
-		</p>
+
+		<p>In this lab you will create programs to solve the following problems using what you've learned about:</p>
 		<ul>
 			<li>Use of<code>IF</code> versus <code>ELSE</code> statements</li>
-			<li>Use of <code>SWITCH</code>  statement</li>
-			<li>Conditional operators
-				        <abbr title="AND, OR, NOT (&&, ||, !)">operators</abbr></li>
+			<li>Use of <code>SWITCH</code> statement</li>
+			<li>Conditional <abbr title="AND, OR, NOT (&&, ||, !)">operators</abbr></li>
 			<li>Proper use of Coding Styles</li>
 		</ul>
-    </section>
+	</section>
 
 	<!-- create one section per task, adjusting @id for each -->
 	<section id="task1">
 		<h2>Task 1: Double The Number</h2>
 
-       <p> Write a program that prompts the user to enter a number within the  range of 0 to 100.  Your program should display the double of that number.   </p>
-       
-		<p>
-			Your approach should be something like:
-		</p>
+		<p>Write a program that prompts the user to enter a number within the range of 0 to 100.  Your program should display the double of that number.</p>
+
+		<p>Your approach should be something like:</p>
 		<ol>
-			<li>Prompt the user to enter a number between 0 to 100. </li>
-            <li>Check the accuracy of user input number should be between <code><samp> 0 to 100</samp></code> </li>
-            <aside><strong>Remember: Check the upper and lower bound for validity of user input</strong>
-            </aside>
-           <li>The program should display proper error message.</li>
-           <li>If the input number is correct, Calculate double that number </li>
-           <li>Display the result</li>
+			<li>Prompt the user to enter a number between 0 to 100.</li>
+			<li>Check the accuracy of user input number should be between <code><samp>0 to 100</samp></code></li>
+			<aside><strong>Remember: Check the upper and lower bound for validity of user input</strong></aside>
+			<li>The program should display proper error message.</li>
+			<li>If the input number is correct, Calculate double that number.</li>
+			<li>Display the result</li>
 		</ol>
 	</section>
-        
-      <section id="task2">
+
+	<section id="task2">
 		<h2>Task 2: Play Lottery</h2>
 
-       <p> Suppose you want to develop a program to play lottery.  The program randomly generates a lottery number For the purpose of this excercise: <samp>a two-digit </samp> number. Prompt the user to enter a two digit-number, and determines whether the user wins according to the following rule:
-          </p>
-          <ul>
-          
-          
-      <li>If the user input matches the lottery in exact order, the award is $10,000.</li> 
-        <li>  if all the digits in the user input matches all the digits in the lottery, the award is $3000.</li>
-         <li>if one digit in the user input matches a digit in the lottery, the award is $1000.</li>
-        </ul> 
-<p> The code to generate a random number is as follows:</p>
-<code class="language-markup">int lottery = (int)(Math.randome()*100);
-</code>
-          
-          
-          
-		<p>
-			Your approach should be something like:
-		</p>
+		<p>Suppose you want to develop a program to play lottery.  The program randomly generates a lottery number For the purpose of this excercise: <samp>a two-digit</samp> number. Prompt the user to enter a two digit-number, and determines whether the user wins according to the following rule:</p>
+		<ul>
+			<li>If the user input matches the lottery in exact order, the award is $10,000.</li>
+			<li>if all the digits in the user input matches all the digits in the lottery, the award is $3000.</li>
+			<li>if one digit in the user input matches a digit in the lottery, the award is $1000.</li>
+		</ul>
+		<p> The code to generate a random number is as follows:</p>
+		<pre><code class="language-java">int lottery = (int)(Math.random()*100);</code></pre>
+		<p>Your approach should be something like:</p>
 		<ol>
-			<li>Prompt the user to enter a number between 0 to 100. </li>
-            
+			<li>Prompt the user to enter a number between 0 to 100.</li>
 		</ol>
 	</section>
-        
-       <section id="task3">
+
+	<section id="task3">
 		<h2>Task 3: Find My Team</h2>
 
-       <p> Prompt the user to enter a team number. Use a switch statement to assign a name to a variable, based on the mapping below:  </p>
-       
-		
+		<p>Prompt the user to enter a team number. Use a switch statement to assign a name to a variable, based on the mapping below:</p>
 		<ul>
 			<li>7 - 10: ´A´ </li>
-            <li>4 - 6: ´B´ </li>
-            <li>2 - 3: ´C´ </li>
-            <li>0 - 1: ´D´ </li>
-            <li>Any other number: ´X´</li>
-            
+			<li>4 - 6: ´B´ </li>
+			<li>2 - 3: ´C´ </li>
+			<li>0 - 1: ´D´ </li>
+			<li>Any other number: ´X´</li>
 		</ul>
-	</section>   
-     
+	</section>
 
 	<!-- this section should always be last -->
 	<section id="submission">
 		<h2>Submission</h2>
-		<!-- optional paragraph about adding a "what you've learned" blurb -->
-		
-        <p>
-			Completing <a href="#task1">Task 1</a>, <a href="#task2">Task 2</a> 
-            and <a href="#task3">Task 3</a> should result in three separate Java files 
-            within a single package.
-        <b>Compress</b> the package directory into a ZIP archive, rename it as <samp>
-    Lab3-FirstnameLastname.zip</samp>, and </br><b>upload it</b> to the D2L
+
+		<p>
+			Completing <a href="#task1">Task 1</a>, <a href="#task2">Task 2</a>
+			and <a href="#task3">Task 3</a> should result in three separate Java files
+			within a single package.
+			<b>Compress</b> the package directory into a ZIP archive, rename it as
+			<samp>Lab3-FirstnameLastname.zip</samp>, and <b>upload it</b> to the D2L
 			Dropbox.  In addition, <b>print out your code</b> and hand in the physical copy
 			at the beginning of the next lab.
 		</p>
@@ -120,11 +99,10 @@
 			practice and style. Pay attention to each of the points in the
 			table below to ensure you get a good grade!
 		</p>
-        
 		<p>
-		   <b>NOTE</b>: This assignment is to be done <em>individually</em>.
-		   You can help one another with problems and questions, but in the end
-		   everyone must do their own assignment.
+			<b>NOTE</b>: This assignment is to be done <em>individually</em>.
+			You can help one another with problems and questions, but in the end
+			everyone must do their own assignment.
 		</p>
 		<table class="marks">
 			<thead>
@@ -134,14 +112,14 @@
 				</tr>
 			</thead>
 			<tbody>
-                <tr>
+				<tr>
 					<td>
 						Appropriate use of <small>-
 						<code>if</code> and <code>if- else</code> statements</small>
 					</td>
 					<td>2</td>
 				</tr>
-                <tr>
+				<tr>
 					<td>
 						Appropriate Use  of Conditional <small>-
 				        <abbr title="AND, OR, NOT (&&, ||, !)">operators</abbr>
@@ -156,20 +134,17 @@
 					</td>
 					<td>1</td>
 				</tr>
-                <tr>
+				<tr>
 					<td>
-						Code style <small>-
-						Identing and whitespace, logical code order</small>
+						Code style
+						<small>- Identing and whitespace, logical code order</small>
 					</td>
 					<td>1</td>
 				</tr>
-				
 				<tr>
 					<td>Code comments</td>
 					<td>1</td>
 				</tr>
-				
-				
 				<tr>
 					<td>Correct program output</td>
 					<td>2</td>
