@@ -38,46 +38,41 @@
 	<section id="task1">
 		<h2>Task 1: Double The Number</h2>
 
-		<p>Write a program that prompts the user to enter a number within the range of 0 to 100.  Your program should display the double of that number.</p>
+		<p>Write a program that prompts the user to enter a number within the range of 0 to 100. Your program should output twice the amount given.</p>
 
 		<p>Your approach should be something like:</p>
 		<ol>
 			<li>Prompt the user to enter a number between 0 to 100.</li>
-			<li>Check the accuracy of user input number should be between <code><samp>0 to 100</samp></code></li>
-			<aside><strong>Remember: Check the upper and lower bound for validity of user input</strong></aside>
-			<li>The program should display proper error message.</li>
-			<li>If the input number is correct, Calculate double that number.</li>
-			<li>Display the result</li>
+			<li>Check that the user entered a number in the correct range (and display an error message if appropriate).</li>
+			<li>Multiply the given number by two.</li>
+			<li>Display the result.</li>
 		</ol>
 	</section>
 
 	<section id="task2">
 		<h2>Task 2: Play Lottery</h2>
 
-		<p>Suppose you want to develop a program to play lottery.  The program randomly generates a lottery number For the purpose of this excercise: <samp>a two-digit</samp> number. Prompt the user to enter a two digit-number, and determines whether the user wins according to the following rule:</p>
+		<p>Write a program to run a simple lottery. The program should randomly generate a two-digit lottery number, prompt the user to enter a guess, and determine the user's winnings according to the following rules:</p>
 		<ul>
-			<li>If the user input matches the lottery in exact order, the award is $10,000.</li>
-			<li>if all the digits in the user input matches all the digits in the lottery, the award is $3000.</li>
-			<li>if one digit in the user input matches a digit in the lottery, the award is $1000.</li>
+			<li>If the user input matches the lottery numbers in exact order, the award is $10,000.</li>
+			<li>If the user enters the correct digits, but in the wrong order, the award is $3000.</li>
+			<li>If one digit in the user input matches a digit in the lottery, the award is $1000.</li>
 		</ul>
-		<p> The code to generate a random number is as follows:</p>
+		<aside>Remember to check that the user input is exactly two digits!</aside>
+		<p>The code to generate a random number is as follows:</p>
 		<pre><code class="language-java">int lottery = (int)(Math.random()*100);</code></pre>
-		<p>Your approach should be something like:</p>
-		<ol>
-			<li>Prompt the user to enter a number between 0 to 100.</li>
-		</ol>
 	</section>
 
 	<section id="task3">
 		<h2>Task 3: Find My Team</h2>
 
-		<p>Prompt the user to enter a team number. Use a switch statement to assign a name to a variable, based on the mapping below:</p>
+		<p>Prompt the user to enter a team number. Use a switch statement to find the appropriate league name for that team and print it to the screen. The teams are grouped into the following leagues:</p>
 		<ul>
-			<li>7 - 10: ´A´ </li>
-			<li>4 - 6: ´B´ </li>
-			<li>2 - 3: ´C´ </li>
-			<li>0 - 1: ´D´ </li>
-			<li>Any other number: ´X´</li>
+			<li>"Junior" league: teams 1, 2, 3, and 6.</li>
+			<li>"Amateur" league: teams 8, and 9.</li>
+			<li>"Special" league: teams 4, 7, and 11.</li>
+			<li>"Major" league: teams 5, 10, and 12 through 14.</li>
+			<li>Any other team number: "Unassigned".</li>
 		</ul>
 	</section>
 
