@@ -4,64 +4,45 @@
 	<meta charset="utf-8">
 	<title>Repetition - COMP 132</title>
 	<meta name="viewport" content="width=device-width"/>
-	<!-- change the template part of the base to the lab's containing folder. -->
-	<!-- comment out the base element to work locally -->
 	<base href="https://camosun-cs.github.io/comp-132-139/labs/template/" target="_blank"/>
 	<link rel="stylesheet" href="../template/bundle.css"/>
-	<!-- include additional styles inline here if necessary
-		<style>...</style>
-	-->
 </head>
 <body>
 	<header>
 		<h1>COMP 132 - Repetition</h1>
 		<nav><ol>
-			
-			<li>
-                <a href="#outcomes">Learning Outcomes and Introduction</a>
-            </li>
-			<li>
-                <a href="#task1"><strong>Task 1</strong>: Improve The Lottery Game                           </a>
-            </li>
-            <li>
-                <a href="#task2"><strong>Task 2</strong>: Use of<code>FOR</code> versus                         <code>WHILE</code> statements </a>
-            </li>
-            
-            <li>
-                <a href="#task3"><strong>Task 3</strong>: Make a Grid</a>
-            </li>
-			<li>
-                <a href="#submission">Submission</a>
-            </li>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Improve The Lottery Game</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Use of <code>FOR</code>versus <code>WHILE</code> statements</a></li>
+			<li><a href="#task3"><strong>Task 3</strong>: Make a Grid</a></li>
+			<li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
-<h1>Testing</h1>
+
 	<section id="outcomes">
 		<h2>Learning Outcomes and Introduction</h2>
 		<p>In this lab assignment you will learn about:</p>
 		<ul>
-            <li>Use of Looping and Repetition logic</li>
-            <li>Use of<code>WHILE</code> versus <code>FOR</code> statements</li>
-            <li>Use of Nested loops</li>
+			<li>Use of Looping and Repetition logic</li>
+			<li>Use of <code>WHILE</code> versus <code>FOR</code> statements</li>
+			<li>Use of Nested loops</li>
 		</ul>
-		<!-- optional additional contextual introduction -->
 	</section>
 
-    
-    <section id="task1">
-		<h2>Task 1: Improved Our Lottery Program</h2>
+	<section id="task1">
+		<h2>Task 1: Improve The Lottery Program</h2>
 		<p>Expand on the lottery program that was designed on the previous lab, make some modifications so that the computer can help the user guess the right number. The computer will generate a random number and give the user an opportunity to guess the right number</p>
 		<ul>
 			<li>If the number is too low, the computer will let the user know that the number is too low and prompt the user to guess another number</li>
-            <li>If the number is too high, the computer will let the user know that the number is too high and prompt the user to guess another number</li>
+			<li>If the number is too high, the computer will let the user know that the number is too high and prompt the user to guess another number</li>
 			<li>When the user guesses the right number, the program ocngradulate the user and let the user know how many trials it took for them to guess the right number, then let them know how much they won, before terminating</li>
-            <ul>
-               <li>If the user guess the right number on the first trial, the award is $10,000</li>
-                <li>For any subsequent trial, the award reduces by $1000 per trial</li>
-                <li>Once the award reaches $1000, any subsequent guess will be worth $10 per trial until the user guesses the right number or reaches the maximum.</li>
-            </ul>
-        </ul>	
-			
+			<ul>
+			   <li>If the user guess the right number on the first trial, the award is $10,000</li>
+				<li>For any subsequent trial, the award reduces by $1000 per trial</li>
+				<li>Once the award reaches $1000, any subsequent guess will be worth $10 per trial until the user guesses the right number or reaches the maximum.</li>
+			</ul>
+		</ul>
+
 		<details>
 			<summary>Sample code for an input/output program</summary>
 			<p>
@@ -69,54 +50,39 @@
 				pieces of information, stores them in variables, and
 				displays the stored values at the end.
 			</p>
-			<a class="sample language-java" href="WhatsUrName.java" download>Download example</a>
+			<a class="sample language-java" href="../vars-and-ops/WhatsUrName.java" download>Download example</a>
 		</details>
 	</section>
-    
-    
-    <section id="task2">
+
+	<section id="task2">
 		<h2>Task 2: Fibonacci Numbers</h2>
-		<p>write a program that output the Fibonacci numbers that are less than 30,000.  Each FIbonacci number is the sum of its two predecessors.  The first two Fibonacci numbers are 1 and 1.  Thus the sequence begins with 1,1,2,3,5,8,13,21,34,...</p>
-		<aside>
-					<strong>Hint:</strong> ( You can try a DO-WHILE structure)
-		</aside>
-    </section>
-    
-    
-    <section id="task3">
+		<p>write a program that output the Fibonacci numbers that are less than 30,000. Each FIbonacci number is the sum of its two predecessors. The first two Fibonacci numbers are 1 and 1. Thus the sequence begins with 1,1,2,3,5,8,13,21,34,...</p>
+		<aside><strong>Hint:</strong> ( You can try a DO-WHILE structure)</aside>
+	</section>
+
+	<section id="task3">
 		<h2>Task 3: Make a Grid</h2>
-		<p>write a program that prints out rows containing alternating ´X`and ´O´as shown below </p>
-        <aside>
-					<strong>Hint:</strong> Use a nested for loop .
-		</aside>
+		<p>write a program that prints out rows containing alternating ´X` and ´O´ as shown below </p>
+		<aside><strong>Hint:</strong> Use a nested for loop.</aside>
 		<details>
 			<summary>Optional Work for bonus points:</summary>
 			<ol>
 				<li>Change your program to display only the upper triangle of the matrix.</li>
-               <li> change the code to display only the lower triangle of the matrix.</li>
-               <li> change the code to display only the diagnol of the matrix.</li>
-                
+				<li>Change the code to display only the lower triangle of the matrix.</li>
+				<li>Change the code to display only the diagnol of the matrix.</li>
 			</ol>
-			<a class="sample language-java" href="WhatsUrName.java" download>Download example</a>
 		</details>
-    </section>
-    
-    
-    
-	
+	</section>
 
-	
 	<section id="submission">
 		<h2>Submission</h2>
-		<!-- optional paragraph about adding a "what you've learned" blurb -->
-		
-        <p>
-			Completing <a href="#task1">Task 1</a>, <a href="#task2">Task 2</a> 
-            and <a href="#task3">Task 3</a> should result in three separate Java files 
-            within a single package.
-        <b>Compress</b> the package directory into a ZIP archive, rename it as <samp>
-    Lab4-FirstnameLastname.zip</samp>, and </br><b>upload it</b> to the D2L
-			Dropbox.  In addition, <b>print out your code</b> and hand in the physical copy
+		<p>
+			Completing <a href="#task1">Task 1</a>, <a href="#task2">Task 2</a>
+			and <a href="#task3">Task 3</a> should result in three separate Java files
+			within a single package.
+			<b>Compress</b> the package directory into a ZIP archive, rename it as
+			<samp>Lab4-FirstnameLastname.zip</samp>, and <b>upload it</b> to the D2L
+			Dropbox. In addition, <b>print out your code</b> and hand in the physical copy
 			at the beginning of the next lab.
 		</p>
 		<p>
@@ -124,7 +90,6 @@
 			practice and style. Pay attention to each of the points in the
 			table below to ensure you get a good grade!
 		</p>
-        
 		<p>
 		   <b>NOTE</b>: This assignment is to be done <em>individually</em>.
 		   You can help one another with problems and questions, but in the end
@@ -138,17 +103,15 @@
 				</tr>
 			</thead>
 			<tbody>
-                <tr>
+				<tr>
 					<td>
-						Appropriate use of <small>-
-                        <code>Condtional <abbr title="IF, IF-ELSE, SWITCH )">Statements</abbr></code> and </br><code> Conditional <abbr title="AND, OR, NOT (&&, ||, !)">operators</abbr></code> </small>
+						Appropriate use of conditional branches (<code>if</code>, <code>else</code>, and <code>switch</code>) and operators (<code>&&</code>, <code>||</code>, <code>!</code>)
 					</td>
 					<td>2</td>
 				</tr>
-                <tr>
+				<tr>
 					<td>
-						Appropriate Use  of Repetitive  <small>-
-				        <abbr title="FOR, WHILE, DO-WHILE">Statements</abbr>
+						Appropriate Use  of repetition elements (<code>for</code>, <code>while</code>, and <code>do { } while</code>)
 							</small>
 					</td>
 					<td>3</td>
@@ -157,8 +120,6 @@
 					<td>Code style and comments</td>
 					<td>1</td>
 				</tr>
-				
-				
 				<tr>
 					<td>Correct program output</td>
 					<td>3</td>
@@ -168,12 +129,12 @@
 					<td>1</td>
 				</tr>
 				<tr>
-					<th>Total</th>
-					<td>10</td>
-				</tr>
-<tr>
 					<td>Bonus Mark</td>
 					<td>1</td>
+				</tr>
+				<tr>
+					<th>Total</th>
+					<td>11</td>
 				</tr>
 			</tbody>
 		</table>
@@ -181,6 +142,5 @@
 
 
 	<script src="../template/bundle.js" async defer></script>
-	<!-- additional scripts can be added here if necessary -->
 </body>
 </html>

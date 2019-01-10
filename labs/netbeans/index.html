@@ -2,125 +2,111 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title><!-- TITLE -->Introduction to NetBeans<!-- / --> - COMP 132</title>
+	<title>Introduction to NetBeans - COMP 132</title>
 	<meta name="viewport" content="width=device-width"/>
-	<!-- change the template part of the base to the lab's containing folder. -->
-	<!-- comment out the base element to work locally -->
 	<base href="https://camosun-cs.github.io/comp-132-139/labs/template/" target="_blank"/>
 	<link rel="stylesheet" href="../template/bundle.css"/>
-	<!-- include additional styles inline here if necessary
-		<style>...</style>
-	-->
 </head>
 <body>
 	<header>
-		<h1>COMP 132 - <!-- TITLE -->Introduction to NetBeans<!-- / --></h1>
+		<h1>COMP 132 - Introduction to NetBeans</h1>
 		<nav><ol>
-			<!-- every lab should start with this -->
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-            <li><a href="#task1"><strong>Task 1</strong>: Creating a Project</a></li>
-            <li><a href="#task2"><strong>Task 2</strong>: Compile and run your project</a></li>
-            <li><a href="#task3"><strong>Task 3</strong>: Practice Exercise: Create your First Java Program</a></li>
-           <li><a href="#submission">Submission</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Creating a Project</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Compile and run your project</a></li>
+			<li><a href="#task3"><strong>Task 3</strong>: Practice Exercise: Create your First Java Program</a></li>
+		   <li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
 
 	<section id="outcomes">
 		<h2>Learning Outcomes and Introduction</h2>
-        <p>In this lab assignment you will learn about:</p>
-        <ul>
-			
-            <li> Introduction to NetBeans environment.</li>
-            <li> Editing, compiling and running a Java program.</li>
-            <li>Creating your first Java program</li>
-
+		<p>In this lab assignment you will learn about:</p>
+		<ul>
+			<li> Introduction to NetBeans environment.</li>
+			<li> Editing, compiling and running a Java program.</li>
+			<li>Creating your first Java program</li>
 		</ul>
-        <p>The following is a step-by-step guide that will show you how to create a project and run a simple java program with NetBeans</p>
-                <aside>There are many other ways to run java programs with NetBeans, but this method is simple and will be useful later in the course. Log on to the computer with your <code>Camosun login ID</code>.
-                </aside>
+		<p>The following is a step-by-step guide that will show you how to create a project and run a simple java program with NetBeans</p>
+		<aside>There are many other ways to run java programs with NetBeans, but this method is simple and will be useful later in the course. Log on to the computer with your <code>Camosun login ID</code>.</aside>
 	</section>
 
-    <section id="task1">
-        <h2>Task 1: Create a project</h2>
-        <ol class="instructions">
-            <li>Go to start -->all programs-->launch NetBeans</li>
-            <li> In NetBeans go to File -->New Project</li>
-            <li>In the New Project window, select Java as a category and Java Application as a project, then click Next</li>
-            <li>Uncheck Main Class checkbox</li>
-            <li>For the Project Name, choose a name that is meaningful. For example “COMP132Lab1”. Make sure there is no space in the name</li>
-            <li> For the project location, pick a location on the M drive and create a folder that will hold all your projects. For example “NetBeansProject”. Make sure there is no space in the name</li>
-            <li> Click Finish. The project will appear under the project tab in NetBeans</li>
-        Add class files to your project
-            <li> Select the project, go to File --> New File</li>
-            <li>In the New File window, select Java as a category, and Java Class as a File Type, then click Next</li>
-            <li> Choose a meaningful name. For example IntroToNetBeans. Make sure there is no space in the name</li>
-            <li> Type the code below into the file, then save.
-                    <aside><strong>Note:</strong> the name of the file is the same as the name of the class.
-                    </aside>
-                    <p> <a class="sample language-markup" href="IntroToNetBeans.html" download>Download sample code</a>
-                    </p>
-            </li>
-        
-        </ol>
-        
-    </section>
-    
-    <section id="task2">
-        <h2>Task 2: Compile and run your project</h2>
-        <ol class="instructions">
-            <li> Go to the folder you created previously to host your project and you will notice a set of folders and files. One of the folder is called <samp>src</samp>. This folder contains <samp>.java</samp> file. This is the file you created in the previous step. It is known as the source code</li>
-           <li> Go to the menu <samp>Run</samp>--><samp>Compile</samp> File. Check in the output tab ( in the bottom section of NetBeans and confirm that you have a message saying BUILD SUCESSFULLY. If you have syntax error in your code, the output will indicate this.</li>
-            <li>Check the project folder again, and notice a “build” folder that has been added. Open the “build” folder, then “classes” folder. This folder contain the .class file. These file is the java bytecode. This is the code that will run in the virtual machine when you run your java program</li>
-            <li> The difference between <code><samp>.class </samp></code>and <code><samp>.java</samp></code> will be explain in the course of the semester</li>
-            <li> To run your program within NetBeans, go to menu Run --> Run Project. Notice the outcome in the output output window.It should read</br>
-                    <pre><code>Hello World </br>This is my first Java Program</code></pre>
-            </li>    
-          
-        </ol>
-    </section>
+	<section id="task1">
+		<h2>Task 1: Create a project</h2>
+		<ol class="instructions">
+			<li>Go to start --> all programs --> launch NetBeans</li>
+			<li>In NetBeans go to File --> New Project</li>
+			<li>In the New Project window, select Java as a category and Java Application as a project, then click Next</li>
+			<li>Uncheck Main Class checkbox</li>
+			<li>For the Project Name, choose a name that is meaningful. For example “COMP132Lab1”. Make sure there is no space in the name</li>
+			<li>For the project location, pick a location on the M drive and create a folder that will hold all your projects. For example “NetBeansProject”. Make sure there is no space in the name</li>
+			<li>Click Finish. The project will appear under the project tab in NetBeans</li>
+			<li>
+				To add class files to your project:
+				<ol>
+					<li>Select the project, go to File --> New File</li>
+					<li>In the New File window, select Java as a category, and Java Class as a File Type, then click Next</li>
+					<li>Choose a meaningful name. For example IntroToNetBeans. Make sure there is no space in the name</li>
+					<li>
+						Type the code below into the file, then save.
+						<aside><strong>Note:</strong> the name of the file is the same as the name of the class.</aside>
+						<a class="sample language-java" href="IntroToNetBeans.java" download>Download sample code</a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+	</section>
 
-    <section id="task3">
-        <h2>Task 3: Practice Exercise: Create your First Java Program </h2>
-        <ol class="instructions">
-      
-            <li>Create a java program whose output should contain the following</li>
-            <li> My name is “FirstName “  “Last Name”</li>
-            <li> I am taking this class because I ……(fill in blank)</li>
-            <li>I am hoping to learn … in this class (fill in the blank)</li>
-            <li>Create the appropriate project and file. Test your program and upload your project to D2L dropbox under Lab 1 – Intro to NetBeans folder </li>
-        </ol>
-       </section>
-   
+	<section id="task2">
+		<h2>Task 2: Compile and run your project</h2>
+		<ol class="instructions">
+			<li>Go to the folder you created previously to host your project and you will notice a set of folders and files. One of the folder is called <samp>src</samp>. This folder contains <samp>.java</samp> file. This is the file you created in the previous step. It is known as the source code</li>
+			<li>Go to the menu <samp>Run</samp>--><samp>Compile</samp> File. Check in the output tab ( in the bottom section of NetBeans and confirm that you have a message saying BUILD SUCESSFULLY. If you have syntax error in your code, the output will indicate this.</li>
+			<li>Check the project folder again, and notice a “build” folder that has been added. Open the “build” folder, then “classes” folder. This folder contain the .class file. These file is the java bytecode. This is the code that will run in the virtual machine when you run your java program</li>
+			<li>The difference between <code><samp>.class </samp></code>and <code><samp>.java</samp></code> will be explain in the course of the semester</li>
+			<li>
+				To run your program within NetBeans, go to menu Run --> Run Project. Notice the outcome in the output output window. It should read:
+				<samp><pre>
+					Hello World
+					This is my first Java Program
+				</pre></samp>
+			</li>
+		</ol>
+	</section>
 
+	<section id="task3">
+		<h2>Task 3: Practice Exercise: Create your First Java Program </h2>
+		<ol class="instructions">
+			<li>Create a java program whose output should contain the following</li>
+			<li> My name is “FirstName “  “Last Name”</li>
+			<li> I am taking this class because I ……(fill in blank)</li>
+			<li>I am hoping to learn … in this class (fill in the blank)</li>
+			<li>Create the appropriate project and file. Test your program and upload your project to D2L dropbox under Lab 1 – Intro to NetBeans folder </li>
+		</ol>
+	</section>
 
 	<section id="submission">
 		<h2>Submission</h2>
 		<!-- optional paragraph about adding a "what you've learned" blurb -->
 		<p>Submit your project to D2L, you have two options:
-        <ol>
-            <li>Option 1:</li>
-    
-                <p>Zip the entire project folder, rename it as <samp>ExampleLab-FirstnameLastname.zip</samp>,submit the zipped file to the dropbox on D2L.
-                </p>
-           <li>Option 2:</li>
-           <ul>
-               <li>Go File -->Export Project -->to Zip, select the destination and name of the zip file	</li>
-               <li> 
-                Zip the entire project folder, rename it as <samp>Lab1-FirstnameLastname.zip</samp>, submit the zipped file to the dropbox on D2L.</li>
-           </ul>
-        </ol>
-*
 
-        <p>Submit your project to D2L</p>
+		<h3>Option 1:</h3>
+		<p>Zip the entire project folder, rename it as <samp>ExampleLab-FirstnameLastname.zip</samp>, submit the zipped file to the dropbox on D2L.</p>
+
+		<h3>Option 2:</h3>
+		<ol class="instructions">
+			<li>Go File -->Export Project -->to Zip, select the destination and name of the zip file</li>
+			<li>
+				Zip the entire project folder, rename it as <samp>Lab1-FirstnameLastname.zip</samp>, submit the zipped file to the dropbox on D2L.
+			</li>
+		</ol>
+
+		<p>Submit your project to D2L</p>
 		<table class="marks">
 			<thead>
 				<tr><th>Criteria</th><th>Marks</th></tr>
 			</thead>
 			<tbody>
-				<!-- optionally break down into groups:
-					<tr><th colspan="2">Group</th></tr>
-				-->
-				<!-- itemize marking deliverables -->
 				<tr>
 					<td>Deliverable</td>
 					<td>10</td>
@@ -129,16 +115,14 @@
 					<td>Deliverable</td>
 					<td>10</td>
 				</tr>
-				<!-- Total marks at end -->
 				<tr>
 					<th>Total</th>
-					<td>20</td> <!-- UPDATE THIS! -->
+					<td>20</td>
 				</tr>
 			</tbody>
 		</table>
 	</section>
 
 	<script src="../template/bundle.js" async defer></script>
-	<!-- additional scripts can be added here if necessary -->
 </body>
 </html>
