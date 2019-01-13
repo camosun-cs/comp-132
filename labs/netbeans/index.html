@@ -2,19 +2,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Introduction to NetBeans - COMP 132</title>
+	<title>Introduction to NetBeans (Lab 1) - COMP 132</title>
 	<meta name="viewport" content="width=device-width"/>
-	<base href="https://camosun-cs.github.io/comp-132-139/labs/template/" target="_blank"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/netbeans/" target="_blank"/>
 	<link rel="stylesheet" href="../template/bundle.css"/>
 </head>
 <body>
 	<header>
-		<h1>COMP 132 - Introduction to NetBeans</h1>
+		<h1>COMP 132 - Lab 1 - Introduction to NetBeans</h1>
 		<nav><ol>
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-			<li><a href="#task1"><strong>Task 1</strong>: Creating a Project</a></li>
-			<li><a href="#task2"><strong>Task 2</strong>: Compile and run your project</a></li>
-			<li><a href="#task3"><strong>Task 3</strong>: Practice Exercise: Create your First Java Program</a></li>
+			<li><a href="#task0"><strong>Setup</strong>: Installing NetBeans</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: NetBeans and Java basics</a></li>
+			<li><a href="#task3"><strong>Task 2</strong>: Create your first Java program</a></li>
 		   <li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
@@ -23,104 +23,174 @@
 		<h2>Learning Outcomes and Introduction</h2>
 		<p>In this lab assignment you will learn about:</p>
 		<ul>
-			<li> Introduction to NetBeans environment.</li>
-			<li> Editing, compiling and running a Java program.</li>
-			<li>Creating your first Java program</li>
+			<li>Creating a project in NetBeans.</li>
+			<li>Adding and organizing source files.</li>
+			<li>Compiling and running a Java program.</li>
+			<li>Writing a simple program that prints some text on screen.</li>
+			<li>Printing your source code.</li>
+			<li>Creating a ZIP file to submit your work to D2L.</li>
 		</ul>
-		<p>The following is a step-by-step guide that will show you how to create a project and run a simple java program with NetBeans</p>
-		<aside>There are many other ways to run java programs with NetBeans, but this method is simple and will be useful later in the course. Log on to the computer with your <code>Camosun login ID</code>.</aside>
+	</section>
+
+	<section id="task0">
+		<h2>Setup: Installing NetBeans</h2>
+		<p>If you are working in a computer lab at Camosun, simply log in using your Camosun ID. NetBeans will already be installed for you and you can skip this section.</p>
+		<p>If you would like to use NetBeans on your own computer, you'll need to install it yourself! Follow the instructions in this section to get it set up.</p>
+		<ol class="instructions">
+			<li>Go to <a href="https://netbeans.apache.org">netbeans.apache.org</a> in a web browser.</li>
+			<li>Choose <samp>Download</samp> from the main navigation menu.</li>
+			<li>Choose the link for "binaries." At the time these instructions were written, the link looks like "incubating-netbeans-10.0-bin.zip."</li>
+			<li>Click the suggested download link at the top of the page, and wait for the download to complete.</li>
+			<li>
+				<p>If you are using MacOS,</p>
+				<ol>
+					<li>Double-click the downloaded ZIP file to extract its contents.</li>
+					<li>Open the "netbeans" folder, and open the "bin" folder inside of it.</li>
+					<li>Right-click the "netbeans" file with the black icon and choose "Open".</li>
+					<li>A security warning likely appear; this is normal! Choose "Open" to proceed.</li>
+					<li>In the future, you can double-click this file to open NetBeans and the security warning will no longer appear.</li>
+				</ol>
+			</li>
+			<li>
+				<p>If you are using Windows,</p>
+				<ol>
+					<li>Open the downloaded file.</li>
+					<li>Choose "Extract All" from the ribbon and follow the prompts.</li>
+					<li>Open the extracted "netbeans" folder, and open the "bin" folder inside of it.</li>
+					<li>Double click "netbeans64.exe" to open NetBeans for the first time.</li>
+					<li>If this doesn't work, try "netbeans.exe" instead.</li>
+					<li>In the future, NetBeans should appear in your start menu, but you can always start it by opening this file.</li>
+				</ol>
+			</li>
+			<li>NetBeans may ask you to download Java SE components the first time it is opened, or the first time you start a new project. Follow the prompts to complete the installation.</li>
+		</ol>
 	</section>
 
 	<section id="task1">
-		<h2>Task 1: Create a project</h2>
+		<h2>Task 1: NetBeans and Java basics</h2>
 		<ol class="instructions">
-			<li>Go to start --> all programs --> launch NetBeans</li>
-			<li>In NetBeans go to File --> New Project</li>
-			<li>In the New Project window, select Java as a category and Java Application as a project, then click Next</li>
-			<li>Uncheck Main Class checkbox</li>
-			<li>For the Project Name, choose a name that is meaningful. For example “COMP132Lab1”. Make sure there is no space in the name</li>
-			<li>For the project location, pick a location on the M drive and create a folder that will hold all your projects. For example “NetBeansProject”. Make sure there is no space in the name</li>
-			<li>Click Finish. The project will appear under the project tab in NetBeans</li>
+			<li>Launch NetBeans</li>
+			<li>In NetBeans, go to <samp>File > New Project</samp></li>
+			<li>In the New Project window, select <samp>Java</samp> from the Categories pane and <samp>Java Application</samp> from the Projects pane, then click <samp>Next</samp></li>
+			<li>Change the Project Name to <kbd>java-lab-assignments</kbd>, or something similar. This project will be used for all of your lab assignments for this course.</li>
+			<li>Change the Project Location to your M drive. This will ensure that your files are available from any lab computer.</li>
+			<li>Uncheck the <samp>Create Main Class</samp> checkbox.</li>
+			<li>Click Finish.</li>
 			<li>
-				To add class files to your project:
-				<ol>
-					<li>Select the project, go to File --> New File</li>
-					<li>In the New File window, select Java as a category, and Java Class as a File Type, then click Next</li>
-					<li>Choose a meaningful name. For example IntroToNetBeans. Make sure there is no space in the name</li>
-					<li>
-						Type the code below into the file, then save.
-						<aside><strong>Note:</strong> the name of the file is the same as the name of the class.</aside>
-						<a class="sample language-java" href="IntroToNetBeans.java" download>Download sample code</a>
-					</li>
-				</ol>
+				Outside of NetBeans, go back to your M drive.
+				Notice that NetBeans has created a new folder here with the name of your project.
+			</li>
+			<li>
+				<p>Open the project folder, and navigate to the <samp>src</samp> folder inside. This is where the Java files you write will be stored (your "source code"). It's empty right now because we haven't yet written any code!</p>
+				<details>
+					<summary>What are all these other files?</summary>
+					<p>The <samp>build.xml</samp> tells NetBeans how to compile and package your project's code.</p>
+					<p>The <samp>nbproject</samp> folder contains files that NetBeans uses to keep track of your project settings, as well as additional build scripts referenced by the <samp>build.xml</samp> file.</p>
+					<p>The <samp>manifest.mf</samp> contains metadata about your project that Java may need when your code runs.</p>
+				</details>
+			</li>
+			<li>
+				<p>Download the sample code below and move it into your <samp>src</samp> folder.</p>
+				<a class="sample language-java" href="NetBeansIntro.java" download>Sample Code</a>
+			</li>
+			<li>Back in NetBeans, you should now see <samp>NetBeansIntro.java</samp> appear in the <samp>Projects</samp> pane. It will be filed under <samp>&lt;default package&gt;</samp> in the <samp>Source Packages</samp> group.</li>
+			<li>This example code belongs in a <em>package</em> named <samp>examples</samp>, but we've put it into the "default" package. Open the file in NetBeans and click on the lightbulb in the margin on line 1. Choose <samp>Move class to correct folder</samp>.</li>
+			<li>
+				<p>Look back at your <samp>src</samp> folder outside of NetBeans. You should now see an <samp>examples</samp> folder, and NetBeans has moved <samp>NetBeansIntro.java</samp> into it.</p>
+				<details>
+					<summary>Why use packages?</summary>
+					<p>Packages help to keep your code organized by keeping related files together. You will store all of your Java code in this course together in one project, but should use a separate package (really just a folder inside of <samp>src</samp>) for each lab assignment to keep their files separated and make it easy to ZIP them up for submission to D2L.</p>
+				</details>
+				<p>As you've seen, NetBeans can manage your files from within the IDE, or you can manage them directly in the <samp>src</samp> folder. Either approach is fine!</p>
+			</li>
+			<li>
+				<p>The little red exclamation badges in the <samp>Projects</samp> panel and editor pane are indicating that the <samp>NetBeansIntro.java</samp> file we added still has errors. We cannot compile or run our code until all of these warnings are fixed. Hover your mouse over the red icons to find out what the problems are, or open the Action Items panel (choose <samp>Window</samp> > <samp>Action Items</samp> from the menu) for a full list.</p>
+				<details>
+					<summary>What does this error mean!?</summary>
+					<p>The error messages you get from the Java can be quite cryptic, especially when you're just starting to program. They tend to be very short, and use a lot of specialized jargon.</p>
+					<p>Do not depair! You will learn what a lot of this jargon means throughout this course, and as you get more experienced, just knowing <em>where</em> the error occurs can often be enough for you to spot the problem.</p>
+					<p>In the meantime, the most common errors you will see when you are just beginning will be:</p>
+					<dl>
+						<dt>… expected</dt>
+						<dt>not a statement</dt>
+						<dt>reached end of file while parsing</dt>
+						<dd>Something is wrong with your syntax. Check for missing semi-colons and braces.</dd>
+						<dt>cannot find symbol</dt>
+						<dd>You probably misspelled something. This can also happen if you've forgotten to define a variable before using it.</dd>
+						<dt>incompatible type</dt>
+						<dd>You've probably forgotten to use quotes around a string value, put quotes around a number when you shouldn't have, or used single-quotes when you should have used double-quotes. This error will come up for many more situations as you learn to do more with Java.</dd>
+					</dl>
+					<p>Mindprod.com has a <a href="http://mindprod.com/jgloss/compileerrormessages.html">nice big list of compilation errors and their likely causes</a> that might also be helpful.</p>
+			</li>
+			<li>Fix the error in the sample code by removing the line that says "Opps!" (line 4), and save your changes.</li>
+			<li>Look back at your project folder on your M drive. There should now be a <samp>build</samp> folder next to your <samp>src</samp> in the project directory. This is where NetBeans stores your compiled code. By default, NetBeans will automatically compile your Java source code into runnable <samp>.class</samp> files any time you save the file or attempt to run it.</li>
+			<li>
+				<p>Run the example program by opening it in the NetBeans editor and choosing <samp>Run</samp> > <samp>Run File</samp> from the menu.</p>
+				<details>
+					<summary>Why can't I use the big green <samp>Run Project</samp> button?</summary>
+					<p>Projects are normally meant to store just one program, and so this button will only run the main method in <em>one</em> of your Java files (called the "main class"). Right now that's fine, but as you add more files to this project it will quickly become less useful.</p>
+					<p>If you really like using that button instead of the menu or hotkeys, you can change which class will be run at any time in the settings for your project. Right-click the project name in the Projects panel and choose <samp>Properties</samp>. Choose <samp>Run</samp> from the <samp>Categories</samp> pane and change the <samp>Main Class</samp> setting as appropriate.</p>
+				</details>
+			</li>
+			<li>
+				<p>If everything is working normally, you should the following appear in the output panel:</p>
+				<pre><span style="color:gray">run:</span>
+Success?
+<span style="color:green">BUILD SUCCESSFUL (total time: 0 seconds)</span></pre>
+				<p>The black text is the output from this program. The coloured bits are messages from NetBeans letting you know where this output came from, and whether everything was working normally or not.</p>
 			</li>
 		</ol>
 	</section>
 
 	<section id="task2">
-		<h2>Task 2: Compile and run your project</h2>
+		<h2>Task 2: Create your First Java Program</h2>
 		<ol class="instructions">
-			<li>Go to the folder you created previously to host your project and you will notice a set of folders and files. One of the folder is called <samp>src</samp>. This folder contains <samp>.java</samp> file. This is the file you created in the previous step. It is known as the source code</li>
-			<li>Go to the menu <samp>Run</samp>--><samp>Compile</samp> File. Check in the output tab ( in the bottom section of NetBeans and confirm that you have a message saying BUILD SUCESSFULLY. If you have syntax error in your code, the output will indicate this.</li>
-			<li>Check the project folder again, and notice a “build” folder that has been added. Open the “build” folder, then “classes” folder. This folder contain the .class file. These file is the java bytecode. This is the code that will run in the virtual machine when you run your java program</li>
-			<li>The difference between <code><samp>.class </samp></code>and <code><samp>.java</samp></code> will be explain in the course of the semester</li>
 			<li>
-				To run your program within NetBeans, go to menu Run --> Run Project. Notice the outcome in the output output window. It should read:
-				<samp><pre>
-					Hello World
-					This is my first Java Program
-				</pre></samp>
+				<p>Create a new Java Main Class file named <kbd>MyFirstProgram</kbd> in a new package.</p>
+				<ol>
+					<li>Pick <samp>File > New File…</samp> from NetBeans' main menu, or click on the icon with a green plus over a white page in the toolbar</li>
+					<li>Choose <samp>Java</samp> in the <samp>Categories</samp> pane, and <samp>Java Main Class</samp> in the <samp>File Types</samp> pane (you might have to scroll down a bit)</li>
+					<li>Click <samp>Next ></samp></li>
+					<li>Change the <samp>Class Name</samp> to <kbd>MyFirstProgram</kbd></li>
+					<li>Change the <samp>Package</samp> to <kbd>lab1task2</kbd></li>
+					<li>Click <samp>Finish</samp></li>
+				</ol>
 			</li>
-		</ol>
-	</section>
-
-	<section id="task3">
-		<h2>Task 3: Practice Exercise: Create your First Java Program </h2>
-		<ol class="instructions">
-			<li>Create a java program whose output should contain the following</li>
-			<li> My name is “FirstName “  “Last Name”</li>
-			<li> I am taking this class because I ……(fill in blank)</li>
-			<li>I am hoping to learn … in this class (fill in the blank)</li>
-			<li>Create the appropriate project and file. Test your program and upload your project to D2L dropbox under Lab 1 – Intro to NetBeans folder </li>
+			<li>
+				<p>Create a Java program that outputs:</p>
+				<aside>Look back at the example program to see the correct syntax for outputting text.</aside>
+				<ul>
+					<li>Your full name</li>
+					<li>The reason you're taking this course</li>
+					<li>Two or three things you hope to learn in this class</li>
+				</ul>
+			</li>
 		</ol>
 	</section>
 
 	<section id="submission">
 		<h2>Submission</h2>
-		<!-- optional paragraph about adding a "what you've learned" blurb -->
-		<p>Submit your project to D2L, you have two options:
-
-		<h3>Option 1:</h3>
-		<p>Zip the entire project folder, rename it as <samp>ExampleLab-FirstnameLastname.zip</samp>, submit the zipped file to the dropbox on D2L.</p>
-
-		<h3>Option 2:</h3>
-		<ol class="instructions">
-			<li>Go File -->Export Project -->to Zip, select the destination and name of the zip file</li>
-			<li>
-				Zip the entire project folder, rename it as <samp>Lab1-FirstnameLastname.zip</samp>, submit the zipped file to the dropbox on D2L.
-			</li>
+		<p>Upload a ZIP file containing your full <samp>src</samp> directory to D2L.</p>
+		<p>To create a ZIP file on MacOS:</p>
+		<ol>
+			<li>Right-click (or control-click) a folder in the Finder</li>
+			<li>Choose <samp>Compress "…"</samp></li>
+			<li>Press enter to start renaming the ZIP file</li>
+			<li>Type a name for the ZIP file and press enter</li>
 		</ol>
-
-		<p>Submit your project to D2L</p>
-		<table class="marks">
-			<thead>
-				<tr><th>Criteria</th><th>Marks</th></tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Deliverable</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<td>Deliverable</td>
-					<td>10</td>
-				</tr>
-				<tr>
-					<th>Total</th>
-					<td>20</td>
-				</tr>
-			</tbody>
-		</table>
+		<p>To create a ZIP file on Windows:</p>
+		<ol>
+			<li>Right click a folder in the file explorer</li>
+			<li>Choose <samp>Compressed (zipped) folder</samp> from the <samp>Send to</samp> submenu</li>
+			<li>Type a name for the ZIP file and press enter</li>
+		</ol>
+		<p>Most lab assignmets will require you to upload just one of your source code packages to D2L, and also hand in a printed copy for marking. This assignment will be given a grade for completion only, so a printed copy is not needed.</p>
+		<p>To print a source code file...</p>
+		<ol>
+			<li>Open the file in the NetBeans editor</li>
+			<li>Choose <samp>File</samp> > <samp>Print…</samp> from the menu</li>
+			<li>Adjust the zoom options if necessary, then click <samp>Print</samp></li>
+		</ol>
 	</section>
 
 	<script src="../template/bundle.js" async defer></script>
