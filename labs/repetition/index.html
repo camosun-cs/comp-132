@@ -6,15 +6,23 @@
 	<meta name="viewport" content="width=device-width"/>
 	<base href="https://camosun-cs.github.io/comp-132-139/labs/repetition/" target="_blank"/>
 	<link rel="stylesheet" href="../template/bundle.css"/>
+	<style>
+		.points {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
 </head>
 <body>
 	<header>
 		<h1>COMP 132 - Lab 4 - Repetition</h1>
 		<nav><ol>
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-			<li><a href="#task1"><strong>Task 1</strong>: Improve The Lottery Game</a></li>
-			<li><a href="#task2"><strong>Task 2</strong>: Use of <code>FOR</code>versus <code>WHILE</code> statements</a></li>
-			<li><a href="#task3"><strong>Task 3</strong>: Make a Grid</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Points on a circle</a></li>
+			<li><a href="#task3"><strong>Task 3</strong>: "Infinite" loops</a></li>
+			<li><a href="#task2"><strong>Task 3</strong>: Fibonacci numbers</li>
+			<li><a href="#task4"><strong>Task 4</strong>: Printing a matrix</a></li>
 			<li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
@@ -23,72 +31,495 @@
 		<h2>Learning Outcomes and Introduction</h2>
 		<p>In this lab assignment you will learn about:</p>
 		<ul>
-			<li>Use of Looping and Repetition logic</li>
-			<li>Use of <code>WHILE</code> versus <code>FOR</code> statements</li>
-			<li>Use of Nested loops</li>
+			<li>
+				How and when to use
+				<code class="language-java">for</code>,
+				<code class="language-java">while</code>,
+				and <code class="language-java">do while</code>
+			</li>
+			<li>Infinite loops</li>
+			<li>Nested loops</li>
 		</ul>
 	</section>
 
 	<section id="task1">
-		<h2>Task 1: Improve The Lottery Program</h2>
-		<p>Expand on the lottery program that was designed on the previous lab, make some modifications so that the computer can help the user guess the right number. The computer will generate a random number and give the user an opportunity to guess the right number</p>
-		<ul>
-			<li>If the number is too low, the computer will let the user know that the number is too low and prompt the user to guess another number</li>
-			<li>If the number is too high, the computer will let the user know that the number is too high and prompt the user to guess another number</li>
-			<li>When the user guesses the right number, the program ocngradulate the user and let the user know how many trials it took for them to guess the right number, then let them know how much they won, before terminating</li>
-			<ul>
-			   <li>If the user guess the right number on the first trial, the award is $10,000</li>
-				<li>For any subsequent trial, the award reduces by $1000 per trial</li>
-				<li>Once the award reaches $1000, any subsequent guess will be worth $10 per trial until the user guesses the right number or reaches the maximum.</li>
-			</ul>
-		</ul>
-
+		<h2>Task 1: Points on a circle</h2>
+		<p>
+			<em>Goal:</em> create a program that will compute the <var>(x, y)</var>
+			coordinates of the corner points for a regular polygon with an
+			arbitrary number of sides.
+			Your program should ask the user for the number of sides (or points)
+			in the desired shape, and produce an ordered list of <var>(x, y)</var>
+			coordinates.
+		</p>
 		<details>
-			<summary>Sample code for an input/output program</summary>
+			<summary>Sample coordinate outputs</summary>
 			<p>
-				The sample code below asks the user to enter a few
-				pieces of information, stores them in variables, and
-				displays the stored values at the end.
+				The exact output from your program will depend on the coordinate
+				system you choose, how large you want to make the shape, and
+				how you rotate it. The sample values below assume that we're
+				inscribing the polygon within a <em>unit circle</em> (a circle
+				with a radius of 1) <em>centred on the origin</em>, with one
+				point always fixed at <samp>(1, 0)</samp>.
 			</p>
-			<a class="sample language-java" href="../vars-and-ops/WhatsUrName.java" download>Download example</a>
+			<table>
+				<thead>
+					<tr>
+						<th>Number of sides</th>
+						<th>Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>3</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(-0.5, 0.866025)</li>
+							<li>(-0.5, -0.866025)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0, 1)</li>
+							<li>(-1, 0)</li>
+							<li>(0, -1)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0.309017, 0.951057)</li>
+							<li>(-0.809017, 0.587785)</li>
+							<li>(-0.809017, -0.587785)</li>
+							<li>(0.309017, -0.951057)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0.5, 0.866025)</li>
+							<li>(-0.5, 0.866025)</li>
+							<li>(-1, 0)</li>
+							<li>(-0.5, -0.866025)</li>
+							<li>(0.5, -0.866025)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0.623490, 0.781831)</li>
+							<li>(-0.222521, 0.974928)</li>
+							<li>(-0.900969, 0.433884)</li>
+							<li>(-0.900969, -0.433884)</li>
+							<li>(-0.222521, -0.974928)</li>
+							<li>(0.623490, -0.781831)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0.707107, 0.707107)</li>
+							<li>(0, 1)</li>
+							<li>(-0.707107, 0.707107)</li>
+							<li>(-1, 0)</li>
+							<li>(-0.707107, -0.707107)</li>
+							<li>(0, -1)</li>
+							<li>(0.707107, -0.707107)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0.766044, 0.642788)</li>
+							<li>(0.173648, 0.984808)</li>
+							<li>(-0.5, 0.866025)</li>
+							<li>(-0.939693, 0.342020)</li>
+							<li>(-0.939693, -0.342020)</li>
+							<li>(-0.5, -0.866025)</li>
+							<li>(0.173648, -0.984808)</li>
+							<li>(0.766044, -0.642788)</li>
+						</ul></td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td><ul class="points">
+							<li>(1, 0)</li>
+							<li>(0.809017, 0.587785)</li>
+							<li>(0.309017, 0.951057)</li>
+							<li>(-0.309017, 0.951057)</li>
+							<li>(-0.809017, 0.587785)</li>
+							<li>(-1, 0)</li>
+							<li>(-0.809017, -0.587785)</li>
+							<li>(-0.309017, -0.951057)</li>
+							<li>(0.309017, -0.951057)</li>
+							<li>(0.809017, -0.587785)</li>
+						</ul></td>
+					</tr>
+				</tbody>
+			</table>
 		</details>
+		<p>
+			In a later lab, we'll use this information
+			to draw the shape on screen, but for now let's just get the math figured out!
+		</p>
+		<ol class="instructions">
+			<li>
+				<p>
+					When working on more complicated problems like this, it's always
+					best to break the problem into smaller, simpler pieces. Start
+					by writing some code that solves the problem for a triangle
+					(without using any loops) and prints the coordinates of its
+					three points.
+				</p>
+				<p>
+					There are lots of ways we could solve this for a triangle,
+					but we want to choose a method that will be generalizable to
+					any regular polygon. One good way could be to consider the
+					shape inscribed inside a circle, and use a bit of trigonometry
+					on the interior angles. Other shapes would have more points at smaller
+					angles around the circle, but the method for calculating
+					the coordinates of each point would be the same.
+				</p>
+				<figure>
+					<img src="triangle.png" alt="A triangle inscribed within a unit circle" >
+					<caption>Something like this.</caption>
+				</figure>
+				<p>
+					You'll need to use the
+					<code class="language-java">Math.sin()</code> and
+					<code class="language-java">Math.cos()</code> functions that
+					are built-in to Java. These functions expect angles to be
+					given in radians, so you'll probably also need the predefined
+					constant <code class="language-java">Math.PI</code>.
+				</p>
+				<p>For example, this code:</p>
+				<pre><code class="language-java">
+					double result = Math.sin(Math.PI / 2);
+					System.out.println(result);
+				</code></pre>
+				<p>Prints the value <samp>1</samp>.</p>
+				<details>
+					<summary>So… how do I do it?</summary>
+					<p>
+						First, we need to know the angles around the circle to
+						get to those corners. A full circle is 360°, or 2π radians.
+						A triangle has three corners, so each point is separated
+						from the one before it by 120°, or 2π/3. In Java that
+						looks like:
+					</p>
+					<pre><code class="language-java">
+						double angleBetweenPoints = 2 * Math.PI / 3;
+					</code></pre>
+					<p>
+						To make things simple, let's use a circle with radius 1
+						and rotate the shape so that the first point is at
+						<var>(1, 0)</var>. No calculations needed!
+					</p>
+					<p>
+						We can determine the coordinates of the second point
+						using the <em>sine</em> and <em>cosine</em> of its
+						angle away from that first point. In Java that would
+						look like:
+					</p>
+					<pre><code class="language-java">
+						double secondPointX = Math.cos(angleBetweenPoints);
+						double secondPointY = Math.sin(angleBetweenPoints);
+					</code></pre>
+					<p>
+						The third point can be found by multiplying the angle by
+						two, and using <em>sine</em> and <em>cosine</em> again.
+					</p>
+				</details>
+			</li>
+			<li>
+				<p>
+					Now that you have working code for a triangle, try changing
+					it to solve the problem for a square. Make note of what code
+					needed to change, and what code seems to be repeated. Look
+					for other small ways you could change your code to make repeated
+					sections more alike.
+				</p>
+				<aside>
+					For example, even though our first point will probably
+					always the same (<samp>(1, 0)</samp>), you could calculate
+					it in the same way as all of the others if you multiply
+					the angle by zero.
+				</aside>
+			</li>
+			<li>
+				<p>
+					Use a <code class="language-java">for</code> loop that executes
+					<b>exactly four times</b> to reduce the repetition in your code.
+				</p>
+				<pre><code class="language-java">
+					for (int point = 0; point < 4; point++) {
+						// do repeated things, using the `point` number
+					}
+				</code></pre>
+				<p>
+					<code class="language-java">for</code> loops are ideal for
+					creating loops with a known number of iterations, because all
+					of the logic to control them is visible at the top of the loop!
+				</p>
+				<details>
+					<summary>Why start at 0?</summary>
+					<p>
+						The example loop above will give you <var>point</var>
+						numbers 0, 1, 2, and 3, which might seem odd at first.
+						Surely they should be numbered from 1 to 4?
+						However, you'll see that in this case starting from zero
+						reduces the amount of code you need to write. As you get
+						more practice working with loops (and arrays in a future lab)
+						you'll see that this is often the case, and you'll soon
+						get used to 0-based numbering!
+					</p>
+				</details>
+			</li>
+			<li>
+				Add some code to ask the user how many sides the shape should
+				have. Use that number to calculate the angle between each point
+				and to control the number of times your output loop runs.
+			</li>
+			<li>
+				<p>
+					Experiment with your code to find ways to add an extra WOW
+					factor! Here are a few features that could be useful that
+					you can add with just a little extra math:
+				</p>
+				<ul>
+					<li>Translate all the output points so their coordinates are always positive</li>
+					<li>Apply a user-defined rotation of the shape around its centre</li>
+					<li>Scale the shape to fit a larger (or smaller) radius circle</li>
+					<li>Make a second version that draws stars with the given number of points instead of regular polygons.</li>
+				</ul>
+			</li>
+		</ol>
 	</section>
 
 	<section id="task2">
-		<h2>Task 2: Fibonacci Numbers</h2>
-		<p>write a program that output the Fibonacci numbers that are less than 30,000. Each FIbonacci number is the sum of its two predecessors. The first two Fibonacci numbers are 1 and 1. Thus the sequence begins with 1,1,2,3,5,8,13,21,34,...</p>
-		<aside><strong>Hint:</strong> ( You can try a DO-WHILE structure)</aside>
+		<h2>Task 2: "Infinite" loops</h2>
+		<ol class="instructions">
+			<li>
+				<p>
+					Wrap your solution to <a href="#task1">Task 1</a> in an
+					infinite loop so that you can use it to compute the points
+					for many different shapes in a single run.
+				</p>
+				<details>
+					<summary>How to loop forever</summary>
+					<p>
+						You can create a loop that will run indefinitely very simply in Java:
+					</p>
+					<pre><code class="language-java">
+						while (true) {
+							// inside here will be repeated forever
+						}
+					</code></pre>
+					<p>
+						There are several other ways you can make an infinite loop,
+						but this is the most idiomatic way that other
+						programmers will recognize and will make it clear that
+						you really meant to do this!
+					</p>
+				</details>
+				<aside>
+					Note: you can force your program to exit any time it
+					pauses for input by pressing <kbd>ctrl-c</kbd>.
+				</aside>
+				<details>
+					<summary>What if I haven't done Task 1 yet?</summary>
+					<p>
+						If your code for Task 1 isn't working yet, you can start
+						with the sample code below instead:
+					</p>
+					<a
+						class="sample language-java"
+						href="Task2Starter.java"
+						download
+					>
+						Download sample
+					</a>
+				</details>
+			</li>
+			<li>
+				Consider which of your variables need to be freshly created
+				each time your program loops, and which can be created just
+				once when your program starts. Move variables outside of the
+				loop if it makes sense to do so!
+			</li>
+			<li>
+				<p>
+					Use another inifinite loop, along with conditional branches and the
+					<code class="language-java">break</code>
+					keyword to make sure that the user enters a usable number for
+					this program (ie. an integer greater than or equal to 3) before
+					trying to compute the points.
+				</p>
+				<details>
+					<summary>Example code</summary>
+					<p>This example requires the user to enter "yes" or "no" before continuing:</p>
+					<pre><code class="language-java">
+						Scanner input = new Scanner(System.in);
+						while (true) {
+							System.out.println("Please enter 'yes' or 'no':");
+							String word = input.nextLine();
+							if (word.equals("yes") || word.equals("no")) {
+								// input is good, stop the loop!
+								System.out.println("okay!");
+								break;
+							} else {
+								System.out.println("I don't understand...");
+							}
+						}
+					</code></pre>
+				</details>
+			</li>
+		</ol>
 	</section>
 
 	<section id="task3">
-		<h2>Task 3: Make a Grid</h2>
-		<p>write a program that prints out rows containing alternating ´X` and ´O´ as shown below </p>
-		<aside><strong>Hint:</strong> Use a nested for loop.</aside>
+		<h2>Task 3: Fibonacci numbers</h2>
+		<p>
+			Write a new program that will find the first
+			<a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci
+			number</a> that is <em>higher</em> than a given input.
+		</p>
 		<details>
-			<summary>Optional Work for bonus points:</summary>
-			<ol>
-				<li>Change your program to display only the upper triangle of the matrix.</li>
-				<li>Change the code to display only the lower triangle of the matrix.</li>
-				<li>Change the code to display only the diagnol of the matrix.</li>
-			</ol>
+			<summary>Example input and output</summary>
+			<dl>
+				<dt>Given 19</dt>
+				<dd>Output 21</dd>
+				<dt>Given 55</dt>
+				<dd>Output 89</dd>
+				<dt>Given 2345</dt>
+				<dd>Output 2584</dd>
+				<dt>Given 5702886</dt>
+				<dd>Output 5702887</dd>
+			</dl>
 		</details>
+		<ol class="instructions">
+			<li>
+				Start simple. Write some code that just computes
+				the first five or so Fibonacci numbers and prints them out.
+			</li>
+			<li>
+				Look for ways to use (and reuse) variables so the code to
+				find each number in the sequence looks identical.
+			</li>
+			<li>
+				Restructure your code using a <b>do-while</b> loop so that no
+				code is duplicated.
+			</li>
+			<li>
+				Add a prompt for an upper limit to be entered, and use
+				that number in your while condition to determine when to
+				end the loop.
+			</li>
+		</ol>
 	</section>
+
+	<section id="task4">
+		<h2>Task 4: Printing a matrix</h2>
+		<p>
+			Create a program that asks the user to enter a number and prints an
+			inverted triangle with that many rows using <em>nested</em>
+			<code class="language-java">for</code> loops.
+		</p>
+		<details>
+			<summary>Example input and output</summary>
+			<p>Given "5", output:</p>
+			<pre>*****
+****
+***
+**
+*</pre>
+			<p>Given "13", output:</p>
+			<pre>*************
+************
+***********
+**********
+*********
+********
+*******
+******
+*****
+****
+***
+**
+*</pre>
+		</details>
+			</li>
+		</ol>
+		<ol class="instructions">
+			<li>
+				Start by creating some code to print a single line of
+				asterisks ("*") of any given length.
+				Use a <code class="language-java">for</code> loop.
+			</li>
+			<li>
+				<p>
+					Wrap this code in another for loop to repeat it and
+					create a square of asterisks.
+				</p>
+				<aside>
+					Make sure to use different looping variables for the
+					outer and inner loops!
+				</aside>
+			</li>
+			<li>
+				Adjust the conditions on your inner <code>for</code> loop to limit the
+				number of asterisks printed based on the state of the outer
+				loop's variables.
+			</li>
+			<li>
+				<p>
+					Experiment with different looping conditions, conditional
+					branches, and extra inputs to create different patterns for
+					extra WOW marks.
+				</p>
+				<details>
+					<summary>Example ideas</summary>
+					<ul>
+						<li>Replace the asterisks on the diagonal edge with a different character</li>
+						<li>Let the user choose what symbols to use for drawing</li>
+						<li>
+							<p>Print the triangle facing different directions, like:</p>
+							<pre style="margin:1em 0;">  *
+ **
+***</pre>
+							<p>Or like:</p>
+							<pre style="margin:1em 0;">  *
+ ***
+*****</pre>
+						</li>
+					</ul>
+				</details>
+			</li>
+		</ol>
+	</section>
+
 
 	<section id="submission">
 		<h2>Submission</h2>
 		<p>
-			Completing <a href="#task1">Task 1</a>, <a href="#task2">Task 2</a>
-			and <a href="#task3">Task 3</a> should result in three separate Java files
-			within a single package.
-			<b>Compress</b> the package directory into a ZIP archive, rename it as
-			<samp>Lab4-FirstnameLastname.zip</samp>, and <b>upload it</b> to the D2L
-			Dropbox. In addition, <b>print out your code</b> and hand in the physical copy
-			at the beginning of the next lab.
+			Completing all of the tasks in this lab should result in three
+			separate Java files	within a single package. Compress the package
+			directory into a ZIP archive and <b>upload it</b> to the D2L Dropbox.
+			Make sure the filename includes your name and lab number, for example
+			<kbd>Lab4-JohnSmith.zip</kbd>. In addition, <b>print out your code</b>
+			and hand in the physical copy at the beginning of the next lab session.
 		</p>
 		<p>
 			The marks for this lab are heavily weighted towards good coding
 			practice and style. Pay attention to each of the points in the
-			table below to ensure you get a good grade!
+			marking criteria below to ensure you get a good grade!
 		</p>
 		<p>
 		   <b>NOTE</b>: This assignment is to be done <em>individually</em>.
@@ -104,37 +535,39 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>
-						Appropriate use of conditional branches (<code>if</code>, <code>else</code>, and <code>switch</code>) and operators (<code>&&</code>, <code>||</code>, <code>!</code>)
-					</td>
-					<td>2</td>
-				</tr>
-				<tr>
-					<td>
-						Appropriate Use  of repetition elements (<code>for</code>, <code>while</code>, and <code>do { } while</code>)
-							</small>
-					</td>
-					<td>3</td>
-				</tr>
-				<tr>
-					<td>Code style and comments</td>
-					<td>1</td>
-				</tr>
-				<tr>
 					<td>Correct program output</td>
 					<td>3</td>
 				</tr>
 				<tr>
-					<td>Wow factor</td>
+					<td>Used the right kinds of loops for each task</td>
 					<td>1</td>
 				</tr>
 				<tr>
-					<td>Bonus Mark</td>
+					<td>Used loops to keep code <abbr title="Don't repeat yourself">DRY</abbr></td>
 					<td>1</td>
+				</tr>
+				<tr>
+					<td>
+						Well-scoped variables
+						<small>- especially loop parameters and <code>Scanner</code></small>
+					</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good use of conditional branches and operators</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Comments and indentation</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>WOW factor</td>
+					<td>2</td>
 				</tr>
 				<tr>
 					<th>Total</th>
-					<td>11</td>
+					<td>10</td>
 				</tr>
 			</tbody>
 		</table>
