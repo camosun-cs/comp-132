@@ -8,27 +8,13 @@
 	<link rel="stylesheet" href="../template/bundle.css"/>
 </head>
 <body>
-	<!--
-		NOTES for reworking:
-		- main method is special
- 		- don't run unless called
-		- how to call
-		   -- call in a loop
-		- write method headers
-		- parameters
-		- return values
-		- overloading
-		- JavaDoc
-		- NOT covering visibility
-	-->
 	<header>
 		<h1>COMP 132 - Lab 5 - Methods and Modularization Techniques </h1>
 		<nav><ol>
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-			<li><a href="#task1"><strong>Task 1</strong>: Change Machine</a></li>
-			<li><a href="#task2"><strong>Task 2</strong>: Rank Teams</a></li>
-			<li><a href="#task3"><strong>Task 3</strong>: Generate Fibonacci Numbers </a></li>
-			<li><a href="#task4"><strong>Task 4</strong>: Lottery Game II </a></li>
+			<li><a href="#task2"><strong>Task 1</strong>: Restructure "Find My Team"</a></li>
+			<li><a href="#task1"><strong>Task 2</strong>: Change Machine</a></li>
+			<li><a href="#task4"><strong>Task 3</strong>: Restructure "Play The Lottery"</a></li>			
 			<li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
@@ -37,87 +23,147 @@
 		<h2>Learning Outcomes and Introduction</h2>
 		<p>In this lab assignment you will learn about:</p>
 		<ul>
-			<li>Use of Methods to modularize programs</li>
+			<li>JavaDoc comments</li>
+			<li>Creating and using methods</li>
+			<li>Passing parameters and receiving return values</li>
+			<li>Splitting code into small reusable components</li>
+			<li>Overloading methods</li>
 		</ul>
-		<aside>Note: for all the scenarios provided below, one or multiple methods must be used to implement the solution</aside>
 	</section>
 
 	<section id="task1">
-		<h2>Task 1: Change Machine</h2>
-		<p>Suppose that you want to develop a program that classifies a given amount of money into smaller monetary units. The program lets the user enter an amount as a double value representing a total dollar and cents, and outputs a report listing the monetary equivalent in dollars, quarters, dimes, nickels and pennies as shown below:</p>
-		<p>This program should be able to keep asking for end user for a new number to convert until a negative number is entered</p>
-		<details open>
-			<summary>Approach</summary>
-			<ul class="instructions">
-				<li>Prompt the user to enter the amount such as 11.56</li>
-				<li>Convert amount into cents (1156)</li>
-				<li>Divide by 100 to find dollar amount : 11</li>
-				<li>Divide the remainder by 25 to find the number of quarter: 2</li>
-				<li>Devide the remainder by 10 : 0 dime</li>
-				<li>Devide remainder by 5: 1 nickel</li>
-				<li>The remaining are pennies: 1</li>
-			</ul>
-		</details>
+		<h2>Task 1: Restructure Find My Team</h2>
+		<p>Transform your "Find My Team" code from Lab 3, Task 3 to use a method.</p>
+		<p>Your main method should prompt the user for a team number and print out the result league to the screen. Move the rest of the code into a new <code>findTeam</code> method and use parameters and return values to communicate with the main method.</p>
+		<p>Make sure to include JavaDoc comments for your new method!</p>
 	</section>
 
 	<section id="task2">
-		<h2>Task 2: Rank Teams</h2>
-		<p>Using Switch statement, write a program that rank teams according to the number assigned to the classification below. The program should keep prompting the user to enter the team number, before performing the ranking , until the user enters a negative number</p>
-		<ul>
-			<li>7-10: Group A</li>
-			<li>4-6: Group B</li>
-			<li>2-3: Group C</li>
-			<li>0-1: Group D</li>
-			<li>Any other positive number: there no group corresponding to this number.</li>
-		</ul>
+		<h2>Task 2: Change Machine</h2>
+		<ol class="instructions">
+			<li>
+				<p>Transform your code for calculating change from Lab 2 (Task 2: Math with Money) to use methods.</p>
+				<p>Your main method should handle all user input and output to the screen. The actual calculation of change should be performed by a new method called <code>makeChange</code> which takes in an amount as a <code class="language-java">double</code> and returns a description of the resulting change as a <code class="language-java">String</code>.</p>
+				<details>
+					<summary>Starter code</summary>
+					<p>If you don't have functional code Lab 2 to start with, you can use this simplified version instead:</p>
+					<a class="sample language-java" href="Task2.java" download>Download starter code</a>
+				</details>
+			</li>
+			<li>
+				Add a JavaDoc comment for your <code>makeChange</code> method. The comment should minimally include descriptions of the method's
+				purpose, its input parameter, and it's return value.
+			</li>
+			<li>
+				Add static variables to keep track of the total number of each kind of coin your change machine has in stock.
+				For example, if your change machine returns dimes and pennies, add a <code class="language-java">static int dimes</code> and a <code class="language-java">static int pennies</code> to your code.
+			</li>
+			<li>
+				Add a <code>restock</code> method that sets the static coin counts to reasonable starting amounts, and use it from your
+				main method to initialize them. The <code>restock</code> method should not need any input parameters or a return value.
+			</li>
+			<li>
+				Add JavaDoc comments for each of your static variables and the <code>restock</code> method.
+			</li>
+			<li>
+				Modify your <code>makeChange</code> code to decrement the coin stock counts by however many coins it uses.
+				For example, if the method returns "2 dimes, and 3 pennies", it should decrement your <code>dimes</code> variable
+				by 2, and your <code>pennies</code> variable by 3.
+				If there are no longer enough coins available in the stock to make change, <code>makeChange</code> should return an error
+				message instead of the change amounts. For example, if you run out of dimes, the method might return
+				"Not enough dimes to make change."
+			</li>
+			<li>
+				Update the JavaDoc comments for your change method to make note of the changed behaviour.
+			</li>
+		</ol>
 	</section>
 
 	<section id="task3">
-		<h2>Task 3: Generate Fibonacci Numbers </h2>
-		<p>Write a program that output the Fibonacci numbers that are less than the number specified by the end user. The program should keep asking for a new upper limit, until the user enters a negative number or a zero. Each Fibonacci number is the sum of its two predecessors. The first two Fibonacci number are 1 and 1. Thus the sequence begins with: 1,1,2,3,5,8,13,21,34,... </p>
-	</section>
-
-	<section id="task4">
-		<h2>Task 4: Lottery Game II </h2>
-		<p>Expanding on the lottery program that was designed in the previous class, make some modification so that the computer can help the user guess the right number. The computer will generate a random number and give the user an opportunity to guess the number</p>
-		<ul>
-			<li> If the number is too low, the computer will let the user know that the number is too low and prompt the user to guess another number</li>
-			<li>If the number is too high, the computer will let the user know that the number is too low and prompt the user to guess another number</li>
-			<li>When the user guess the right number, the program will congratulate the user and let the user know how many trials it took for them to guess the right number, then let them know how much they won, before terminating</li>
-			<li>If the user guess the right number on the first trial, the price is $10,000</li>
-			<li> For any subsequent trial, the price reduces by $1,000 per trial</li>
-			<li> Once the price reaches $1,000, any subsequent trial will be worth $10, when the user guess the right number </li>
-		</ul>
+		<h2>Task 3: Restructure "Play The Lottery"</h2>
+		<ol class="instructions">
+			<li>
+				<p>Recreate your "Play The Lottery" program from Lab 3 Task 2 using methods.</p>
+				<p>Your program should be composed of at least 4 different methods:</p>
+				<ul>
+					<li>a method that generates a lottery number</li>
+					<li>a method that prompts the user for a guess and ensures that their input is valid</li>
+					<li>a method that compares a guess to a lottery number and determines whether or not the guess was correct (or partially correct)</li>
+					<li>the <code>main</code> method which controls the flow of the program and determines how much money should be awarded</li>
+				</ul>
+				<aside>
+					Hint: use some <code class="language-java">static final</code> constant numbers as return values from your guess-checking method to
+					signal the different kinds of win or loss conditions.
+				</aside>
+			</li>
+			<li>
+				Write appropriate JavaDoc comments for all of your methods and static variables.
+			</li>
+			<li>
+				Modify your <code>main</code> method to allow the player to make multiple guesses against the same lottery number.
+				The player should be given a greater reward for matching the lottery number in fewer guesses.
+				Try to limit your changes to the <code>main</code> method; if you can't, look for ways to refactor your other methods
+				so you could use the same code for both versions of the game!
+			</li>
+			<li>
+				Bonus: overload your lottery number generator and guess checker methods with new versions
+				that can handle lottery numbers with a configurable number of digits.
+				Rewrite your existing methods as special cases using these more configurable versions.
+			</li>
 	</section>
 
 	<section id="submission">
 		<h2>Submission</h2>
-		<!-- optional paragraph about adding a "what you've learned" blurb -->
-		<p>Submit your project to D2L</p>
+		<p>
+			Completing all three tasks should result in three separate Java files
+			within a single package. Compress the package directory into a ZIP
+			archive and <b>upload it</b> to the D2L Dropbox.  Make sure the filename
+			includes your name and lab number, for example <kbd>Lab5-JohnSmith.zip</kbd>.
+			In addition, <b>print out your code</b> and hand in the physical copy
+			at the beginning of the next lab.
+		</p>
+		<p>
+			The marks for this lab are heavily weighted towards good coding
+			practice and style. Pay attention to each of the points in the
+			table below to ensure you get a good grade!
+		</p>
+		<p>
+			<b>NOTE</b>: This assignment is to be done <em>individually</em>.
+			You can help one another with problems and questions, but in the end
+			everyone must do their own assignment.
+		</p>
 		<table class="marks">
 			<thead>
 				<tr><th>Criteria</th><th>Marks</th></tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Task 1</td>
-					<td>10</td>
+					<td>Correct program output</td>
+					<td>3</td>
 				</tr>
 				<tr>
-					<td>Task 2</td>
-					<td>10</td>
+					<td>Good JavaDoc comments</td>
+					<td>2</td>
 				</tr>
 				<tr>
-					<td>Task 3</td>
-					<td>15</td>
+					<td>Separation of concerns between methods</td>
+					<td>1</td>
 				</tr>
 				<tr>
-					<td>Task 4</td>
-					<td>15</td>
+					<td>Appropriate use of method parameters and return values</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>WOW factor + bonus</td>
+					<td>2</td>
 				</tr>
 				<tr>
 					<th>Total</th>
-					<td>50</td>
+					<td>10</td>
 				</tr>
 			</tbody>
 		</table>
