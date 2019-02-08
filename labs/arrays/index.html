@@ -4,102 +4,161 @@
 	<meta charset="utf-8">
 	<title>Data Structures: Arrays (Lab 6) - COMP 132</title>
 	<meta name="viewport" content="width=device-width"/>
-	<base href="https://camosun-cs.github.io/comp-132-139/labs/array/" target="_blank"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/arrays/" target="_blank"/>
 	<link rel="stylesheet" href="../template/bundle.css"/>
 </head>
 <body>
-	<!--
-		NOTES for rework:
-		 - call by reference, call by value
-		 - change task1 to use numbers
-		 - new task: given an array, change negative numbers to positive
-		 - new task: 2D arrays
-		   -- firstname, last name, GPA list?
-		   -- nested for triangle?
-		 - task 3
-		  -- computations over an array
-		  -- static variable use
-		  -- remove step 3.  Just do average, min, max
-		  -- give example arrays for input
-	-->
 	<header>
 		<h1>COMP 132 - Lab 6 - Introduction to Data Structures: Arrays</h1>
 		<nav><ol>
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-			<li><a href="#task1"><strong>Task 1</strong>: Reverse Order</a></li>
-			<li><a href="#task2"><strong>Task 2</strong>: Check Order</a></li>
-			<li><a href="#task3"><strong>Task 3</strong>: Manage Golf Scores </a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Reverse order</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Repeated multiplications</a></li>
+			<li><a href="#task3"><strong>Task 3</strong>: Class statistics</a></li>
 		   <li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
 
 	<section id="outcomes">
 		<h2>Learning Outcomes and Introduction</h2>
-		<p>In this lab assignment you will learn about:</p>
+		<p>In this lab assignment you will practice:</p>
 		<ul>
-			<li> Use of Arrays</li>
-			<li> Use of Methods
+			<li>Creating and modifying arrays</li>
+			<li>Passing arrays as method parameters</li>
+			<li>Traversing multi-dimensional arrays</li>
+			<li>Making aggregate calculations using array values</li>
 		</ul>
-		<p>In this lab you will be create and use your first data structure. Using methods to modularize. Pass parameters to the methods</p>
 	</section>
 
 	<section id="task1">
-		<h2>Task 1: Reverse Order</h2>
-		<p>Write a program that will read up to 10 letters into an array and write the letter back to the screen in the reverse order. For example, if the input is abcd, the output should be dcba. You do not need to use any function.</p>
-		<aside><strong>Note:</strong> Use the code snippet for reading characters from a user</aside>
+		<h2>Task 1: Reverse order</h2>
+		<p>Write a program that will ask the user to enter a series of integers and then print them back in reverse order.</p>
+		<p>Your program should start by asking <em>how many</em> numbers will be entered, then use a loop to collect them from <code class="language-java">System.in</code> and store them in an array.</p>
+		<p>For extra WOW marks, use methods to modularize your code.</p>
 	</section>
 
 	<section id="task2">
-		<h2>Task 2: Check Order</h2>
-		<p>Write an int function named <samp>outOfOrder</samp> that takes as parameters an array of double and an int, size. This <em>function</em> will test this array for being out of order, meaning that the array violate the condition:</p>
-		<pre><code class="lang-java">a[0]<=a[1]<=a[2]<=…</code></pre>
-		<p>The function returns -1 if the elements are not out of order; otherwise, it will return the index of the first element of the array that is out of order.</p>
-		<aside>For example, consider the declaration  double a[10] ={1.2, 2.1, 3.3, 2.5, 4.5, 7.9, 5.4, 8.7, 9.9, 1.0 }; in this array, a[2] and a[3] are the first pair out of order, a[3] is the first element out of order, so the function returns 3.</aside>
-		<p>If the array were sorted the function would return -1. Use this function in a main function to test it: Ask the user to enter set of number until a negative number is entered. Let the user know if the number entered are out of order or not, let the user know the first number that broke the order, if the order is broken, then print the list of number entered.</p>
+		<h2>Task 2: Repeated multiplications</h2>
+		<p>Write a function that accepts an array of integers as a parameter and replaces each value with the result of multiplying that value by all previous values in the array.</p>
+		<p>For example, the array <code class="language-java">[2, -3, 4, -5]</code> would be changed to <code class="language-java">[2, -6, 24, -120]</code>.</p>
+		<p>Write a second function that performs the same work, but returns a new array with the new values rather than modifying the input array.</p>
+		<aside>Hint: use the first function from inside the second function to avoid duplicate code!</aside>
+		<p>Use the <samp>main</samp> method of your program to test both functions using several different arrays.</p>
 	</section>
 
 	<section id="task3">
-		<h2>Task 3: Manage Golf Scores </h2>
-		<p>Write a program collect and manage golf scores.</p>
-		<aside><strong>hint:</strong> use arrays</aside>
+		<h2>Task 3: Class statistics</h2>
+		<p>Write a program that will process a list of students' grades to calculate a <abbr title="Grade point average">GPA</abbr> for each student, the class average, and which students had the highest and lowest scores.</p>
+		<p>Your program will need to take in two chunks of data stored as two-dimensional arrays:</p>
 		<ol>
-			<li>
-				Write a method that allow the user to input the score (positive numbers) and store them
-				<aside><strong>hint:</strong> use a function that take as one of the parameters an array</aside>
-			</li>
-			<li> Write a method that calculate the average of the score entered</li>
-			<li> Write a method that calculate the difference between each score entered and the average score</li>
-			<li>Write a method that perform a score search as specified by the user. If  the score specified is not found, the program should be able to let the user know.</li>
-			<li>Write a method that return the index of the smallest score</li>
-			<li>Write a method that return the smallest score;</li>
-			<li>Test these methods in a main methods</li>
+			<li>Student names, stored as an array of [<samp>Lastname</samp>, <samp>First name</samp>] arrays.</li>
+			<li>Grades for each assignment, stored as an array of arrays of doubles.</li>
 		</ol>
+		<p>The two arrays store data for the same student at equivalent indexes. That is, index 0 in both arrays holds data for the first student, index 1 in both arrays holds data for the second, etc.</p>
+		<p>Use the following input from your main method to test your program:</p>
+		<pre><code class="language-java">
+			String[][] names = {
+				{ "Ewell", "Nate" },
+				{ "Smurthwaite", "Adelina" },
+				{ "Bernollet", "Maryjane" },
+				{ "Chalfain", "Karlis" },
+				{ "Huckabe", "Almire" }
+			};
+			double[][] grades = {
+				{ 3.83, 9.21, 9.25, 0.84, 1.40, 7.90, 1.41, 5.15 },
+				{ 5.09, 3.66, 3.04, 3.02, 8.59, 2.34, 8.86, 7.40 },
+				{ 5.35, 0.85, 8.56, 7.37, 2.78, 3.19, 2.04, 5.70 },
+				{ 9.25, 9.62, 7.08, 7.27, 9.86, 5.88, 9.86, 9.70 },
+				{ 3.39, 2.75, 1.23, 1.04, 3.87, 8.72, 4.60, 6.21 }
+			};
+		</code></pre>
+		<p>Using these input values, your program should output:</p>
+		<samp><pre>Student GPAs:
+Nate Ewell: 4.87
+Adelina Smurthwaite: 5.25
+Maryjane Bernollet: 4.48
+Karlis Chalfain: 8.57
+Almire Huckabe: 3.98
+
+Class average: 5.43
+Highest grade: Karlis Chalfain, 8.57
+Lowest grade: Almire Huckabe, 3.98</pre></samp>
+		<details>
+			<summary>More test data</summary>
+			<p>If you would like some more sample data to test with, use this method to generate additional grades:</p>
+			<pre><code class="language-java">
+			public static double[][] generateMarks(int students, int assignments) {
+				double[][] grades = new double[students][assignments];
+				for (int i = 0; i < students; i++) {
+					for (int j = 0; j < assignments; j++) {
+						grades[i][j] = (Math.random() * 10);
+					}
+				}
+				return grades;
+			}
+			</code></pre>
+			<p>You will probably also want to write a method to print this table of grades so that you can check your results!</p>
+		</details>
 	</section>
 
 	<section id="submission">
 		<h2>Submission</h2>
-		<!-- optional paragraph about adding a "what you've learned" blurb -->
-		<p>Submit your project to D2L</p>
+		<p>
+			Completing all of the tasks in this lab should result in three
+			separate Java files	within a single package. Compress the package
+			directory into a ZIP archive and <b>upload it</b> to the D2L Dropbox.
+			Make sure the filename includes your name and lab number, for example
+			<kbd>Lab6-JohnSmith.zip</kbd>. In addition, <b>print out your code</b>
+			and hand in the physical copy at the beginning of the next lab session.
+		</p>
+		<p>
+			The marks for this lab are heavily weighted towards good coding
+			practice and style. Pay attention to each of the points in the
+			marking criteria below to ensure you get a good grade!
+		</p>
+		<p>
+		   <b>NOTE</b>: This assignment is to be done <em>individually</em>.
+		   You can help one another with problems and questions, but in the end
+		   everyone must do their own assignment.
+		</p>
 		<table class="marks">
 			<thead>
 				<tr><th>Criteria</th><th>Marks</th></tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Task 1</td>
-					<td>10</td>
+					<td>Correct program output</td>
+					<td>3</td>
 				</tr>
 				<tr>
-					<td>Task 2</td>
-					<td>15</td>
+					<td>Proper storage and retrieval from arrays</td>
+					<td>1</td>
+				<tr>
+					<td>Generalized code to work with any input</td>
+					<td>1</td>
 				</tr>
 				<tr>
-					<td>Task 3</td>
-					<td>35</td>
+					<td>Used loops to keep code <abbr title="Don't repeat yourself">DRY</abbr></td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>
+						Well-scoped variables
+						<small>- especially loop parameters and <code>Scanner</code></small>
+					</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Comments, JavaDoc, and indentation</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>WOW factor</td>
+					<td>1</td>
 				</tr>
 				<tr>
 					<th>Total</th>
-					<td>60</td>
+					<td>10</td>
 				</tr>
 			</tbody>
 		</table>
