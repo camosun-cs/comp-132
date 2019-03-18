@@ -1,4 +1,3 @@
-package DemoClass.InClassActivity;
 
 class Fan {
   public static int SLOW = 1;
