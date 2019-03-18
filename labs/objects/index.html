@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="../template/bundle.css"/>
 </head>
 <body>
+    <abbr title="Grade point average">GPA</abbr>
 	<!--
 NOTES for reworking this lab and following:
 
@@ -58,70 +59,368 @@ two methods of bank were confused
 		<h1>COMP 132 - Introduction to Classes and Objects</h1>
 		<nav><ol>
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-			<li><a href="#task1"><strong>Task 1</strong>: Create a Class <code>Time</code></a></li>
-			<li><a href="#task2"><strong>Task 2</strong>: Create a Class <code>Bank Account</code></a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Create a Class <code>Course</code></a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Create a Class <code>Student</code></a></li>
+            <li><a href="#task3"><strong>Task 3</strong>: Create a Class <code>Polygon</code></a></li>
 			<li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
 
 	<section id="outcomes">
 		<h2>Learning Outcomes and Introduction</h2>
-		<p>In this lab assignment you will learn about:</p>
+		<p>In this lab assignment you will practice:</p>
 		<ul>
-			<li> Create Classes</li>
-			<li> Use of Methods</li>
+             <li>defining a class</li>
+              <li>setting constructors</li>
+              <li>Setting class variables and class methods</li>
+               <li>Using Access Modifiers to:</li>
+                   <ul>
+                   <li>Decide on the visibility of the Variables</li>
+               <li>Decide on the Ownership of the Variables and Methods</li>
+                       </ul>
+               <li>Overloading methods</li>
+               <li>instantiating objects in main</li>
+            
+            
+            
 		</ul>
-		<p>In this lab you will create your first Object. And then write testers to use your classes.</p>
-	</section>
+        
+        
+		<p>Before you create objects in Java, you need to define a class.
+
+A class is a blueprint for the object.</p>
+            
+          
+  <h2>How to define a class in Java?</h2>
+Here's how a class is defined in Java:
+<details>
+       <summary>Skeleton of a Class:</summary> 
+        <pre><code class="language-java">
+            class ClassName {
+                // instance variables
+                // constructors
+                // instance methods
+            }
+          </code></pre>
+ </details>			
+        <p>We defined a class named<code class="language-java"> Fan</code>.
+            The class has two instance variables (variable defined inside class) <samp> on </samp> and <samp> speed </samp> and five methods <samp>isOn()</samp>, <samp>setOn()</samp>,<samp>getSpeed()</samp>,<samp>setSpeed()</samp>, and <samp>toString()</samp>method that delivers the data within the object . These variables and methods defined within a class are called members of the class.</p>
+        <details>
+			<summary>Here's an example:</summary>
+				
+            <pre><code class="language-java">
+
+class Fan {
+  //static Variables
+  public static int SLOW = 1;
+  public static int MEDIUM = 2;
+  public static int FAST = 3;
+  // instant variables
+  private int speed = SLOW;
+  private boolean on = false;
+  //Constructor
+  public Fan() {
+  }
+  // instant methods
+  public int getSpeed() {
+    return speed;
+  }
+  public void setSpeed(int newSpeed) {
+    speed = newSpeed;
+  }
+  public boolean isOn() {
+    return on;
+  }
+  public void setOn(boolean trueOrFalse) {
+    this.on = trueOrFalse;
+  }
+  public String toString() {
+    return "speed " + speed + "\n"
+    + ((on) ? "fan is on" : " fan is off");
+  }
+}// end of class Fan
+</code></pre> 
+	<a 
+      class="sample language-java" 
+       href="sampleClass.java"
+        download>Download sample class</a>
+		</details>
+       
+    <p> Notice two keywords, <code class="language-java">private</code> and <code class="language-java">public</code> in the above program. These are <strong>access modifiers</strong> :</p>
+        <details>
+        <summary>What is Access Modifier?</summary>
+            <p><samp>Access modifiers </samp>are keywords that set the accessibility (visibility) of class,variable, data member, method or constructor and their setters (updating value of a variable). They are also known as <code class="language-java">visibility modifier</code>.</p>
+
+
+            <p>Using access modifiers forces better <code class="language-java">encapsulation</code> to your code. Meaning, with encapsulation you can control what part of a program can access the members of a class. So that misuse of data can be prevented.</p>
+  
+    <h3>Types of Access Modifier</h3>
+
+<p>There are four access modifiers keywords in Java and they are:</p>
+<table>
+    
+    <th>Modifier
+     </th>   
+     <th>Description
+     </th>
+    
+     <tr>
+        <td>Private
+        </td>
+        <td>Declarations are visible within the class only
+        </td> 
+     </tr>
+      <tr>
+        <td>Default
+        </td>
+        <td>Declarations are visible only within the package (package private)
+        </td> 
+     </tr>
+     <tr>
+        <td>Protected
+        </td>
+        <td>Declarations are visible within the package or and all sub classes
+        </td> 
+     </tr>
+	<tr>
+        <td>Public
+        </td>
+        <td>Declarations are visible everywhere 
+        </td> 
+     </tr>
+	
+</table>            
+            
+            
+        </details>      
+<ul>
+<li>The private keyword makes instance variables and methods private which can be accessed only from inside the same class.</li>
+<li>The public keyword makes instance variables and methods public which can be accessed from outside of the class.</li>
+
+    <aside>Note: If you try to access private members from outside of the class, compiler throws error.</aside>
+</ul>
+    <details>
+        <summary>How to Create a java Object?</summary>
+
+<li>When class is defined, only the specification for the object is defined; no memory or storage is allocated.</li>
+
+        <li>To access members defined within the class, you need to<code class="language-java">instantiate</code> or create objects.</li> 
+
+   <h4> Let's create objects of Fan class!</h4>
+       <p>This program creates two objects l1 and l2 of class Lamp. </p>
+        <pre><code class="language-java">
+
+        class ClassObjectsExample {
+            public static void main(String[] args) {
+              Fan fan1 = new Fan();// create fan1 object of Fan class
+              Fan fan2 = new Fan();// create fan2 object of Fan class
+              System.out.println(fan1.toString());// displays the fan1 data
+              fan2.setSpeed(Fan.MEDIUM);// sets the speed of fan2 to Mediun
+              System.out.println(fan2.toString());// displays the fan2 data    
+            }
+        }
+        </code></pre> 
+</details>     
+
+    </section>
 
 	<section id="task1">
-		<h2>Task 1: Create a Class <code>Time</code></h2>
-		<p>Write a time class that contains the following fields: hours, minutes and seconds. The class should also have the following methods:</p>
+		<h2>Task 1: Create a Class <code class="language-java">Course</code></h2>
+        <p>Write a <code class="language-java">Course</code> class that contains the following fields: <code class="language-java">RcourseNum, description, roomNum, and instructor</code>. The class should provide at least the following methods:
+        <aside>Course: </br> 
+           <code class="language-java">
+               courseNum: int</br>
+        description: String</br>
+       roomNum : int</br>
+            instructor : String</code>
+    </aside>
+        
+        </p>
 		<ul>
-			<li>Set : to set the time</li>
-			<li> Write: to write the time</li>
-			<li> Equal: to compare the time in term of equality (returning true or false)</li>
-			<li> Less than: to compare the time in term of precedence (returning true or false)</li>
+            <li> Proper constructor for this class </li>
+            <li>Provide the following methods:
+                <ul>
+			     <li> add a course</li>
+			     <li> remove a course</li>
+			     <li> change the number of the course </li>
+                <li> change the  description </li>
+                <li> change the  instructor </li>
+                <li> change the  room number </li>
+			     <li> Equal to : To compare the course in term of equality to another ( returning true or false)</li>
+                <li> display course information as a string of data </li>
+            <li> returns <Samp>Course </Samp>information as a <code class="language-java">String</code> </li>
+             </li>
+                </ul>
+			<li> Provide few cases where a class is initialized, using a constructor</li>
+			<li> Provide few cases where these methods are called.</li>
+<li> You can add any methods that you think are needed...</li>
+		</ul>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: Create a Class <code>Student</code></h2>
+        <p>Write a simple class representing an student: the student class has 5  fields: <code class="language-java">StudentNum, name, lastName, major, and a gPA</code>
+        <aside>Student: </br> 
+           <code class="language-java">
+               StudentNum: int</br>
+                name: String</br>
+                lastName: String</br>
+                major : String</br>
+                gPA : double
+            </code>
+        </aside>
+        </p>
+
+		<ul>
+			<li>Provide at least two constructors for this class: one with no arguments, and for the second one pass the student name, and last name </li>
+            <li>Provide the following methods:
+                <ul>
+                 <li>  sets student name and lastName</li>
+                 <li> sets student major</li>
+                 <li> sets student gPA</li>
+			     <li> gets Student name</li>
+                 <li> gets Student lastName</li>
+			    <li> get student major</li>
+			    <li> changes the major</li>
+                <li> returns <Samp>student</Samp> information as a <code class="language-java">String</code> </li>
+                </ul>
+            </li>
+            <li> Provide few cases where a class is initialized, using a constructor</li>
+			<li> Provide few cases where these methods are called.</li>
+            <li> You can add any methods that you think are needed...</li>
+		</ul>
+	</section>
+   
+
+<section id="task3">
+		<h2>Task 3: Create a Class <code>Polygon</code></h2>
+		<a href = "polygons_Group.gif" >
+            <img src="\area_poly.jpeg" alt="Group of Polygons"></a>
+    <p>Write a simple class representing a Polygon up to 6 sides: the Polygon class has 5  fields:
+            <code class="language-java">Regular, sides, sideLength, angle, apothem</code>
+        <ul>  
+            <aside>Polygon: </br> 
+               <code class="language-java">
+                   Regular: boolean</br>
+                    sides: int</br>
+                    sideLength: double</br>
+                    angle : double</br>
+                    apothem : double
+                </code>
+            </aside>
+        </ul>  
+        </p>
+
+
+<ul>
+    <li> Provide a no-arg constructor for this class That initializes the object and sets the instance variables to:</br>
+                <code class="language-java">
+               Regular: true</br>
+                sides: 3</br>
+                sideLength: 1</br>
+                angle : 60</br>
+                apothem : <samp>SquareRoot(3)/2</samp>
+            </code>
+    </li>
+            Provide the following methods:
+			<li> Set number of sides</li>
+			<li> set the length of the sides</li>
+			<li> set the angle of the polygon </li>
+            <li> set the length of the apothem</li>
+            <li> find the apothem </li>
+<li> determine the type of polygon by evaluating the number of sides   </li>
+<li>  Calculate the area of the Polygon based on the number of sides </li>
+
+<details>
+        <summary>How do you find the area of a hexagon?</summary>
+    
+        <p>There are several ways to find the area of a hexagon.
+
+        <li>In a regular hexagon, split the figure into triangles.
+        Find the area of one triangle.
+        Multiply this value by six.</li>
+
+        <li>Find the area of regular polygons such as pentagon, hexagon and octagon. Use the formula: area = 1/2 x (apothem x perimeter). </li>
+
+
+         <a href= "https://www.varsitytutors.com/high_school_math-help/how-to-find-the-area-of-a-hexagon">This Tutorial side migh be helpful</a>  
+
+         </p>   
+    
+</details>
+            <li> calculate the primeter</li>
+			<li> Equal to : To compare the Polygon to another ( returning true or false)</li>
+            <li> display Polygon information as a string of data </li>
 			<li> Provide few cases where a class is initialized, using a constructor</li>
 			<li> Provide few cases where these methods are called.</li>
 		</ul>
 	</section>
 
-	<section id="task2">
-		<h2>Task 2: Create a Class <code>Bank Account</code></h2>
-		<p>Write a simple class representing a bank account: the bank account has 2 fields: balance, interest rate</p>
-		<ul>
-			<li>Provide a constructor for this class</li>
-			<li>Write a method that set a bank account</li>
-			<li>Write a method that get the balance</li>
-			<li>Write a method that get the rate</li>
-			<li>Write a method that update the balance</li>
-		</ul>
-	</section>
 
 	<section id="submission">
 		<h2>Submission</h2>
-		<p>Submit your project to D2L</p>
+		<p>
+			Completing all of the tasks in this lab should result in four
+			separate Java files	within a single package. Compress the package
+			directory into a ZIP archive and <b>upload it</b> to the D2L Dropbox.
+			Make sure the filename includes your name and lab number, for example
+			<kbd>Lab7-JohnSmith.zip</kbd>. In addition, <b>print out your code</b>
+			and hand in the physical copy at the beginning of the next lab session.
+		</p>
+		<p>
+			The marks for this lab are heavily weighted towards good coding
+			practice and style. Pay attention to each of the points in the
+			marking criteria below to ensure you get a good grade!
+		</p>
+		<p>
+		   <b>NOTE</b>: This assignment is to be done <em>individually</em>.
+		   You can help one another with problems and questions, but in the end
+		   everyone must do their own assignment.
+		</p>
 		<table class="marks">
 			<thead>
-				<tr><th>Criteria</th><th>Marks</th></tr>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>Task 1</td>
-					<td>20</td>
+					<td>Correct Class design</td>
+					<td>3</td>
 				</tr>
 				<tr>
-					<td>Task 2</td>
-					<td>20</td>
+					<td>Used the right kinds of modifiers for each task</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Used encapsulation techniques to access the data.<abbr title="Don't make eveything public"></abbr></td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>
+						Well-scoped variables
+						<small>- especially instance variable vs. <code>static</code></small>
+					</td>
+					<td>1</td>
+				</tr>
+
+				<tr>
+					<td>JavaDoc Comments and indentation</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>WOW factor</td>
+					<td>2</td>
 				</tr>
 				<tr>
 					<th>Total</th>
-					<td>40</td>
+					<td>10</td>
 				</tr>
 			</tbody>
 		</table>
 	</section>
+
 
 	<script src="../template/bundle.js" async defer></script>
 </body>
