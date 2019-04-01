@@ -226,7 +226,9 @@ class Fan {
 
 	<section id="task1">
 		<h2>Task 1: Create a Class <code class="language-java">Course</code></h2>
-        <p>Write a <code class="language-java">Course</code> class that contains the following fields: <code class="language-java">RcourseNum, description, roomNum, and instructor</code>. The class should provide at least the following methods:
+        <p>Write a <code class="language-java">Course</code> class that contains the following fields: <code class="language-java">courseNum, description, roomNum, and instructor</code>. 
+            there is also a class member call <code class="language-java">NumberOfCourses</code>That keeps track of how many course objects have been created.
+    The class should provide at least the following methods:</p>
         <aside>Course: </br> 
            <code class="language-java">
                courseNum: int</br>
@@ -238,21 +240,28 @@ class Fan {
         </p>
 		<ul>
             <li> Proper constructor for this class </li>
-            <li>Provide the following methods:
+            <li>Provide the following instance methods:
                 <ul>
-			     <li> add a course</li>
-			     <li> remove a course</li>
-			     <li> change the number of the course </li>
+                <li> change the number of the course </li>
                 <li> change the  description </li>
                 <li> change the  instructor </li>
                 <li> change the  room number </li>
 			     <li> Equal to : To compare the course in term of equality to another ( returning true or false)</li>
-                <li> display course information as a string of data </li>
-            <li> returns <Samp>Course </Samp>information as a <code class="language-java">String</code> </li>
-             </li>
+                <li> display course information, return as a <code class="language-java">String</code>  of data  </li>
                 </ul>
-			<li> Provide few cases where a class is initialized, using a constructor</li>
-			<li> Provide few cases where these methods are called.</li>
+
+<li>Provide the following class methods to interact with <code class="language-java">NumberOfCourses</code> data That keeps track of course objects
+    <ul>
+                 <li> add a course - increase by one</li>
+			     <li> remove a course - decrease by one</li>
+    </ul>
+</li>
+            <li>To test your Class <code class="language-java">Course</code> provide few cases where:
+                <ul>
+<li>  a class is initialized, using available constructor</li>
+<li>  objects invoke the instance methods.</li>
+<li>  invoke the class methods.</li>
+            </li></ul>
 <li> You can add any methods that you think are needed...</li>
 		</ul>
 	</section>
