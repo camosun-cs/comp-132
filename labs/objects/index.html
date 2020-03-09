@@ -1,67 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Classes and Objects - COMP 132</title>
-	<meta name="viewport" content="width=device-width"/>
-	<base href="https://camosun-cs.github.io/comp-132-139/labs/objects/" target="_blank"/>
-	<link rel="stylesheet" href="../template/bundle.css"/>
+  <meta charset="utf-8">
+  <title>Classes and Objects - COMP 132</title>
+  <meta name="viewport" content="width=device-width"/>
+  <base href="https://camosun-cs.github.io/comp-132-139/labs/objects/" target="_blank"/>
+  <link rel="stylesheet" href="../template/bundle.css"/>
+  <style>
+    .uml {
+      display: table; /* shrink-wrap */
+      border: 1px solid black;
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .uml > figcaption {
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid black;
+    }
+    .uml > ul {
+      list-style: none;
+      margin: 0.75rem;
+      padding: 0;
+    }
+    .uml-divide {
+      margin: 0.75rem 0;
+      border: 0;
+      border-top: 1px solid black;
+    }
+  </style>
 </head>
 <body>
-   
-	<!--
-NOTES for reworking this lab and following:
-
-7. classes
- - define a class
- - no graphics
- - methods + overloading versus constructor
- - visibility
- - instantiation in main
- + students, classes, geometry
- + make a flag?
-
-8. thinking in objects
- - Color
- - StringTokenizer
- - String
- - libraries
- - composing object, using them together
- + add course, link to students and instructors
- + flag based on shapes?
- + draw shapes on screen - using previously created shape classes
-   + make a viewer class to tie together GUI objects with shape objects
-
-9. inheritance
- - text entry? interfaces, event handling
- - flexibility
- - GUI composition
- + extend flag to country-specifics
- 	+ Canadian flag?
-	 + Swiss flag?
-
-10. exceptions
-
-possible models:
- - harddrive usage
- - flags
- - bank
- - geometric shapes (reuse regular polygon code from repetition lab)
-
-frame with 3 labelled cards (numbered png's), randomly selected
-
-two methods of bank were confused
- - deposit?
- - chequing and inheritance didin't have good distinguishing functions
-
-	-->
 	<header>
 		<h1>COMP 132 - Introduction to Classes and Objects</h1>
 		<nav><ol>
 			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
-			<li><a href="#task1"><strong>Task 1</strong>: Create a Class <code>Course</code></a></li>
-			<li><a href="#task2"><strong>Task 2</strong>: Create a Class <code>Student</code></a></li>
-            <li><a href="#task3"><strong>Task 3</strong>: Create a Class <code>Polygon</code></a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Basic Classes and Instances</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Final, Static, and Private</a></li>
+      <li><a href="#task3"><strong>Task 3</strong>: Getters and Setters</a></li>
 			<li><a href="#submission">Submission</a></li>
 		</ol></nav>
 	</header>
@@ -70,311 +47,831 @@ two methods of bank were confused
 		<h2>Learning Outcomes and Introduction</h2>
 		<p>In this lab assignment you will practice:</p>
 		<ul>
-             <li>defining a class</li>
-              <li>setting constructors</li>
-              <li>Setting class variables and class methods</li>
-               <li>Using Access Modifiers to:</li>
-                   <ul>
-                   <li>Decide on the visibility of the Variables</li>
-               <li>Decide on the Ownership of the Variables and Methods</li>
-                       </ul>
-               <li>Overloading methods</li>
-               <li>instantiating objects in main</li>
-            
-            
-            
+      <li>encapsulating related data and logic into <b>objects</b> using <b>classes</b></li>
+      <li>writing <b>constructors</b> to simplify setup and set <code class="language-java">final</code> variables</li>
+      <li>using the <code class="language-java">this</code> keyword</li>
+      <li><b>overloading</b> constructors and methods</li>
+      <li><b>overriding</b> the <code class="language-java">toString()</code> method</li>
+      <li>applying <b>access modifiers</b> and writing <b>getters and setters</b></li>
+      <li>using <b>static</b> variables and methods</li>
+      <li>creating classes based on a <b>UML</b> description</li>
+      <li>testing code using a <b>unit testing</b> approach</li>
 		</ul>
-        
-        
-		<p>Before you create objects in Java, you need to define a class.
 
-A class is a blueprint for the object.</p>
-            
-          
-  <h2>How to define a class in Java?</h2>
-Here's how a class is defined in Java:
-<details>
-       <summary>Skeleton of a Class:</summary> 
-        <pre><code class="language-java">
-            class ClassName {
-                // instance variables
-                // constructors
-                // instance methods
-            }
-          </code></pre>
- </details>			
-        <p>We defined a class named<code class="language-java"> Fan</code>.
-            The class has two instance variables (variable defined inside class) <samp> on </samp> and <samp> speed </samp> and five methods <samp>isOn()</samp>, <samp>setOn()</samp>,<samp>getSpeed()</samp>,<samp>setSpeed()</samp>, and <samp>toString()</samp>method that delivers the data within the object . These variables and methods defined within a class are called members of the class.</p>
-        <details>
-			<summary>Here's an example:</summary>
-				
-            <pre><code class="language-java">
-
-class Fan {
-  //static Variables
-  public static int SLOW = 1;
-  public static int MEDIUM = 2;
-  public static int FAST = 3;
-  // instant variables
-  private int speed = SLOW;
-  private boolean on = false;
-  //Constructor
-  public Fan() {
-  }
-  // instant methods
-  public int getSpeed() {
-    return speed;
-  }
-  public void setSpeed(int newSpeed) {
-    speed = newSpeed;
-  }
-  public boolean isOn() {
-    return on;
-  }
-  public void setOn(boolean trueOrFalse) {
-    this.on = trueOrFalse;
-  }
-  public String toString() {
-    return "speed " + speed + "\n"
-    + ((on) ? "fan is on" : " fan is off");
-  }
-}// end of class Fan
-</code></pre> 
-	<a 
-      class="sample language-java" 
-       href="sampleClass.java"
-        download>Download sample class</a>
-		</details>
-       
-    <p> Notice two keywords, <code class="language-java">private</code> and <code class="language-java">public</code> in the above program. These are <strong>access modifiers</strong> :</p>
-        <details>
-        <summary>What is Access Modifier?</summary>
-            <p><samp>Access modifiers </samp>are keywords that set the accessibility (visibility) of class,variable, data member, method or constructor and their setters (updating value of a variable). They are also known as <code class="language-java">visibility modifier</code>.</p>
-
-
-            <p>Using access modifiers forces better <code class="language-java">encapsulation</code> to your code. Meaning, with encapsulation you can control what part of a program can access the members of a class. So that misuse of data can be prevented.</p>
-  
-    <h3>Types of Access Modifier</h3>
-
-<p>There are four access modifiers keywords in Java and they are:</p>
-<table>
-    
-    <th>Modifier
-     </th>   
-     <th>Description
-     </th>
-    
-     <tr>
-        <td>Private
-        </td>
-        <td>Declarations are visible within the class only
-        </td> 
-     </tr>
-      <tr>
-        <td>Default
-        </td>
-        <td>Declarations are visible only within the package (package private)
-        </td> 
-     </tr>
-     <tr>
-        <td>Protected
-        </td>
-        <td>Declarations are visible within the package or and all sub classes
-        </td> 
-     </tr>
-	<tr>
-        <td>Public
-        </td>
-        <td>Declarations are visible everywhere 
-        </td> 
-     </tr>
-	
-</table>            
-            
-            
-        </details>      
-<ul>
-<li>The private keyword makes instance variables and methods private which can be accessed only from inside the same class.</li>
-<li>The public keyword makes instance variables and methods public which can be accessed from outside of the class.</li>
-
-    <aside>Note: If you try to access private members from outside of the class, compiler throws error.</aside>
-</ul>
-    <details>
-        <summary>How to Create a java Object?</summary>
-
-<li>When class is defined, only the specification for the object is defined; no memory or storage is allocated.</li>
-
-        <li>To access members defined within the class, you need to<code class="language-java">instantiate</code> or create objects.</li> 
-
-   <h4> Let's create objects of Fan class!</h4>
-       <p>This program creates two objects l1 and l2 of class Lamp. </p>
-        <pre><code class="language-java">
-
-        class ClassObjectsExample {
-            public static void main(String[] args) {
-              Fan fan1 = new Fan();// create fan1 object of Fan class
-              Fan fan2 = new Fan();// create fan2 object of Fan class
-              System.out.println(fan1.toString());// displays the fan1 data
-              fan2.setSpeed(Fan.MEDIUM);// sets the speed of fan2 to Mediun
-              System.out.println(fan2.toString());// displays the fan2 data    
-            }
-        }
-        </code></pre> 
-</details>     
-
-    </section>
+    <p>
+      In Tasks 1 and 2, you will be guided through creating several classes with
+      step-by-step instructions, examples, and explanations of new concepts.
+      You can see a summary of the expected end result (in UML) in the
+      <a href="#umlSummary">submission</a> section.
+    </p>
+  </section>
 
 	<section id="task1">
-		<h2>Task 1: Create a Class <code class="language-java">Course</code></h2>
-        <p>Write a <code class="language-java">Course</code> class that contains the following fields: <code class="language-java">courseNum, description, roomNum, and instructor</code>. 
-            there is also a class member call <code class="language-java">NumberOfCourses</code>That keeps track of how many course objects have been created.
-    The class should provide at least the following methods:</p>
-        <aside>Course: </br> 
-           <code class="language-java">
-               courseNum: int</br>
-        description: String</br>
-       roomNum : int</br>
-            instructor : String</code>
-    </aside>
-        
+		<h2>Task 1: Basic Classes and Instances</h2>
+    <p>
+      In this task you will create two basic classes
+      (<samp>Person</samp> and <samp>Point</samp>) with instance data,
+      constructors, a couple of useful methods.
+    </p>
+    <ol class="instructions">
+      <li>
+        Create a Java Main Class named <samp>CreatingObjects</samp>.
+        All of your main method code for this lab (other than unit tests)
+        should be written inside this class.
+      </li>
+      <li>
+        <p>
+          Create a Java Class named <samp>Point</samp> that will hold a pair
+          of (x,y) coordinates, as shown by the UML below:
         </p>
-		<ul>
-            <li> Proper constructor for this class </li>
-            <li>Provide the following instance methods:
-                <ul>
-                <li> change the number of the course </li>
-                <li> change the  description </li>
-                <li> change the  instructor </li>
-                <li> change the  room number </li>
-			     <li> Equal to : To compare the course in term of equality to another ( returning true or false)</li>
-                <li> display course information, return as a <code class="language-java">String</code>  of data  </li>
-                </ul>
-
-<li>Provide the following class methods to interact with <code class="language-java">NumberOfCourses</code> data That keeps track of course objects
-    <ul>
-                 <li> add a course - increase by one</li>
-			     <li> remove a course - decrease by one</li>
-    </ul>
-</li>
-            <li>To test your Class <code class="language-java">Course</code> provide few cases where:
-                <ul>
-<li>  a class is initialized, using available constructor</li>
-<li>  objects invoke the instance methods.</li>
-<li>  invoke the class methods.</li>
-            </li></ul>
-<li> You can add any methods that you think are needed...</li>
-		</ul>
-	</section>
-
-	<section id="task2">
-		<h2>Task 2: Create a Class <code>Student</code></h2>
-        <p>Write a simple class representing an student: the student class has 5  fields: <code class="language-java">StudentNum, name, lastName, major, and a gPA</code>
-        <aside>Student: </br> 
-           <code class="language-java">
-               StudentNum: int</br>
-                name: String</br>
-                lastName: String</br>
-                major : String</br>
-                gPA : double
-            </code>
+        <figure class="uml">
+          <figcaption>Point</figcaption>
+          <ul>
+            <li>+ x: double</li>
+            <li>+ y: double</li>
+          </ul>
+        </figure>
+        <details>
+          <summary>Translating UML to Java</summary>
+          <p>
+            Each line within this UML diagram represents a member field and
+            gives that field's name and its type, separated by a colon.
+            The <samp>+</samp> at the start of each line means that the field
+            is public (private fields would be marked with a <samp>-</samp>).
+          </p>
+          <p>The Java code that corresponds to this UML is:</p>
+          <pre><code class="language-java">
+            class Point {
+                public double x;
+                public double y;
+            }
+          </code></pre>
+          <p>
+            Notice that the Java code mirrors the UML quite closely! Each UML
+            line matches a top-level definition within the class definition.
+            It can be helpful to put these parts of your class in the same
+            order as the UML so they are even easier to compare side-by-side.
+          </p>
+          <p>
+            Lines that are <u>underlined</u> in UML represent <em>static</em>
+            variables and methods. Constants are listed using UPPERCASE naming.
+          </p>
+        </details>
+      </li>
+      <li>
+        <p>
+          Create a few <samp>Point</samp> instances in your main method, and try
+          using dot-notation to change and print their <samp>x</samp> and
+          <samp>y</samp> values.
+        </p>
+        <details>
+          <summary>Classes, Instances, and <code class="language-java">new</code></summary>
+          <p>
+            <samp>Point.java</samp> defines a <b>class</b>, which you can think
+            of as a recipe or template for creating objects. It describes what
+            data and methods each object <i>will</i> encapsulate, but does not
+            create any directly.
+          </p>
+          <p>
+            Now that you've defined the class <samp>Point</samp>, you can create
+            an actual functional object (called an <b>instance</b>) by using the
+            <code class="language-java">new</code> keyword along with a
+            constructor call, like this:
+          </p>
+          <pre><code class="language-java">
+            new Point();
+          </code></pre>
+          <p>
+            You'll usually want to store this new object in a variable so that
+            you can do things with it on other lines of code. So, most often
+            you will the code above along with a variable declaration and
+            assignment, like this:
+          </p>
+          <pre><code class="language-java">
+            Point exampleVariable = new Point();
+          </code></pre>
+          <p>
+            Once you've created an instance, you can access its visible data
+            and functions using dot notation. For example, to set
+            <samp>exampleVariable</samp>'s <samp>x</samp> value, you could
+            write:
+          </p>
+          <pre><code class="language-java">
+            exampleVariable.x = 13.5;
+          </code></pre>
+          <p>
+            You can create as many instances as you like using
+            <code class="language-java">new</code> each time, and each instance
+            will maintain its own independent data. So, if you wrote
+          </p>
+          <pre><code class="language-java">
+            Point secondExample = new Point();
+            secondExample.x = 5.0;
+          </code></pre>
+          <p>
+            the new instance (named <samp>secondExample</samp> here) will have
+            an <samp>x</samp> value of 5, while the older object
+            (<samp>exampleVariable</samp>) will still keep its value of 13.5.
+          </p>
+        </details>
+      </li>
+      <li>
+        <p>
+          Create a <samp>Person</samp> class according the following UML diagram:
+        </p>
+        <figure class="uml">
+          <figcaption>Person</figcaption>
+          <ul>
+            <li>+ firstName: String</li>
+            <li>+ lastName: String</li>
+          </ul>
+        </figure>
+      </li>
+      <li>
+        Create a few <samp>Person</samp> instances in your main method and set
+        their names using dot-notation.
+      </li>
+      <li>
+        <p>
+          Override the built-in <code class="language-java">toString()</code>
+          method of the <samp>Point</samp> class, by adding the following code
+          to its class definition:
+        </p>
+        <aside>
+          Unlike methods you've written in previous labs, we have <em>not</em> used
+          the keyword <code class="language-java">static</code> here. When it
+          is left out, this method must be called with dot-notation on an
+          instance, and has access to that instance's internal state.
         </aside>
+        <pre><code class="language-java">
+          @Override
+          public String toString() {
+            return "Point [" + x + ", " + y + "]";
+          }
+        </code></pre>
+        <details>
+          <summary>
+            About <code class="language-java">toString()</code> and
+            <code class="language-java">@Override</code>
+          </summary>
+          <p>
+            All objects you create in Java get a
+            <code class="language-java">toString()</code> method automatically
+            without you having to write any code. However, if you've tried
+            to print one of your <samp>Point</samp> or <samp>Person</samp>
+            instances earlier, you've probably noticed that the default output
+            isn't very useful.
+          </p>
+          <p>
+            This method is a little magical too! You rarely need to call it
+            directly; instead, any time you use an object where Java expects a
+            string, it will automatically call its
+            <code class="language-java">toString()</code> method and use the
+            return value instead. This can happen when you're passing the object
+            as a parameter to a method or even when using the concatenation
+            operator (<code class="language-java">+</code>). For example, the
+            following code will automatically call
+            <code class="language-java">here.toString()</code> on lines 2 and 3:
+          </p>
+          <pre><code class="language-java">
+            Point here = new Point();
+            System.out.println(here);
+            String test = "Also there: " + here;
+            System.out.println(test);
+          </code></pre>
+          <p>
+            Providing your own code for the
+            <code class="language-java">toString()</code> method will override
+            the built-in one, but it will still be called automatically when
+            needed.
+          </p>
+          <p>
+            The <code class="language-java">@Override</code> annotation written
+            before the method definition is optional; it's just a hint to NetBeans
+            and the compiler that this method already exists somewhere else.
+          </p>
+        </details>
+      </li>
+      <li>
+        Try printing the <samp>Point</samp> objects you've created in your main
+        method to see the new <code class="language-java">toString()</code> code
+        used automatically, and also try calling it directly yourself using
+        dot-notation.
+      </li>
+      <li>
+        Override the <code class="language-java">toString()</code> method
+        in your <samp>Person</samp> class as well, and test it in your main
+        method.
+      </li>
+      <li>
+        <p>
+          Add a <b>constructor</b> to the <samp>Point</samp> class that
+          takes <samp>x</samp> and <samp>y</samp> as arguments and immediately
+          sets the internal values to match, using the following code:
         </p>
+        <pre><code class="language-java">
+          public Point(double x, double y) {
+            this.x = x;
+            this.y = y;
+          }
+        </code></pre>
+        <aside>
+          Note: Your code won't fully compile and run once you've added this.
+          Don't worry, we'll fix it in the next step!
+        </aside>
+        <details>
+          <summary>Why use a constructor?</summary>
+          <p>
+            Manually setting values for fields on newly created objects can become
+            quite tedious when those object have many fields. We can improve the
+            readability of our code by setting initial values during construction.
+          </p>
+          <p>
+            You will see later that the constructor is also useful for setting
+            the value of private and final fields.
+          </p>
+        </details>
+        <details>
+          <summary>What's <code class="language-java">this</code>?</summary>
+          <p>
+            You can use the <code class="language-java">this</code> variable
+            inside of any constructor or method to explicitly refer to the
+            instance that the code is running on. It's usually only
+            useful when you have a variable naming conflict like we've created
+            here in this example. The variables <samp>x</samp> and
+            <samp>y</samp> would normally refer to fields of the object, but
+            since the parameters of the constructor have the same names and
+            are closer in scope they will <em>mask</em> the object's fields.
+          </p>
+        </details>
+      </li>
+      <li>
+        <p>
+          You're probably getting an error in your main method now that says
+          something like
+        </p>
+        <pre>Constructor Point in class Point cannot be applied to given types</pre>
+        <p>
+          Defining our own constructor in the previous step has caused Java
+          to remove the zero-argument constructor that it was providing by default.
+        </p>
+        <p>
+          Change your main method code to use your new 2-argument constructor
+          and remove any initial (and now unnecessary) x and y assignment lines.
+          For example:
+        </p>
+        <pre><code class="language-java">
+          Point test = new Point(10.5, 32.0);
+        </code></pre>
+      </li>
+      <li>
+        <p>
+          Add a 2-argument constructor to your <samp>Person</samp> class that
+          sets their first and last name, and and a zero-argument constructor
+          that does nothing (just like the default constructor). Test
+          your constructors in your main method.
+        </p>
+        <details>
+          <summary>Constructor overloading</summary>
+          <p>
+            You can provide as many different constructors as you like, as
+            long as the type or number of input parameters are different. Java
+            will choose the one to use based on the actual parameters
+            provided during the <code class="language-java">new</code> call.
+          </p>
+          <p>
+            Only one constructor is ever used directly when creating a new
+            object, but you can call other constructors or methods from inside
+            the constructor code. For example, it is common practice to
+            have one master constructor that has an input parameter for each internal
+            field, and many other constructors with fewer arguments that simply
+            call the master constructor with default values for any parameters
+            that were left out.
+          </p>
+        </details>
+      </li>
+      <li>
+        Add a <code class="language-java">public void sayHelloTo(String otherName)</code> method to <samp>Person</samp>
+        that prints something like <samp>"Hello Ben, I'm Jennifer!"</samp>
+        using the instance's <samp>firstName</samp> and the given
+        <samp>otherName</samp>, and try it out in your main method.
+      </li>
+      <li>
+        <p>
+          <em>Overload</em> your <samp>sayHelloTo</samp> method to alternately
+          accept a <samp>Person</samp> parameter and print a similar greeting
+          using that person's name.
+        </p>
+        <aside>
+          Hint: call your existing <samp>sayHelloTo(String)</samp> method!
+        </aside>
+        <details>
+          <summary>Method overloading</summary>
+          <p>
+            Just like constructors, methods can be overloaded with different
+            versions that take a different number or type of arguments. Java
+            will decide which one to use based on the actual values provided
+            when calling the method!
+          </p>
+        </details>
+      </li>
+      <li>
+        <p>
+          Add a
+          <code class="language-java">public double distanceFrom(double x, double y)</code>
+          method to <samp>Point</samp> that computes and returns the straight-line
+          distance from this point to the given coordinates.
+        </p>
+        <details>
+          <summary>Just a little geometry…</summary>
+          <p>
+            The straight-line distance <var>d</var> between two points
+            <var>(x<sub>1</sub>, y<sub>1</sub>)</var> and
+            <var>(x<sub>2</sub>, y<sub>2</sub>)</var> is given by the
+            equation:
+          </p>
+          <pre style="white-space:normal;">
+            d<sup>2</sup>
+            =
+            (x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup>
+            +
+            (y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup>
+          </pre>
+          <p>
+            Use
+            <a href="https://docs.oracle.com/javase/10/docs/api/java/lang/Math.html#pow(double,double)"><code>Math.pow(double, double)</code></a>
+            to compute squares and
+            <a href="https://docs.oracle.com/javase/10/docs/api/java/lang/Math.html#sqrt(double)"><code>Math.sqrt(double)</code></a>
+            to compute square-roots in Java.
+          </p>
+        </details>
+      </li>
+      <li>
+        <p>
+          <em>Overload</em> the <samp>distanceFrom</samp> method to take another
+          <samp>Point</samp> as an argument instead and return the straight-line
+          distance from this point to the one given as an argument.
+        </p>
+        <aside>
+          Hint: call your existing <samp>distanceFrom(double, double)</samp> method!
+        </aside>
+      </li>
+      <li>
+        <p>
+          Add <samp>main</samp> methods to the <samp>Point</samp> and
+          <samp>Person</samp> classes that test each of the constructors and
+          methods of the class using unit testing principles. For each test,
+          print a description of what you are testing, what you expect the
+          result to be, and what the actual result of the test was.
+        </p>
+        <details>
+          <summary>Example test output</summary>
+          <p>
+            The actual format of your output is up to you, but something like
+            the following would be great!
+          </p>
+          <pre>Test: 2-argument constructor sets X and Y
+Expected x == 2.0 ✅ Passed
+Expected y == 3.0 ✅ Passed
 
-		<ul>
-			<li>Provide at least two constructors for this class: one with no arguments, and for the second one pass the student name, and last name </li>
-            <li>Provide the following methods:
-                <ul>
-                 <li>  sets student name and lastName</li>
-                 <li> sets student major</li>
-                 <li> sets student gPA</li>
-			     <li> gets Student name</li>
-                 <li> gets Student lastName</li>
-			    <li> get student major</li>
-			    <li> changes the major</li>
-                <li> returns <Samp>student</Samp> information as a <code class="language-java">String</code> </li>
-                </ul>
+Test: distance from (0,0) to (0,1) using a Point argument
+Expected to return 1.0 ❌ Failed! (was 3.0)</pre>
+          <p>
+            Since we're not using a unit testing framework, you may find yourself
+            writing a lot of redundant code in order to display "passed" and
+            "failed" messages. You could try creating a small <samp>UnitTest</samp>
+            class with static methods to handle this, or leave these out
+            and just print the expected and actual values.
+          </p>
+        </details>
+        <details>
+          <summary>Unit Testing Principles</summary>
+          <ul>
+            <li>
+              Test every part of your code. Write at least one test for every
+              public method and constructor, and try to cover all logical paths
+              through your code.
             </li>
-            <li> Provide few cases where a class is initialized, using a constructor</li>
-			<li> Provide few cases where these methods are called.</li>
-            <li> You can add any methods that you think are needed...</li>
-		</ul>
+            <li>
+              Keep each test as short and simple as possible. Use predetermined,
+              hard-coded values, and avoid computation and branching within the code
+              of the tests themselves. Test only one thing at a time.
+            </li>
+            <li>
+              Test things that seem trivial. These are usually the easiest tests
+              to write and will catch the majority of simple errors in your code!
+            </li>
+            <li>
+              Test your assumptions. Make sure your program doesn't fail if
+              your assumptions aren't met.
+            </li>
+            <li>
+              Look for edge-cases. What are some weird scenarios that you might
+              not have considered until now? Make sure that your program doesn't
+              crash when given malformed or unusual inputs. For example, what
+              would happen if an input parameter was <code class="language-java">null</code>?
+            </li>
+            <li>
+              Test what you've already fixed. If you found a bug in your code,
+              write a test that makes sure that you never have that same bug
+              again.
+            </li>
+            <li>
+              Make your tests automated, repeatable, and fast.
+              Don't wait for user input, or depend on external state that may
+              change outside the control of your testing code.
+            </li>
+            <li>
+              Make failures obvious. If something isn't working propley, make
+              sure that it is clear what went wrong when your tests are run.
+            </li>
+            <li>
+              Run tests often. Every time you make a change to your code, re-run
+              your tests to make sure you didn't break anything!
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ol>
 	</section>
-   
 
-<section id="task3">
-		<h2>Task 3: Create a Class <code>Polygon</code></h2>
-		<a href = "polygons_Group.gif" >
-            <img src="polygons_Group.gif" width = "500" height= "500" alt="Group of Polygons"></a>
-    <p>Write a simple class representing a Polygon up to 6 sides: the Polygon class has 5  fields:
-            <code class="language-java">Regular, sides, sideLength, angle, apothem</code>
-        <ul>  
-            <aside>Polygon: </br> 
-               <code class="language-java">
-                   Regular: boolean</br>
-                    sides: int</br>
-                    sideLength: double</br>
-                    angle : double</br>
-                    apothem : double
-                </code>
-            </aside>
-        </ul>  
+  <section id="task2">
+    <h2>Task 2: Final, Static, and Private</h2>
+    <p>
+      In this task you will make your <samp>Point</samp> class <em>immutable</em>,
+      add give your <samp>Person</samp> objects automatically assigned IDs.
+    </p>
+
+    <details>
+      <summary>Why use immutable data and <code class="language-java">final</code>?</summary>
+      <p>
+        Using constants and immutable data helps to make your code easier to
+        understand, easier to write, and can even make your code perform
+        better!
+      </p>
+      <p>
+        When values are immutable, you can be assured that no other code will
+        be able tamper with your data in unexpected ways. This allows you
+        to write less "guard" code, make more of your data public (avoiding the
+        need for extra getters and setters), and can simplify a lot of logic for
+        things like sorting, comparisons, and caching.
+      </p>
+      <p>
+        Furthermore, using constants and immutable data encourages good variable
+        naming and code style, making your code easier for others to read.
+      </p>
+      <p>
+        Lastly, Java is often able to make optimizations when it knows that
+        variables will not change, allowing otherwise identical code to run faster.
+      </p>
+    </details>
+
+    <ol class="instructions">
+      <li>
+        <p>
+          Add the keyword <code class="language-java">final</code> to
+          <samp>Point</samp>'s <samp>x</samp> and <samp>y</samp> variable
+          declarations to make them constants.
         </p>
+        <aside>
+          Note: this will probably break a bunch of code!
+          We'll fix it in the next steps.
+        </aside>
+      </li>
+      <li>
+        Use Netbeans' refactoring tools to capitalize <samp>x</samp> and
+        <samp>y</samp> according to the convention for constants. You can
+        rename each variable by highlighting it in your code and choosing
+        <samp>Refactor > Rename</samp> from the main menu or right-click
+        context menu.
+      </li>
+      <li>
+        If you have any main-method code that changes a <samp>Point</samp>'s
+        <samp>x</samp> or <samp>y</samp>, you will need to change it now to
+        construct new <samp>Point</samp> objects instead.
+      </li>
+      <li>
+        <p>
+          Add a <code class="language-java">public static final Point ORIGIN</code>
+          declaration to your Point class, initialized with a new Point at (0, 0).
+          Try using <samp>Point.ORIGIN</samp> in CreatingObjects' main method.
+        </p>
+        <details>
+          <summary>What is <code class="language-java">static</code> good for?</summary>
+          <p>
+            Static variables are useful for constants and other data
+            that is shared by multiple objects. They are available immediately
+            when your program starts, and are accessed through the class itself
+            rather than through individual object instances.
+          </p>
+          <p>
+            Static methods have some use cases as well, but are much more rare.
+            You should generally use instance methods instead. A few valid
+            uses of static methods include:
+          </p>
+          <ul>
+            <li>general-purpose stateless "pure" functions</li>
+            <li>factories (when dealing with complex configuration or class heirarchies)</li>
+            <li>routines that use multiple instances, where no one is the clear actor</li>
+          </ul>
+        </details>
+      </li>
+      <!-- LEAVE OUT! static factory method Point.random() -->
+      <!-- LEAVE OUT! static method centroid(Point[]) -->
+      <li>
+        <p>
+          Add a <code class="language-java">final String ID</code> field to
+          the <samp>Person</samp> class. This variable will uniquely identify
+          each Person and will stay constant even if that person's name changes.
+        </p>
+        <aside>
+          Note that <samp>ID</samp> is <em>not</em> a static variable!
+        </aside>
+      </li>
+      <li>
+        Add a 3-parameter constructor for <samp>Person</samp> that sets their
+        <samp>ID</samp> to a given value.
+      </li>
+      <li>
+        <p>
+          Modify your other Person constructors so that they generate a
+          unique ID value for each person as they are created.
+        </p>
+        <p>
+          You will need to use a static integer variable that can be incremented
+          each time a new person is constructed, and concatenate it with some
+          fixed String values so that the ID isn't simply a number. Use a static
+          method to perform the work of assembling each new ID. All supporting
+          variables and methods for this process should use the
+          <code class="language-java">private</code> access modifier.
+        </p>
+        <details>
+            <summary>What are Access Modifiers?</summary>
+            <p>
+              <b>Access modifiers</b> are keywords that determine what other
+              code is allowed to access the associated class, variable, method,
+              or constructor. They are also known as <b>visibility modifiers</b>.
+            </p>
+            <p>
+              Using access modifiers encourages better <b>encapsulation</b> in
+              your code. They help to hide implementation details and to prevent
+              unexpected changes to object state.
+            </p>
 
+            <p>Class members may use any one of the following modifiers:</p>
+            <dl class="inline">
+                <dt><code class="language-java">public</code></dt>
+                <dd>accessible everywhere</dd>
 
-<ul>
-    <li> Provide a no-arg constructor for this class initializes the object and sets the instance variables to:</br>
-                <code class="language-java">
-               Regular: true</br>
-                sides: 3</br>
-                sideLength: 1</br>
-                angle : 60</br>
-                apothem : <samp>SquareRoot(3)/2</samp>
-            </code>
-    </li>
-            Provide the following methods:
-			<li> Set number of sides</li>
-			<li> set the length of the sides</li>
-			<li> set the angle of the polygon </li>
-            <li> set the length of the apothem</li>
-            <li> find the apothem </li>
-<li> determine the type of polygon by evaluating the number of sides   </li>
-<li>  Calculate the area of the Polygon based on the number of sides </li>
+                <dt><code class="language-java">protected</code></dt>
+                <dd>accessible to code within the package or in a subclass</dd>
 
-<details>
-        <summary>How do you find the area of a hexagon?</summary>
-    
-    <p>There are several ways to find the area of a hexagon.</p>
-    <img src="area_poly.jpeg" width="450" height="350" alt ="image of how to find area of a hexagon" >
-        
-        <li>In a regular hexagon, split the figure into triangles.
-        Find the area of one triangle.
-        Multiply this value by six.</li>
+                <dt>(default, no modifier)</dt>
+                <dd>accessible only to code within the package</dd>
 
-        <li>Find the area of regular polygons such as pentagon, hexagon and octagon. Use the formula: area = 1/2 x (apothem x perimeter). </li>
+                <dt><code class="language-java">private</code></dt>
+                <dd>accessible within the current class only</dd>
+            </dl>
 
+            <p>These modifiers are added in front of the declaration they affect, for example:</p>
+            <pre><code class="language-java">
+                <b>private</b> int example = 2;
+                <b>public</b> String toString() { return "example"; }
+            </code></pre>
 
-         <a href= "https://www.varsitytutors.com/high_school_math-help/how-to-find-the-area-of-a-hexagon">This Tutorial site might be helpful</a>  
+            <p>Classes themselves may also be affected by a few access modifiers:</p>
+            <dl class="inline">
+                <dt><code class="language-java">public</code></dt>
+                <dd>visible everywhere</dd>
 
-         </p>   
-    
-</details>
-            <li> calculate the primeter</li>
-			<li> Equal to : To compare the Polygon to another ( returning true or false)</li>
-            <li> display Polygon information as a string of data </li>
-			<li> Provide few cases where a class is initialized, using a constructor</li>
-			<li> Provide few cases where these methods are called.</li>
-		</ul>
+                <dt>(default, no modifier)</dt>
+                <dd>visible only to other classes in the same package</dd>
+
+                <dt><code class="language-java">private</code></dt>
+                <dd>(on an inner class) visible only within the outer class</dd>
+            </dl>
+        </details>
+      </li>
+      <li>
+        Update your unit tests for <samp>Person</samp> and <samp>Point</samp>
+        to test all of their new behaviours.
+      </li>
+      <li>
+        <p>
+          Spend some time tidying up your code.
+          Add JavaDoc documentation for all public fields and methods.
+          Rearrange your code to follow standard ordering conventions.
+        </p>
+        <details>
+          <summary>Standard code order</summary>
+          <ol>
+            <li>static constants</li>
+            <li>other static variables</li>
+            <li>non-static fields (constants first)</li>
+            <li>constructors</li>
+            <li>other methods</li>
+          </ol>
+          <p>
+            There is no standard for ordering non-public variables, but all
+            class and instance variables should be listed before any
+            constructors or methods. It usually makes sense to group variables
+            by visibility: public first, followed by default, protected, and
+            finally private.
+          </p>
+          <p>
+            There is also no standard ordering for methods, other than that
+            constructors should come first. Choose an ordering that makes
+            sense to you, and be consistent!
+          </p>
+        </details>
+      </li>
+    </ol>
+  </section>
+
+  <section id="task3">
+		<h2>Task 3: Getters and Setters</h2>
+    <!-- TODO: blurb about getters/setters? -->
+    <p>
+      Create a <samp>RegularPolygon</samp> class according to the UML below
+      and the following description.
+    </p>
+    <figure class="uml" id="RegularPolygon">
+      <figcaption>RegularPolygon</figcaption>
+      <ul>
+        <li>- sides: int</li>
+        <li>- radius: double</li>
+        <li>+ center: Point</li>
+      </ul>
+      <hr class="uml-divide">
+      <ul>
+        <li>+ RegularPolygon()</li>
+        <li>+ RegularPolygon(int)</li>
+        <li>+ RegularPolygon(int, double)</li>
+        <li>+ RegularPolygon(int, double, Point)</li>
+      </ul>
+      <hr class="uml-divide">
+      <ul>
+        <li>+ <u>main(String[]): void</u></li>
+        <li>+ <u>polyName(int): String</u></li>
+
+        <li>+ getSides(): int</li>
+        <li>+ setSides(int): void</li>
+
+        <li>+ getRadius(): double</li>
+        <li>+ setRadius(double): void</li>
+
+        <li>+ getSideLength(): double</li>
+        <li>+ setSideLength(double): void</li>
+
+        <li>+ getPoints(): Point[]</li>
+
+        <li>+ toString(): String</li>
+      </ul>
+    </figure>
+    <ul class="instructions">
+      <li>
+        All instance variables other than <samp>center</samp> must
+        be private. The center is public and no getters and setters are
+        needed because <samp>Point</samp>s are immutable!
+      </li>
+      <li>
+        The three-argument constructor specifies the number of sides, radius,
+        and central point of the polygon. Constructors with fewer arguments
+        assume reasonable defaults.
+      </li>
+      <li>
+        The <samp>main</samp> method of this class should contain unit tests.
+      </li>
+      <li>
+        <p>
+          The <samp>polyName</samp> static method should return the standard English
+          name for a regular polygon with the given number of sides. For inputs
+          below 3, it should return "not a polygon" or throw an error. A generic
+          name can be generated for polygons with more than 20 sides, such as
+          "32-gon".
+        </p>
+        <details>
+          <summary>English names of polygons</summary>
+          <ol start="3">
+            <li>triangle</li>
+            <li>quadrilateral</li>
+            <li>pentagon</li>
+            <li>hexagon</li>
+            <li>heptagon</li>
+            <li>octagon</li>
+            <li>nonagon</li>
+            <li>decagon</li>
+            <li>hendecagon</li>
+            <li>dodecagon</li>
+            <li>tridecagon</li>
+            <li>tetradecagon</li>
+            <li>pendedecagon</li>
+            <li>hexdecagon</li>
+            <li>heptdecagon</li>
+            <li>octdecagon</li>
+            <li>enneadecagon</li>
+            <li>icosagon</li>
+          </ol>
+        </details>
+      </li>
+      <li>
+        <samp>setSides</samp> should ensure that the number of sides is always
+        3 or greater.
+      </li>
+      <li>
+        <p>
+          The length of a side (<var>s</var>) when the radius (<var>r</var>) and
+          number of sides (<var>n</var>) is known is given by the equation:
+        </p>
+        <pre>s = 2 * r * sin(π/n)</pre>
+      </li>
+      <li>
+        <p>
+          <samp>setSideLength</samp> should modify the radius of the polygon,
+          but leave the number of sides unchanged. Given that the side length
+          (<var>s</var>) and number of sides (<var>n</var>) are known, the
+          radius (<var>r</var>) can be calculated using the equation:
+        </p>
+        <pre>r = s / (2 * sin(π/n))</pre>
+      </li>
+      <li>
+        <samp>getPoints</samp> should return a new array of <samp>Point</samp>s
+        representing the vertices of the polygon. You can reuse your code
+        from previous labs with some small changes.
+      </li>
+      <li>
+        The <samp>toString</samp> method should provide the polygon's name
+        (using <samp>polyName</samp>), radius, and center coordinates.
+      </li>
+    </ul>
 	</section>
-
 
 	<section id="submission">
 		<h2>Submission</h2>
+
+    <details id="umlSummary">
+      <summary>UML Summary of Classes to Submit</summary>
+      <figure class="uml">
+        <figcaption>Point</figcaption>
+        <ul>
+          <li>+ <u>ORIGIN: Point</u></li>
+          <li>+ X: double</li>
+          <li>+ Y: double</li>
+        </ul>
+        <hr class="uml-divide">
+        <ul>
+          <li>+ Point(double, double)</li>
+        </ul>
+        <hr class="uml-divide">
+        <ul>
+          <li>+ <u>main(String[]): void</u></li>
+          <li>+ distanceFrom(double, double): double</li>
+          <li>+ distanceFrom(Point): double</li>
+          <li>+ toString(): String</li>
+        </ul>
+      </figure>
+      <figure class="uml">
+        <figcaption>Person</figcaption>
+        <ul>
+          <li>+ ID: String</li>
+          <li>+ firstName: String</li>
+          <li>+ lastName: String</li>
+        </ul>
+        <hr class="uml-divide">
+        <ul>
+          <li>+ Person()</li>
+          <li>+ Person(String, String)</li>
+          <li>+ Person(String, String, String)</li>
+        </ul>
+        <hr class="uml-divide">
+        <ul>
+          <li>+ <u>main(String[]): void</u></li>
+          <li>+ sayHello(): void</li>
+          <li>+ sayHelloTo(String): void</li>
+          <li>+ sayHelloTo(Person): void</li>
+          <li>+ toString(): String</li>
+        </ul>
+      </figure>
+      <figure class="uml">
+        <figcaption>RegularPolygon</figcaption>
+        <ul>
+          <li><a href="#RegularPolygon">see UML in Task 3</a></li>
+        </ul>
+      </figure>
+      <figure class="uml">
+        <figcaption>CreatingObjects</figcaption>
+        <ul>
+          <li>+ <u>main(String[]): void</u></li>
+        </ul>
+      </figure>
+    </details>
+
 		<p>
 			Completing all of the tasks in this lab should result in four
 			separate Java files	within a single package. Compress the package
 			directory into a ZIP archive and <b>upload it</b> to the D2L Dropbox.
-			Make sure the filename includes your name and lab number, for example
-			<kbd>Lab7-JohnSmith.zip</kbd>. In addition, <b>print out your code</b>
+			Make sure the filename includes your name and the lab name, for example
+			<kbd>Objects-JohnSmith.zip</kbd>. In addition, <b>print out your code</b>
 			and hand in the physical copy at the beginning of the next lab session.
 		</p>
 		<p>
@@ -387,6 +884,7 @@ class Fan {
 		   You can help one another with problems and questions, but in the end
 		   everyone must do their own assignment.
 		</p>
+
 		<table class="marks">
 			<thead>
 				<tr>
@@ -396,32 +894,36 @@ class Fan {
 			</thead>
 			<tbody>
 				<tr>
-					<td>Correct Class design</td>
+					<td>
+            Classes match requirements
+            <small>(see UML summary above)</small>
+          </td>
 					<td>3</td>
-				</tr>
-				<tr>
-					<td>Provided proper constructor, instant methods to access class members</td>
-					<td>1</td>
-				</tr>
-				<tr>
-					<td>Used encapsulation techniques to access the data.<abbr title="Don't make eveything public"></abbr></td>
-					<td>1</td>
 				</tr>
 				<tr>
 					<td>
 						Well-scoped variables
-						<small>- especially instance variable vs. <code>static</code></small>
+						<small>(especially instance vs. <code>static</code>)</small>
 					</td>
 					<td>1</td>
 				</tr>
-
+        <tr>
+          <td>
+            Use of methods to avoid code duplication
+          </td>
+          <td>1</td>
+        </tr>
 				<tr>
-					<td>JavaDoc Comments and indentation</td>
-					<td>2</td>
-				</tr>
-                <tr>
-					<td>Provided a Tester class to create and test methods within classes </td>
+					<td>JavaDoc comments and code formatting</td>
 					<td>1</td>
+				</tr>
+        <tr>
+          <td>Main program (in CreatingObjects) demonstrates construction and use of objects</td>
+          <td>1</td>
+        </tr>
+        <tr>
+					<td>Unit tests</td>
+					<td>2</td>
 				</tr>
 				<tr>
 					<td>WOW factor</td>
@@ -435,7 +937,6 @@ class Fan {
 		</table>
 	</section>
 
-
-	<script src="../template/bundle.js" async defer></script>
+	<script src="https://camosun-cs.github.io/comp-132-139/labs/template/bundle.js" async defer></script>
 </body>
 </html>
