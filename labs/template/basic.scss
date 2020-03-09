@@ -339,6 +339,11 @@ details {
 	@include bg-bleed($info);
 	@include containFloats;
 
+	& + details {
+		// add a 1px space between to show that there is more than one!
+		margin-top: calc($magic + 1px);
+	}
+
 	&:not([open]) > *:not(summary) {
 		display: none;
 	}
@@ -351,6 +356,16 @@ details {
 		box-shadow:
 			-$magic*1.5 0 0 $magic/2 $info,
 			$magic/2 0 0 $magic/2 $info;
+	}
+
+	// leave one line gap after code samples
+	// reordering this would require breaking up the combo selector :(
+	// stylelint-disable-next-line no-descending-specificity
+	pre + &,
+	.code-toolbar + &,
+	pre + [id^='reorder-placeholder-'] + &,
+	.code-toolbar + [id^='reorder-placeholder-'] + & {
+		margin-top: 2.5rem;
 	}
 }
 
@@ -500,6 +515,15 @@ pre[class*="language-"] {
 details pre,
 .instructions pre {
 	margin-right: 0;
+}
+
+// reordering this would require breaking up the combo selector above :(
+// stylelint-disable-next-line no-descending-specificity
+details + pre,
+details + .code-toolbar,
+details + [id^='reorder-placeholder-'] + pre,
+details + [id^='reorder-placeholder-'] + .code-toolbar {
+	margin-top: 2.5rem;
 }
 
 .toolbar {
