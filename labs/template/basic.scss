@@ -17,9 +17,7 @@ $largeFontFactor: 1.25;
 
 // breakpoints
 $breakpoints: (
-	// enough room to start floats
-	'small': ( min-width: $content * 0.7 * $initialMagic ),
-	// can lossen things up a bit
+	// can lossen things up a bit and start floats
 	'medium': ( min-width: $content * $mediumFontFactor * $initialMagic ),
 	// room to move asides out of the main column
 	'large': ( min-width: ((1.5 * $content + 5) * $largeFontFactor) * $initialMagic )
@@ -301,7 +299,7 @@ dl.inline dt {
 aside {
 	background-color: $alert;
 	@include bg-bleed($alert);
-	@include respond-to(small) {
+	@include respond-to(medium) {
 		box-sizing: border-box;
 		float: right;
 		//needed to avoid collisions with right-aligned images
@@ -416,7 +414,7 @@ figure {
 		margin: auto;
 		max-width: 100%;
 	}
-	@include respond-to(small) {
+	@include respond-to(medium) {
 		&.right {
 			max-width: 50%;
 			float: right;
