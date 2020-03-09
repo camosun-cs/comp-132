@@ -352,6 +352,8 @@ details {
 	ul {
 		list-style: disc;
 	}
+
+	// extend bg-bleed to left edge when inside .instructions
 	.instructions & {
 		box-shadow:
 			-$magic*1.5 0 0 $magic/2 $info,
