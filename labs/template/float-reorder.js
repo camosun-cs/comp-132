@@ -6,14 +6,21 @@
 (function() {
 	'use strict';
 
+	var magic = 1.5
+	var content = 24
+	var mediumFontFactor = 1.125
+	var largeFontFactor = 1.25
+
 	var breakpoints = [
+		// same as 'medium' breakpoint in basic.scss
 		{
-			at: "(min-width: "+(/*$content*/24 * /*factor*/0.7 * /*$magic*/1.5)+"em)",
+			at: "(min-width: " + (content * mediumFontFactor * magic) + "em)",
 			reorder: "aside, .pull-up",
 			except: "details aside, .dont-pull"
 		},
+		// same as 'large' breakpoint
 		{
-			at: "(min-width: "+((1.5 * /*$content*/24 + /*padding-edges*/5) * /*factor*/1.25 * /*$magic*/1.5)+"em)",
+			at: "(min-width: " + ((1.5 * content + 5) * largeFontFactor * magic) + "em)",
 			reorder: "details aside",
 			except: ".dont-pull"
 		}
