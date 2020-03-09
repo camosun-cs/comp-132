@@ -510,7 +510,7 @@ pre[class*="language-"] {
 	line-height: $magic;
 	overflow: visible;
 	padding: 0;
-	margin-top: 0;
+	margin-top: $magic; // ensure box-shadow doesn't bleed over previous content
 	margin-bottom: 0;
 }
 
