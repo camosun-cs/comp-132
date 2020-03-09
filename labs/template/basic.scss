@@ -538,6 +538,10 @@ details + [id^='reorder-placeholder-'] + .code-toolbar {
 	background: $code;
 	border-radius: 0.3rem;
 }
+// stylelint thinks this potentially overlaps with
+//   "details:not([open]) > *:not(summary)" which is defined earlier,
+//   but details are never .toolbar-item's
+// stylelint-disable-next-line no-descending-specificity
 .toolbar-item > * {
 	display: block;
 	padding: 0 $magic/2;
