@@ -3,4 +3,5 @@ _site/
 *.class
 Gemfile.lock
 .DS_Store
+labs/template/bundle.css
 
