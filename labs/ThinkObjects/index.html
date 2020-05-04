@@ -30,7 +30,7 @@
 			<li>Use of String Class</li>
 			<li>Design Classes from other classes</li>
             <li>Design Classes using inheritance model </li>
-            
+
             <li>implement interfaces to deal with events</li>
             <li>implement Event handlers </li>
 		</ul>
@@ -40,9 +40,9 @@
 	<section id="task1">
 		<h2>Task 1: Create a Class <code>Classroom</code></h2>
         <p>Write a <code>Classroom</code> class that contains the following fields: an array of <code>Students</code>objects, A Faculty and number of students assigned to the class:</p>
-       
+
         <details>
-       <summary>Skeleton of the Class <code>Classroom</code></summary> 
+       <summary>Skeleton of the Class <code>Classroom</code></summary>
         <pre><code class="language-java">
             /**
  *1 - use this example for the "think objects" lab
@@ -55,42 +55,42 @@ public class Classroom {
     private Student[] students;
     private Faculty instructor;
     private int numberOfStudents;
-    
+
     /** Initialize the object */
     public Classroom(){
-         
-        
+
+
     }
     public Classroom (Faculty f){
-        
-       
-        
+
+
+
     }
-    /**purpose: method getStudents will package the information from each students and returns it as a String 
+    /**purpose: method getStudents will package the information from each students and returns it as a String
     * @param - nothing
-    * @return - An String that holds each student information 
+    * @return - An String that holds each student information
     * Hint: use the toString method on each Student Object
     */
     public String getStudents(){
-        
-        
+
+
         }
         return result;
     }
-    /**purpose: to add students to the class, check to 
+    /**purpose: to add students to the class, check to
     make sure that class is not full, and class size has not reached the MAX LIMIT
     * @param - recieves and Student
     * @return - nothing
     */
     public void addStudent (Student s){
-        
+
     }
     /**purpose: to Assign a Faculty member to the Classroon
     * @param - recieves a Faculty Object
     * @return - nothing
     */
     public void setFaculty(Faculty f){
-        
+
     }
     /**purpose: to display information for the classroom. This includes all the students and the Faculty to the Class
     * @param - nothing
@@ -103,18 +103,18 @@ public class Classroom {
 }// end of Class Classroom
 
           </code></pre>
-            <a 
-      class="sample language-java" 
+            <a
+      class="sample language-java"
        href="codes/Classroom.java"
         download>Download sample class</a>
- </details>	
+ </details>
 		<ul>
 			<li>implement the solution to the methods provided</li>
             <li> encapsulate the class <code>Classroom</code></li>
 			<li> provide Setters and Getters </li>
-			
+
 		</ul>
-		
+
 	</section>
 
 	<section id="task2">
@@ -123,8 +123,8 @@ public class Classroom {
             Separating the viewer of the class from the GUI itself.
     Discuss classes such as:
     <ul>
-          <li>  <code>JPanel</code>, <code>Color</code>, 
-            <code>Container</code>,  
+          <li>  <code>JPanel</code>, <code>Color</code>,
+            <code>Container</code>,
             <code>JSlider</code>,
               <code>JButton</code>, <code>Dimension</code></li>
     <li>Grouping related objects together</li>
@@ -135,15 +135,15 @@ public class Classroom {
           <li> <code>GridLayout</code></li>
           <li>  <code>BorderLayout</code></li>
           </ul>
-            
-      </ul>      
+
+      </ul>
         </p>
     <h2> <code>SimpleGUI</code>class</h2>
 		<a href = "images/SimpleGUI.png" >
             <img src="images/SimpleGUI.png" width = "300" height= "300" alt="A Simple GUI"></a>
-    
+
 		<details>
-       <summary>Analyze the following Graphical User Interface  <code>Classroom</code></summary> 
+       <summary>Analyze the following Graphical User Interface  <code>Classroom</code></summary>
         <pre><code class="language-java">
         package Lab8;
 
@@ -161,68 +161,68 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 /**
- * The class SimpleGUI is designed to teach the concept of inheritance and 
- * use of various object.  
+ * The class SimpleGUI is designed to teach the concept of inheritance and
+ * use of various object.
  * main focus if to dissect the various parts and their relation
  * @author shohreh
  */
 public class SimpleGUI extends JFrame{
-    
+
         private int redValue, greenValue, blueValue;
         private Color chosenColor = null;
- 
+
         private JSlider jslRed = new JSlider(0,255);
         private JSlider jslGreen = new JSlider(0,255);
         private JSlider jslBlue = new JSlider(0,255);
-        
+
         private JButton ok = new JButton("OK");
         private JButton cancel = new JButton("Cancel");
-        
+
         JButton  button;
         JPanel displayArea;
         Container box2;
-        
+
     public  void createGUI(){
-        
+
         Container box1 = getContentPane();
          // SetFlowLayout, aliged left with horizontal gap of 10
            // and Vertical gap of 20 between components
-        FlowLayout flow = new FlowLayout(FlowLayout.CENTER,10,20);  
+        FlowLayout flow = new FlowLayout(FlowLayout.CENTER,10,20);
         //GridLayout grid = new GridLayout (1,2,50,50);
         box1.setLayout(flow);
-        
+
         // Group sliders for selecting red, green and blue colors
          JPanel jpSlider = new JPanel();
-         
+
          jpSlider.setLayout(new GridLayout(3,0));
-         
+
          // add all threee labels to the jpLabels panel
          jpSlider.add(jslRed);
          jpSlider.add(jslGreen);
          jpSlider.add(jslBlue);
-         
-         // Group labels 
+
+         // Group labels
         JPanel jpLabels = new JPanel();
-        
+
         jpLabels.setLayout(new GridLayout(3,0));
         JLabel l1 = new JLabel("red");
         JLabel l2 = new JLabel("Green");
         JLabel l3 = new JLabel("Blue");
-        
+
        // add all threee labels to the jpLabels panel
         jpLabels.add(l1);
         jpLabels.add(l2);
         jpLabels.add(l3);
-        
+
         // Group two buttons ok and cancel
         JPanel jpButtons = new JPanel();
-        
+
         jpButtons.add(ok);
         jpButtons.add(cancel);
-        
+
         // Group jpLabels and jpSliders
         JPanel colorSelector = new JPanel();
-        
+
         colorSelector.setLayout(new BorderLayout());
         colorSelector.setBorder(BorderFactory.createTitledBorder("Secect Color"));
         colorSelector.add(jpLabels, BorderLayout.WEST);
@@ -231,21 +231,21 @@ public class SimpleGUI extends JFrame{
         colorSelector.setBackground(Color.red);
         box1.setBounds(50, 50, 200, 200);
         box1.add( colorSelector);
-        
-        // get the dimension of the first box1  
+
+        // get the dimension of the first box1
         // Dimension first =box1.getSize();
        Dimension first =colorSelector.getSize();
-        
+
          box2 = getContentPane();
 
          displayArea = new JPanel();
-         
+
         displayArea.setBackground(Color.orange);
        // displayArea.setPreferredSize(first);
         displayArea.setPreferredSize(new Dimension (200,200));
-    
+
         button = new JButton("Display Area");
-        // where are we adding the button 
+        // where are we adding the button
         displayArea.add(button);
       //  button.addActionListener(this);
          box2.setSize(first);
@@ -253,16 +253,16 @@ public class SimpleGUI extends JFrame{
    }
 }
 
-        
-        
-        
+
+
+
         </code></pre>
-            <a 
-      class="sample language-java" 
+            <a
+      class="sample language-java"
        href="codes/SimpleGUI.java"
         download>Download sample class</a>
- </details>	
-        
+ </details>
+
 	</section>
 
 	<section id="task3">
@@ -272,11 +272,11 @@ public class SimpleGUI extends JFrame{
         <h2> <code>Calculator</code>class</h2>
 		<a href = "images/Calculator.png" >
             <img src="images/Calculator.png" width = "300" height= "300" alt="A Simple Calculator"></a>
-        The program will allow the user to input a number in a text box and another to the second text box.  
+        The program will allow the user to input a number in a text box and another to the second text box.
      plus button will add the two values from textbox 1 and 2.
-        
+
      <details>
-       <summary>Skeleton of the Class <code>Calculator</code></summary> 
+       <summary>Skeleton of the Class <code>Calculator</code></summary>
         <pre><code class="language-java">
         package Lab8;
 
@@ -296,7 +296,7 @@ import javax.swing.JTextField;
  * @author shohreh
  */
 public class Calculator extends JFrame implements ActionListener {
- 
+
 
    private JPanel panel;
    private JButton button, b2,b3;
@@ -304,65 +304,65 @@ public class Calculator extends JFrame implements ActionListener {
    private JLabel equalLabel;
    private JButton plus;
    private JButton minus;
-   
+
     public void createGUI(){
-       // tells the program to terminate when the frame is closed.     
+       // tells the program to terminate when the frame is closed.
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container box = this.getContentPane();
         box.setLayout(new FlowLayout(FlowLayout.CENTER,10,20) );
-   
-        
-   
+
+
+
         panel = new JPanel();
         panel.setBackground(new Color(220,220,220));
         panel.setPreferredSize(new Dimension (400,200));
         box.add(panel);
-        
-        // organizing the panel 3 
+
+        // organizing the panel 3
         num1 = new JTextField(15);
         panel.add(num1);
-    
+
         plus = new JButton( " + ");
         panel.add(plus);
         plus.addActionListener(this);
-    
+
         minus = new JButton( " - ");
         panel.add(minus);
         minus.addActionListener(this);
-    
+
         num2 = new JTextField(7);
         panel.add(num2);
-     
+
         equalLabel = new JLabel( " = ");
         panel.add(equalLabel);
-    
+
         result = new JTextField(7);
         panel.add(result);
-    
-    
+
+
     }// end of create GUI
-    
+
    @Override
     public void actionPerformed (ActionEvent event){
         if ( event.getSource()== plus){
-         
-            
-            
-            
-        } 
-    
-    
+
+
+
+
+        }
+
+
     }// end of action performed
-    
+
 }// end of class
 
   </code></pre>
-            <a 
-      class="sample language-java" 
+            <a
+      class="sample language-java"
        href="codes/Calculator_mod.java"
         download>Download sample class</a>
- </details>	
-        
+ </details>
+
 	</section>
 
 <section id="task4">
@@ -376,12 +376,12 @@ public class Calculator extends JFrame implements ActionListener {
     draw stars and use the <code>append</code>method to display it on the  <code>textArea </code>.
      Some ideas:
     create buttons and use your upper and lower traingle methods from lab 4 to display to the textArea.
-        
+
      <details>
-       <summary>Use the <code>Matrix.java</code>class for the backend information.</summary> 
-        
- <a 
-      class="sample language-java" 
+       <summary>Use the <code>Matrix.java</code>class for the backend information.</summary>
+
+ <a
+      class="sample language-java"
        href="codes/Matrix.java"
         download>Download Matrix class</a>
     </details>
@@ -392,12 +392,12 @@ public class Calculator extends JFrame implements ActionListener {
 	<section id="submission">
 		<h2>Submission</h2>
 		<p>
-			Completing all of the tasks in this lab should result in 5 
+			Completing all of the tasks in this lab should result in 5
 			separate Java files	within a single package. Compress the package
 			directory into a ZIP archive and <b>upload it</b> to the D2L Dropbox.
 			Make sure the filename includes your name and lab number, for example
             <kbd>Lab8-JohnSmith.zip</kbd>.  <b>Do Not print out your code -you need to do a demo of your program. </b>
-			
+
 		</p>
 		<p>
 			The marks for this lab are heavily weighted towards good coding
@@ -440,16 +440,18 @@ public class Calculator extends JFrame implements ActionListener {
 					<td>JavaDoc Comments and indentation</td>
 					<td>2</td>
 				</tr>
-                
+
 				<tr>
 					<td>WOW factor</td>
 					<td>3</td>
 				</tr>
+			</tbody>
+			<tfoot>
 				<tr>
 					<th>Total</th>
 					<td>15</td>
 				</tr>
-			</tbody>
+			</tfoot>
 		</table>
 	</section>
 

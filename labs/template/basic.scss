@@ -269,14 +269,13 @@ thead th {
 	// marks column
 	td:last-child,
 	thead th:last-child,
-	tbody tr:last-child th:last-child  {
+	tfoot td:last-child  {
 		width: 3em;
 		padding-left: $magic/2;
 		text-align: center;
-		text-indent: 0;
 	}
 	// total row
-	tr:last-child td:last-child {
+	tfoot td:last-child {
 		background-color: darken($info, 8%);
 		font-weight: bold;
 	}
