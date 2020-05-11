@@ -40,9 +40,12 @@
 			</li>
 			<li>Good coding style</li>
 		</ul>
+		<p>
+			You will also learn how to create random numbers using
+			<a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/Math.html#random()"><code>Math.random()</code></a>
+		</p>
 	</section>
 
-	<!-- create one section per task, adjusting @id for each -->
 	<section id="task1">
 		<h2>Task 1: Double The Number</h2>
 
@@ -60,15 +63,21 @@
 	<section id="task2">
 		<h2>Task 2: Play The Lottery</h2>
 
-		<p>Write a program to run a simple lottery. The program should randomly generate a two-digit lottery number, prompt the user to enter a guess, and determine the user's winnings according to the following rules:</p>
+		<p>Write a program to run a simple lottery. The program should randomly generate a lottery number between 0 and 99, prompt the user to enter a guess, and determine the user's winnings according to the following rules:</p>
 		<ul>
-			<li>If the user input matches the lottery numbers in exact order, the award is $10,000.</li>
+			<li>If the user input matches the lottery number exactly, the award is $10,000.</li>
 			<li>If the user enters the correct digits, but in the wrong order, the award is $3000.</li>
-			<li>If only one digit in the user input matches a digit in the lottery, the award is $1000.</li>
+			<li>If the lottery number has two digits and the user's guess contains just one of them, the award is $1000.</li>
+			<li>In all other cases, there is no award.</li>
 		</ul>
-		<aside>Remember to check that the user input is exactly two digits!</aside>
-		<p>The code to generate a random number is as follows:</p>
-		<pre><code class="language-java">int lottery = (int)(Math.random()*100);</code></pre>
+		<aside>Remember to check that the user input is within the range you expect for this lottery.</aside>
+		<details>
+			<summary>Generating random numbers</summary>
+			<p>The code to generate a random number for this task is as follows:</p>
+			<pre><code class="language-java">int lottery = (int)(Math.random()*100);</code></pre>
+			<p><code>Math.random()</code> generates a random positive <code>double</code> value between 0 and 1 (eg. 0.1, or 0.75639). The value <em>may</em> be exactly 0, but will <em>never</em> be exactly 1. When multiplied by 100, this transforms it to a range from 0 up to but not including 100 (although it could be 99.99999). Any decimal portion of the value will be dropped when cast to an <code>int</code>, leaving you with a random integer value between 0 and 99 (inclusive).</p>
+			<p>You can use <code>Math.random()</code>, along with a little bit of math and type casting, to generate any range of random values that you need. For example, you could get a random multiple of 3 between 15 and 150 with <code class="language-java">3 * ((int)(Math.random() * 46) + 5)</code>.</p>
+		</details>
 	</section>
 
 	<section id="task3">
@@ -82,6 +91,7 @@
 			<li>"Major" league: teams 5, 10, and 12 through 14.</li>
 			<li>Any other team number: "Unassigned".</li>
 		</ul>
+		<aside>Remember that you can use the "fall-through" behavior of the switch statement to group related cases together and avoid code duplication. Also, cases do not have to be in numerical order!</aside>
 	</section>
 
 	<!-- this section should always be last -->
