@@ -1,11 +1,13 @@
+package examples;
+import java.util.Scanner;
+
 /**
  * A simple example program
  * @author C0420817
  */
-import java.util.Scanner;
-
 public class WhatsUrName {
 	public static void main(String[] args) {
+
 		Scanner input = new Scanner(System.in);
 		String name;
 		int age;
@@ -24,5 +26,6 @@ public class WhatsUrName {
 		System.out.println("Your name is " + name + ".");
 		System.out.println("You are " + age + " years old.");
 		System.out.printf("You make $%,.2f every year.\n", salary);
+
 	}
 }
