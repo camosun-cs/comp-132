@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Conditional Logic (Lab 3) - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/conditional-logic/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+
+<body>
+	<header>
+		<h1>COMP 132 - Lab 3 - Conditional Logic</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Days in a Month</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Play The Lottery</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+
+		<p>In this lab you will create two small programs using what you've learned about:</p>
+		<ul>
+			<li>
+				<code class="language-java">if</code>,
+				<code class="language-java">else</code>,
+				and <code  class="language-java">switch</code> statements
+			</li>
+			<li>
+				Conditional operators
+				(<code  class="language-java">&&</code>,
+				<code class="language-java">||</code>,
+				<code class="language-java">!</code>)
+			</li>
+			<li>Good coding style</li>
+		</ul>
+		<p>
+			You will also learn how to create random numbers using
+			<a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/Math.html#random()"><code>Math.random()</code></a>
+		</p>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: Days in a Month</h2>
+		<p>Prompt the user to choose a year and a month. Use a switch statement with a nested if/else to determine the number of days in the month and print the result.</p>
+		<aside>Remember that you can use the "fall-through" behavior of the switch statement to avoid code duplication for similar cases. Also, cases do not have to be in any particular order, so put them in the order that saves the most typing!</aside>
+		<p>Do not use any of the built-in date handling functionality in Java.</p>
+		<p>February has a different number of days depending on the year; 28 days in common years, and 29 in leap years. Leap years occur in each year that is a multiple of 4, except those that are also divisible by 100.</p>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: Play The Lottery</h2>
+
+		<p>Write a program to run a simple lottery. The program should randomly generate a lottery number between 0 and 99, prompt the user to enter a guess, and determine the user's winnings according to the following rules:</p>
+		<ul>
+			<li>If the user input matches the lottery number exactly, the award is $10,000.</li>
+			<li>If the user enters the correct digits, but in the wrong order, the award is $3000.</li>
+			<li>If the lottery number has two digits and the user's guess contains just one of them, the award is $1000.</li>
+			<li>In all other cases, there is no award.</li>
+		</ul>
+		<aside>Remember to check that the user input is within the range you expect for this lottery.</aside>
+		<details>
+			<summary>Generating random numbers</summary>
+			<p>The code to generate a random number for this task is as follows:</p>
+			<pre><code class="language-java">int lottery = (int)(Math.random()*100);</code></pre>
+			<p><code>Math.random()</code> generates a random positive <code>double</code> value between 0 and 1 (eg. 0.1, or 0.75639). The value <em>may</em> be exactly 0, but will <em>never</em> be exactly 1. When multiplied by 100, this transforms it to a range from 0 up to but not including 100 (although it could be 99.99999). Any decimal portion of the value will be dropped when cast to an <code>int</code>, leaving you with a random integer value between 0 and 99 (inclusive).</p>
+			<p>You can use <code>Math.random()</code>, along with a little bit of math and type casting, to generate any range of random values that you need. For example, you could get a random multiple of 3 between 15 and 150 with <code class="language-java">3 * ((int)(Math.random() * 46) + 5)</code>.</p>
+		</details>
+	</section>
+
+	<section id="submission">
+		<h2>Submission</h2>
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing <a href="#task1">Task 1</a> and <a href="#task2">Task 2</a>
+			should result in <em>two</em> separate Java files within a single package.
+			Compress the package directory into a ZIP archive and submit it to the
+			Lab 3 - Conditional Logic assignment.
+		</p>
+		<p>
+			Your lab package must be named following the normal convention for labs
+			(<samp>LastnameFirstname_lab3</samp>), or it will not be marked.
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Code compiles and runs</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Meets Task 1 and 2 requirements</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<td>3</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+	<!-- additional scripts can be added here if necessary -->
+</body>
+</html>
