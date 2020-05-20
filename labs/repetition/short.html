@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Repetition (Lab 4) - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/repetition/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Lab 4 - Repetition</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Fibonacci numbers</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: "Infinite" loops</a></li>
+			<li><a href="#task3"><strong>Task 3</strong>: Printing a matrix</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>In this lab assignment you will learn about:</p>
+		<ul>
+			<li>
+				How and when to use
+				<code class="language-java">for</code>,
+				<code class="language-java">while</code>,
+				and <code class="language-java">do while</code>
+			</li>
+			<li>Infinite loops</li>
+			<li>Nested loops</li>
+		</ul>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: Fibonacci numbers</h2>
+		<p>
+			Write a new program that will find the first
+			<a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci
+			number</a> that is <em>higher</em> than a given input.
+		</p>
+		<details>
+			<summary>Example input and output</summary>
+			<dl>
+				<dt>Given 19</dt>
+				<dd>Output 21</dd>
+				<dt>Given 55</dt>
+				<dd>Output 89</dd>
+				<dt>Given 2345</dt>
+				<dd>Output 2584</dd>
+				<dt>Given 5702886</dt>
+				<dd>Output 5702887</dd>
+			</dl>
+		</details>
+		<ol class="instructions">
+			<li>
+				Start simple. Write some code that just computes
+				the first five or so Fibonacci numbers and prints them out.
+			</li>
+			<li>
+				Look for ways to use (and reuse) variables so the code to
+				find each number in the sequence looks identical.
+			</li>
+			<li>
+				Restructure your code using a <b>do-while</b> loop so that no
+				code is duplicated.
+			</li>
+			<li>
+				Add a prompt for an upper limit to be entered, and use
+				that number in your while condition to determine when to
+				end the loop.
+			</li>
+		</ol>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: "Infinite" loops</h2>
+		<ol class="instructions">
+			<li>
+				<p>Download the following program and add it to your lab package.</p>
+				<a class="sample language-java" href="Interest.java" download>Download Interest.java</a>
+			</li>
+			<li>
+				Run the program, and make sure that you understand what it is doing and how it works.
+			</li>
+			<li>
+				<p>Wrap the entire program in an infinite loop so that you can enter many different principal amounts without having to restart the program each time.</p>
+				<details>
+					<summary>How to loop forever</summary>
+					<p>
+						You can create a loop that will run indefinitely very simply in Java:
+					</p>
+					<pre><code class="language-java">
+						while (true) {
+							// inside here will be repeated forever
+						}
+					</code></pre>
+					<p>
+						There are several other ways you can make an infinite loop,
+						but this is the most idiomatic way that other
+						programmers will recognize and will make it clear that
+						you really meant to do this!
+					</p>
+				</details>
+				<aside>
+					Note: you can force your program to exit any time by choosing <samp>Run > Stop Build/Run</samp> from the main menu. If you were running your program outside of NetBeans, you could exit any time it paused for input by pressing <kbd>ctrl-c</kbd>.
+				</aside>
+			</li>
+			<li>
+				<p>Consider which of your variables need to be freshly created
+				each time your program loops, and which can be created just
+				once when your program starts. Move variables outside of the
+				loop if it makes sense to do so!</p>
+				<aside>
+					Hint: variable that are simply used to control a loop should usually be declared with the loop. Constants should <em>always</em> be declared at the beginning of your program.
+				</aside>
+			</li>
+			<li>
+				<p>
+					Use a <em>second, nested</em> inifinite loop, along with conditional branches and the <code class="language-java">break</code> keyword to make sure that the user enters a usable dollar value for the pricipal amount (ie. greater than 0) before allowing the program to continue calculating interest.
+				</p>
+				<details>
+					<summary>Example input loop</summary>
+					<p>This example requires the user to enter a negative integer before continuing:</p>
+					<pre><code class="language-java">
+						Scanner input = new Scanner(System.in);
+						int number;
+						while (true) {
+							System.out.println("Please enter a negative integer:");
+							if (input.hasNextInt()) {
+								number = input.nextInt();
+								if (number < 0) {
+									break;
+								} else {
+									System.out.println("Invalid input (must be less than 0)");
+								}
+							} else {
+								input.next();
+								System.out.println("Invalid input (not an integer)");
+							}
+						}
+						System.out.println("Okay, got " + number);
+					</code></pre>
+				</details>
+			</li>
+		</ol>
+	</section>
+
+	<section id="task3">
+		<h2>Task 3: Printing a matrix</h2>
+		<p>
+			Create a program that asks the user to enter a number and prints an inverted triangle with that many rows (or some other interesting pattern) using <em>nested</em> <code class="language-java">for</code> loops.
+		</p>
+		<details>
+			<summary>Example input and output</summary>
+			<p>Given "5", output:</p>
+			<pre>*****
+****
+***
+**
+*</pre>
+			<p>Given "13", output:</p>
+			<pre>*************
+************
+***********
+**********
+*********
+********
+*******
+******
+*****
+****
+***
+**
+*</pre>
+		</details>
+		<ol class="instructions">
+			<li>
+				Start by creating some code to print a single line of
+				asterisks ("*") of any given length.
+				Use a <code class="language-java">for</code> loop.
+			</li>
+			<li>
+				<p>
+					Wrap this code in another for loop to repeat it and
+					create a square of asterisks.
+				</p>
+				<aside>
+					Make sure to use different looping variables for the
+					outer and inner loops!
+				</aside>
+			</li>
+			<li>
+				Adjust the conditions on your inner <code>for</code> loop to limit the
+				number of asterisks printed based on the state of the outer
+				loop's variables.
+			</li>
+			<li>
+				<p>
+					Experiment with different looping conditions, conditional
+					branches, and extra inputs to create different patterns.
+				</p>
+				<details>
+					<summary>Example ideas</summary>
+					<ul>
+						<li>Replace the asterisks on the diagonal edge with a different character</li>
+						<li>Let the user choose what symbols to use for drawing</li>
+						<li>
+							<p>Print the triangle facing different directions, like:</p>
+							<pre style="margin:1em 0;">  *
+ **
+***</pre>
+							<p>Or like:</p>
+							<pre style="margin:1em 0;">  *
+ ***
+*****</pre>
+						</li>
+						<li>
+							<p>Output a diamond instead of a triangle, eg:</p>
+							<pre>  *
+ ***
+*****
+ ***
+  *</pre>
+					</ul>
+				</details>
+			</li>
+		</ol>
+	</section>
+
+	<section id="submission">
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing all tasks in this lab should result in <em>three</em> separate Java files within a single package. Compress the package directory into a ZIP archive and submit it to the Lab 3 - Repetition assignment.
+		</p>
+		<p>
+			Your lab package must be named following the normal convention for labs (<samp>LastnameFirstname_lab2</samp>), or it will not be marked.
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Code compiles and runs</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Meets Task requirements</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<td>3</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
