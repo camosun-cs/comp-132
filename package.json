@@ -16,11 +16,7 @@
     "url": "https://github.com/camosun-cs/comp-132-139/issues"
   },
   "homepage": "https://github.com/camosun-cs/comp-132-139#readme",
-  "dependencies": {
-    "stylelint": "^9.10.1",
-    "stylelint-config-recommended-scss": "^3.3.0",
-    "stylelint-scss": "^3.9.3"
-  },
+  "dependencies": {},
   "stylelint": {
     "plugins": [
       "stylelint-scss"
@@ -29,5 +25,10 @@
     "rules": {
       "indentation": "tab"
     }
+  },
+  "devDependencies": {
+    "stylelint": "^13.5.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.17.2"
   }
 }
