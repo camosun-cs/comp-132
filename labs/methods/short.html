@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Modularization (Lab 5) - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/methods/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Lab 5 - Methods and Modularization Techniques </h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Restructure "Days in a Month"</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Restructure "Play The Lottery"</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>In this lab assignment you will learn about:</p>
+		<ul>
+			<li>Creating and using methods</li>
+			<li>Passing parameters and receiving return values</li>
+			<li>Splitting code into small reusable components</li>
+			<li>JavaDoc comments</li>
+		</ul>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: Restructure "Days in a Month"</h2>
+		<p>Transform the "Days in a Month" code from Lab 3, Task 1 to use a method.</p>
+		<p>Your main method should handle all input and output. Move the rest of the code into a new <code>daysInMonth</code> method and use parameters and return values to communicate with the main method.</p>
+		<p>Make sure to include JavaDoc comments for your new method!</p>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: Restructure "Play The Lottery"</h2>
+		<ol class="instructions">
+			<li>
+				<p>Recreate your "Play The Lottery" program from Lab 3 Task 2 using methods.</p>
+				<p>Your program should be composed of at least 4 different methods:</p>
+				<ul>
+					<li>a method that generates a lottery number</li>
+					<li>a method that prompts the user for a guess and ensures that their input is valid</li>
+					<li>a method that compares a guess to a lottery number and determines whether or not the guess was correct (or partially correct)</li>
+					<li>the <code>main</code> method which controls the flow of the program and determines how much money should be awarded</li>
+				</ul>
+				<aside>
+					Hint: use some <code class="language-java">static final</code> constant numbers as return values from your guess-checking method to
+					signal the different kinds of win or loss conditions.
+				</aside>
+			</li>
+			<li>
+				Write appropriate JavaDoc comments for all of your methods and static variables.
+			</li>
+			<li>
+				Modify your <code>main</code> method to allow the player to make multiple guesses against the same lottery number.
+				The player should be given a greater reward for matching the lottery number in fewer guesses.
+				Try to limit your changes to the <code>main</code> method; if you can't, look for ways to refactor your other methods
+				so you could use the same code for both versions of the game!
+			</li>
+		</ol>
+	</section>
+
+	<section id="submission">
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing all tasks in this lab should result in <em>two</em> separate Java files within a single package. Compress the package directory into a ZIP archive and submit it to the Lab 5 - Methods and Modularization assignment.
+		</p>
+		<p>
+			Your lab package must be named following the normal convention for labs (<samp>LastnameFirstname_lab5</samp>), or it will not be marked.
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Code compiles and runs</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Meets Task requirements</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<td>3</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
