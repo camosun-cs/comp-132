@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ActionListener Exercise - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<!-- comment out the base element to work locally -->
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/template/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - ActionListener Exercise</h1>
+		<nav><ol>
+			<li><a href="#task">Task</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="task">
+		<h2>Task</h2>
+		<p>
+			Continuing to work on your GUI from the last exercise, use
+			<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionListener.html">ActionListener</a>'s
+			to make your buttons do something useful.
+		</p>
+		<details>
+			<summary>How to implement and use an ActionListener</summary>
+			<p>
+				You can augment one of your existing classes (or create a
+				brand new class) to use as an ActionListener by following these
+				steps:
+			</p>
+			<ol>
+				<li>
+					Add imports for <samp>java.awt.event.ActionListener</samp> and <samp>java.awt.event.ActionEvent</samp> at the top of your file.
+				<li>
+					Add <code class="language-java">implements ActionListener</code> to your class definition.
+				</li>
+				<li>
+					Add a definition for the <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/ActionListener.html#actionPerformed-java.awt.event.ActionEvent-"><samp>ActionListener#actionPerformed(ActionEvent)</samp></a> method.
+				</li>
+			</ol>
+			<p>For example:</p>
+			<pre><code class="language-java">
+				import java.awt.event.ActionListener;
+				import java.awt.event.ActionEvent;
+				class MyListeningClass implements ActionListener {
+					public void actionPerformed(ActionEvent e) {
+						// make something happen here!
+					}
+					...
+				}
+			</code></pre>
+			<p>
+				Then, provide an instance of your class as the argument to the
+				<samp>addActionListener</samp> method of one or more of your
+				<samp>JButton</samp>'s:
+			</p>
+			<pre><code class="language-java">
+				ActionListener myListenerInstance = new MyListenerClass();
+				myButton.addActionListener(myListenerInstance);
+			</code></pre>
+			<p>
+				You can use very similar steps to respond to many other events
+				in your GUI by creating and adding different kinds of
+				EventListeners. For example, extend
+				<a href="https://docs.oracle.com/javase/8/docs/api/java/awt/event/TextListener.html"><code>TextListener</code></a>
+				and use the <code>addTextListener</code> method to react to
+				content changes from <code>JTextField</code> and
+				<code>JTextArea</code> elements, or
+				<a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/event/ChangeListener.html"><code>ChangeListener</code></a>
+				and the
+				<a href="https://docs.oracle.com/javase/8/docs/api/javax/swing/JSpinner.html#addChangeListener-javax.swing.event.ChangeListener-"><samp>JSpinner#addChangeListener</samp></a>
+				method to notice changes from a <code>JSpinner</code>.
+			</p>
+		</details>
+		<p>Here are some ideas for things you can make your UI do:</p>
+		<ul>
+			<li>
+				Print a triangular matrix of *'s (using code from Lab 4) inside
+				a <samp>JTextArea</samp> when the "Draw Matrix" button in pushed.
+			</li>
+			<li>
+				Display the result of adding or subtracting the values from
+				two <samp>JSpinner</samp>'s in the Calculator section when the
+				"+" or "-" buttons are pushed.
+			</li>
+			<li>
+				Make the "Add" button in the Personal Information section
+				create a <samp>Person</samp> object (from Lab 7) using the
+				provided information, and display it in a list along with any
+				others you've made so far.
+			</li>
+			<li>
+				Remove a previously created <samp>Person</samp> object from the
+				list in the Person Information section when the "Remove" button
+				is pushed.
+			</li>
+			<li>
+				Clear the answer output in the Calculator section any time the
+				value of either of the <samp>JSpinner</samp>'s is changed.
+			</li>
+			<li>
+				Change the border color of the Display Results section every
+				time the content of the <samp>JTextArea</samp> changes.
+			</li>
+		</ul>
+		<p>Experiment with different ways of creating ActionListeners. Try using your existing GUI-building class as an ActionListener to start, then try creating new classes that are responsible for different actions. You may find it helpful to keep the GUI construction code separate from the ActionListener in some cases, or better to keep them together in others!</p>
+	</section>
+
+	<section id="submission">
+		<h2>Submission</h2>
+		<p>
+			Submit a ZIP archive of your package folder to the
+			"ActionListener Exercise" assignment on D2L.
+		</p>
+		<p>
+			This assignment must be handed in individually, but you are
+			encouraged to work together in groups and share code with one
+			another to help you to understand the concepts!
+		</p>
+		<p>
+			You will receive a 100% completion mark as long as you hand in
+			some code that demonstrates your understanding of the exercise.
+		</p>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
