@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Data Structures: Arrays (Lab 6) - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/arrays/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Lab 6 - Introduction to Data Structures: Arrays</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Multiply in Reverse</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Class Statistics</a></li>
+		   <li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>In this lab assignment you will practice:</p>
+		<ul>
+			<li>Creating and modifying arrays</li>
+			<li>Passing arrays as method parameters</li>
+			<li>Traversing multi-dimensional arrays</li>
+			<li>Making aggregate calculations using array values</li>
+		</ul>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: Multiply in Reverse</h2>
+		<p>Write a program that will ask the user to enter a series of integers and then print the result of multiplying each number by all of the numbers that came after it.</p>
+		<p>For example, given the following sequence of numbers:</p>
+		<pre><samp>7 -5 4 -3 2</samp></pre>
+		<p>Output the result sequence:</p>
+		<pre><samp>840 120 -24 -6 2</samp></pre>
+		<p>Your program should start by asking <em>how many</em> numbers will be entered, then use a loop to collect them from <code class="language-java">System.in</code> and store them in an array.</p>
+		<p>Use methods to modularize your code.</p>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: Class Statistics</h2>
+		<p>Write a program that will process a list of students' grades to calculate a <abbr title="Grade point average">GPA</abbr> for each student and the class average.</p>
+		<p>Your program will need two chunks of data stored as two-dimensional arrays:</p>
+		<ol>
+			<li>Student names, stored as an array of [<samp>Lastname</samp>, <samp>First name</samp>] arrays.</li>
+			<li>Grades for each assignment, stored as an array of arrays of doubles.</li>
+		</ol>
+		<p>The two arrays store data for the same student at equivalent indexes. That is, index 0 in both arrays holds data for the first student, index 1 in both arrays holds data for the second, etc.</p>
+		<p>Use the following <strong>example input</strong> from your main method to test your program:</p>
+		<aside>
+			Note: Your code should work for <strong>any</strong> input data that is structured similarly, and should support tables of grades with any number of elements.
+		</aside>
+		<pre><code class="language-java">
+			String[][] names = {
+				{ "Ewell", "Nate" },
+				{ "Smurthwaite", "Adelina" },
+				{ "Bernollet", "Maryjane" },
+				{ "Chalfain", "Karlis" },
+				{ "Huckabe", "Almire" }
+			};
+			double[][] grades = {
+				{ 3.83, 9.21, 9.25, 0.84, 1.40, 7.90, 1.41, 5.15 },
+				{ 5.09, 3.66, 3.04, 3.02, 8.59, 2.34, 8.86, 7.40 },
+				{ 5.35, 0.85, 8.56, 7.37, 2.78, 3.19, 2.04, 5.70 },
+				{ 9.25, 9.62, 7.08, 7.27, 9.86, 5.88, 9.86, 9.70 },
+				{ 3.39, 2.75, 1.23, 1.04, 3.87, 8.72, 4.60, 6.21 }
+			};
+		</code></pre>
+		<p>Using these input values, your program should output:</p>
+		<samp><pre>Student GPAs:
+Nate Ewell: 4.87
+Adelina Smurthwaite: 5.25
+Maryjane Bernollet: 4.48
+Karlis Chalfain: 8.57
+Almire Huckabe: 3.98
+
+Class average: 5.43</pre></samp>
+		<details>
+			<summary>More test data</summary>
+			<p>If you would like some more sample data to test with, use this method to generate additional grades:</p>
+			<pre><code class="language-java">
+			public static double[][] generateMarks(int students, int assignments) {
+				double[][] grades = new double[students][assignments];
+				for (int i = 0; i < students; i++) {
+					for (int j = 0; j < assignments; j++) {
+						grades[i][j] = (Math.random() * 10);
+					}
+				}
+				return grades;
+			}
+			</code></pre>
+			<p>You will probably also want to write a method to print this table of grades so that you can check your results!</p>
+		</details>
+		<p>Improve your code by using <strong>methods</strong> to organize the separate steps of your program and keep the main method easy to read. For example, you might write separate methods for:</p>
+		<ul>
+			<li>Calculating a 1D array of averages from the 2D array of grades</li>
+			<li>Calculating the overall class average</li>
+			<li>Printing the list of names and averages</li>
+			<li>Getting a list of names and grades to process from the user</li>
+		</ul>
+	</section>
+
+	<section id="submission">
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing all tasks in this lab should result in <em>two</em> separate Java files within a single package. Compress the package directory into a ZIP archive and submit it to the Lab 6 - Arrays assignment.
+		</p>
+		<p>
+			Your lab package must be named following the normal convention for labs (<samp>LastnameFirstname_lab6</samp>), or it will not be marked.
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Code compiles and runs</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Meets Task requirements</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<td>3</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
