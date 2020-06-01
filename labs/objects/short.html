@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Classes and Objects - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/objects/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+	<style>
+		.uml {
+			display: table; /* shrink-wrap */
+			border: 1px solid black;
+			text-align: left;
+			margin-left: 0;
+			margin-right: 0;
+		}
+		.uml > figcaption {
+			text-align: center;
+			font-weight: bold;
+			border-bottom: 1px solid black;
+		}
+		.uml > ul {
+			list-style: none;
+			margin: 0.75rem;
+			padding: 0;
+		}
+		.uml-divide {
+			margin: 0.75rem 0;
+			border: 0;
+			border-top: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Introduction to Classes and Objects</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1">Task 1: class Point</a></li>
+			<li><a href="#task2">Task 2: class Person</a></li>
+			<li><a href="#task3">Task 3: class Car</a></li>
+			<li><a href="#task3">Task 4: class AcademicRecord</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>In this lab assignment you will practice:</p>
+		<ul>
+			<li>encapsulating related data and logic into <b>objects</b> using <b>classes</b></li>
+			<li>writing <b>constructors</b> to simplify setup and set <code class="language-java">final</code> variables</li>
+			<li>using the <code class="language-java">this</code> keyword</li>
+			<li><b>overloading</b> constructors and methods</li>
+			<li><b>overriding</b> the <code class="language-java">toString()</code> method</li>
+			<li>creating classes based on a <b>UML</b> description</li>
+			<li>testing using a main-method class</li>
+		</ul>
+		<p>In each of the following tasks you will be given a <abbr title="Unified Modeling Language">UML</abbr> summary along with some documentation of the purpose and requirements of each method. To complete each task you must:</p>
+		<ol>
+			<li>
+				<p>Write a Java class that models the given description.</p>
+				<details>
+					<summary>Translating UML to Java</summary>
+					<p>
+						The first few lines of a UML diagram represent <em>member fields</em> (variables) of the object, and tell you that field's name and type, separated by a colon. Constants are listed using UPPERCASE naming. The <samp>+</samp> at the start of each line means that the field is public.
+					</p>
+					<p>
+						Constructors are listed next. Each line shows the name of the constructor (always the same as the name of the class) and an ordered list of types expected for its formal parameters (enclosed in parenthesis).
+					</p>
+					<p>
+						The remaining lines each give you the name of a method, the types and order of its parameters (listed inside parenthesis), and its return type (separated by a colon).
+					<p>
+						Your Java code should mirror the UML quite closely! Each UML
+						line matches a top-level definition within the class block.
+						It can be helpful to put these parts of your class in the same
+						order as the UML so they are even easier to compare side-by-side.
+					</p>
+					<p>
+						At this stage you should not add any fields, constructors, or methods that do not appear in the UML.
+					</p>
+				</details>
+			</li>
+			<li>
+				<p>Document your code using JavaDoc. You can use the descriptions in the Task as a starting point.</p>
+				<details>
+					<summary>JavaDoc Guidelines</summary>
+					<ul>
+						<li>Every line of code that has the <code>public</code> modifier should have an associated JavaDoc comment.</li>
+						<li>Describe the meaning of every formal parameter and method return value.</li>
+						<li>Write about <strong>what</strong> and <strong>why</strong>, not about <strong>how</strong>.</li>
+						<li>Describe things using different words than are used in the code itself.</li>
+						<li>Try to avoid technical jargon.</li>
+						<li>Give examples.</li>
+						<li>List and defend your assumptions.</li>
+						<li>Point out inputs or edge-cases that you have explicitly chosen <em>not</em> to handle.</li>
+						<li>Warn about potential areas for misunderstanding or errors.</li>
+						<li>Link to resources for further reading on technical details.</li>
+						<li>Don't repeat yourself! If the structure of JavaDoc leads to you describing the same thing in more than one place, try describing it in a different way.</li>
+					</ul>
+				</details>
+			</li>
+			<li>
+				<p>Write some code to test each constructor and method using a "unit testing" approach.</p>
+				<p>All of your tests should be added to a single main-method class named <strong><samp>TestingObjects</samp></strong>.</p>
+				<details>
+					<summary>Unit Testing Principles</summary>
+					<ul>
+						<li>
+							Test every part of your code. Write at least one test for every public method and constructor, and try to cover all logical paths through your code.
+						</li>
+						<li>
+							Keep each test as short and simple as possible. Use predetermined, hard-coded values, and avoid computation and branching within the code of the tests themselves. Test only one thing at a time.
+						</li>
+						<li>
+							Test things that seem trivial. These are usually the easiest tests to write and will catch the majority of simple errors in your code!
+						</li>
+						<li>
+							Test your assumptions. Make sure your program doesn't fail if your assumptions aren't met.
+						</li>
+						<li>
+							Look for edge-cases. What are some weird scenarios that you might not have considered until now? Make sure that your program doesn't crash when given malformed or unusual inputs. For example, what would happen if an input parameter was <code class="language-java">null</code>?
+						</li>
+						<li>
+							Test what you've already fixed. If you found a bug in your code, write a test that makes sure that you never have that same bug again.
+						</li>
+						<li>
+							Make your tests automated, repeatable, and fast. Don't wait for user input, or depend on external state that may change outside the control of your testing code.
+						</li>
+						<li>
+							Make failures obvious. If something isn't working properly, make sure that it is clear what went wrong when your tests are run.
+						</li>
+						<li>
+							Run tests often. Every time you make a change to your code, re-run your tests to make sure you didn't break anything!
+						</li>
+					</ul>
+				</details>
+				<details>
+					<summary>Example test output</summary>
+					<p>
+						The actual format of your output is up to you, but something like
+						the following would be great!
+					</p>
+					<pre>Test: 2-argument constructor sets X and Y
+Expected x == 2.0 ✅ Passed
+Expected y == 3.0 ✅ Passed
+
+Test: distance from (0,0) to (0,1) using a Point argument
+Expected to return 1.0 ❌ Failed! (was 3.0)</pre>
+					<p>
+						Since we're not using a unit testing framework, you may find yourself
+						writing a lot of redundant code in order to display "passed" and
+						"failed" messages. You could try creating a small <samp>UnitTest</samp>
+						class with static methods to handle this, or leave these out
+						and just print the expected and actual values.
+					</p>
+				</details>
+			</li>
+		</ol>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: class Point</h2>
+		<figure class="uml">
+			<figcaption>Point</figcaption>
+			<ul>
+				<li>+ X: double</li>
+				<li>+ Y: double</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ Point()</li>
+				<li>+ Point(double, double)</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ distanceFrom(double, double): double</li>
+				<li>+ distanceFrom(Point): double</li>
+				<li>+ toString(): String</li>
+			</ul>
+		</figure>
+		<p>The 0-argument constructor creates a Point at (0,0). The 2-argument constructor creates a point at the given coordinates.</p>
+		<p><samp>distanceFrom</samp> computes the <em>straight-line distance</em> from this Point to another coordinate, given either as a pair of (x,y) values or as another Point object.</p>
+		<details>
+			<summary>Just a little geometry…</summary>
+			<p>
+				The straight-line distance <var>d</var> between two points
+				<var>(x<sub>1</sub>, y<sub>1</sub>)</var> and
+				<var>(x<sub>2</sub>, y<sub>2</sub>)</var> is given by the
+				equation:
+			</p>
+			<pre style="white-space:normal;">
+				d<sup>2</sup>
+				=
+				(x<sub>2</sub> - x<sub>1</sub>)<sup>2</sup>
+				+
+				(y<sub>2</sub> - y<sub>1</sub>)<sup>2</sup>
+			</pre>
+			<p>
+				Use <a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/Math.html#pow(double,double)"><code>Math.pow(double, double)</code></a> to compute squares and <a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/Math.html#sqrt(double)"><code>Math.sqrt(double)</code></a> to compute square-roots in Java.
+			</p>
+		</details>
+		<p><samp>toString</samp> should return a String that includes the class name and the X and Y coordinates; for example: <samp>"Point: [2.0, 3.5]"</samp>.</p>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: class Person</h2>
+		<figure class="uml">
+			<figcaption>Person</figcaption>
+			<ul>
+				<li>+ ID: String</li>
+				<li>+ firstName: String</li>
+				<li>+ lastName: String</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ Person(String, String)</li>
+				<li>+ Person(String, String, String)</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ sayHelloTo(String): void</li>
+				<li>+ sayHelloTo(Person): void</li>
+				<li>+ toString(): String</li>
+			</ul>
+		</figure>
+		<p>The 2-argument constructor initializes this Person's first and last name with the given values, and concatenates them to create an ID. The 3-argument constructor allows setting a custom ID value.</p>
+		<p><samp>sayHelloTo</samp> should print a message to System.out as if this Person were greeting another person (given as the parameter). For example, if invoked with the argument "Ben" on a Person with the name "Jennifer," it should print something like: <samp>"Hello Ben, my name is Jennifer!"</samp></p>
+		<aside>
+			Hint: avoid repeating code by calling <code>sayHelloTo(String)</code> from <code>sayHelloTo(Person)</code>
+		</aside>
+		<p>The <samp>toString</samp> method should return a value that includes the class name and the value of all four fields; for example: <samp>"Person: John Smith (C9999999), age 12"</samp>.
+	</section>
+
+	<section id="task3">
+		<h2>Task 3: class Car</h2>
+		<figure class="uml">
+			<figcaption>Car</figcaption>
+			<ul>
+				<li>+ make: String</li>
+				<li>+ model: String</li>
+				<li>+ year: int</li>
+				<li>+ owner: Person</li>
+				<li>+ odometer: long</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ Car(String, String, int)</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ drive(long): long</li>
+				<li>+ toString(): String</li>
+			</ul>
+		</figure>
+		<p>The constructor initializes the make, model, and year of the Car using the given values, sets the odometer reading to 0, and leaves the owner <code class="language-java">null</code>.</p>
+		<p>The <samp>drive</samp> method prints car noises to System.out, increases the odometer reading by the given amount, and returns the ending odometer reading.</p>
+		<p><samp>toString</samp> should return a String value that includes the class name plus the make, model, and year; for example: <samp>"Car: 2016 Tesla Model X"</samp>.</p>
+	</section>
+
+	<section id="task4">
+		<h2>Task 4: class AcademicRecord</h2>
+		<figure class="uml">
+			<figcaption>AcademicRecord</figcaption>
+			<ul>
+				<li>+ student: Person</li>
+				<li>+ major: String</li>
+				<li>+ year: short</li>
+				<li>+ grades: double[]</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ AcademicRecord(Person)</li>
+			</ul>
+			<hr class="uml-divide" />
+			<ul>
+				<li>+ calculateAverage(): long</li>
+				<li>+ calculateLetterGrade(): String</li>
+				<li>+ toString(): String</li>
+			</ul>
+		</figure>
+		<p>The constructor sets the <var>student</var> field to the given Person, initializes the <var>major</var> to "undeclared", <var>year</var> to 1, and <var>grades</var> to an array with 10 elements set to zero.</p>
+		<p><samp>calculateAverage</samp> computes the average of the values in the <var>grades</var> array, rounded to the nearest whole percentage.</p>
+		<aside>
+			Hint: you can use <a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/Math.html#round(double)"><code>Math.round(double)</code></a> to do rounding.
+		</aside>
+		<p><samp>calculateLetterGrade</samp> should return a letter grade according the the standard Camosun grading table</p>
+		<details>
+			<summary>Camosun Standard Grading System</summary>
+			<table>
+				<thead>
+					<tr>
+						<th>Percentage</th>
+						<th>Grade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>90-100</td>
+						<td>A+</td>
+					</tr>
+					<tr>
+						<td>85-89</td>
+						<td>A</td>
+					</tr>
+					<tr>
+						<td>80-84</td>
+						<td>A-</td>
+					</tr>
+					<tr>
+						<td>77-79</td>
+						<td>B+</td>
+					</tr>
+					<tr>
+						<td>73-76</td>
+						<td>B</td>
+					</tr>
+					<tr>
+						<td>70-73</td>
+						<td>B-</td>
+					</tr>
+					<tr>
+						<td>65-69</td>
+						<td>C+</td>
+					</tr>
+					<tr>
+						<td>60-64</td>
+						<td>C</td>
+					</tr>
+					<tr>
+						<td>50-59</td>
+						<td>D</td>
+					</tr>
+					<tr>
+						<td>0-49</td>
+						<td>F</td>
+					</tr>
+				</tbody>
+			</table>
+		</details>
+		<p>The <samp>toString</samp> method should return a value that includes the class name, the student's ID, major, and their current letter grade. For example: <samp>"AcademicRecord: C9999999 undeclared B+"</samp>.</p>
+		<aside>
+			Hint: avoid duplicating code by calling <code>calculateAverage()</code> from inside the <code>calculateLetterGrade()</code> method, and calling <code>calculateLetterGrade()</code> from inside <code>toString()</code>!
+		</aside>
+	</section>
+
+	<section id="submission">
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing all tasks in this lab should result in <em>five</em> separate Java files within a single package: one class for each task, plus a main-method class named <strong><samp>TestingObjects</samp></strong>. Compress the package directory into a ZIP archive and submit it to the Lab 5 - Methods and Modularization assignment.
+		</p>
+		<p>
+			Your lab package must be named following the normal convention for labs (<samp>LastnameFirstname_lab7</samp>), or it will not be marked.
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Code compiles and runs</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Meets Task requirements</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<td>3</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+
+	<script src="https://camosun-cs.github.io/comp-132-139/labs/template/bundle.js" async defer></script>
+</body>
+</html>
