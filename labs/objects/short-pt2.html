@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Classes and Objects, Part 2 - COMP 132</title>
+  <meta name="viewport" content="width=device-width"/>
+  <base href="https://camosun-cs.github.io/comp-132-139/labs/objects/" target="_blank"/>
+  <link rel="stylesheet" href="../template/bundle.css"/>
+  <style>
+    .uml {
+      display: table; /* shrink-wrap */
+      border: 1px solid black;
+      text-align: left;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .uml > figcaption {
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid black;
+    }
+    .uml > ul {
+      list-style: none;
+      margin: 0.75rem;
+      padding: 0;
+    }
+    .uml-divide {
+      margin: 0.75rem 0;
+      border: 0;
+      border-top: 1px solid black;
+    }
+    ins,
+    .added {
+      text-decoration: none;
+      background-color: #bfb;
+    }
+    del,
+    .removed {
+      text-decoration: line-through;
+      background-color: #fcc;
+    }
+    .changed {
+      background-color: #ff5;
+    }
+  </style>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Classes and Objects, Part 2</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+      <li><a href="task1">Task 1: class Square</a></li>
+      <li><a href="task2">Task 2: Improved class Point</a></li>
+      <li><a href="task3">Task 3: Improved class Car</a></li>
+      <li><a href="task4">Task 4: Improved class Person</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>In this lab assignment you will practice:</p>
+		<ul>
+      <li>applying <b>access modifiers</b></li>
+      <li>using getters and setters to <b>mediate access</b></li>
+      <li>using getters and setters to create <b>derived attributes</b></li>
+      <li>using <b>static</b> variables and methods</li>
+      <li>testing code using a <b>unit testing</b> approach</li>
+		</ul>
+
+    <p>For each of the tasks in this lab, you will create a new class or create an improved version of one of the classes from the previous lab. Remember to document all public fields and methods with JavaDoc, and write unit tests in a <samp>TestingObjects</samp> class.</p>
+
+    <p>Note that UML shows <em>static</em> fields and methods with <u>underlines</u>.</p>
+
+    <p>In the "Improved" class tasks, additions from the previous lab are <span class="added">marked in green</span>, and removals are <span class="removed">marked in red and crossed out</span>. Methods that have modified functionality are <span class="changed">marked in yellow</span>, and the changes are described below the UML diagram.</p>
+
+    <details>
+        <summary>What are Access Modifiers?</summary>
+        <p>
+          <b>Access modifiers</b> are keywords that determine what other
+          code is allowed to access the associated class, variable, method,
+          or constructor. They are also known as <b>visibility modifiers</b>.
+        </p>
+        <p>
+          Using access modifiers encourages better <b>encapsulation</b> in
+          your code. They help to hide implementation details and to prevent
+          unexpected changes to object state.
+        </p>
+
+        <p>Class members may use any one of the following modifiers:</p>
+        <dl class="inline">
+            <dt><code class="language-java">public</code></dt>
+            <dd>accessible everywhere</dd>
+
+            <dt><code class="language-java">protected</code></dt>
+            <dd>accessible to code within the package or in a subclass</dd>
+
+            <dt>(default, no modifier)</dt>
+            <dd>accessible only to code within the package</dd>
+
+            <dt><code class="language-java">private</code></dt>
+            <dd>accessible within the current class only</dd>
+        </dl>
+
+        <p>These modifiers are added in front of the declaration they affect, for example:</p>
+        <pre><code class="language-java">
+            <b>private</b> int example = 2;
+            <b>public</b> String toString() { return "example"; }
+        </code></pre>
+
+        <p>Classes themselves may also be affected by a few access modifiers:</p>
+        <dl class="inline">
+            <dt><code class="language-java">public</code></dt>
+            <dd>visible everywhere</dd>
+
+            <dt>(default, no modifier)</dt>
+            <dd>visible only to other classes in the same package</dd>
+
+            <dt><code class="language-java">private</code></dt>
+            <dd>(on an inner class) visible only within the outer class</dd>
+        </dl>
+    </details>
+
+    <details>
+      <summary>What is <code class="language-java">static</code> good for?</summary>
+      <p>
+        Static variables are useful for constants and other data that is shared by multiple objects. They are available immediately when your program starts, and are accessed through the class itself rather than through individual object instances.
+      </p>
+      <p>
+        Static methods have some use cases as well, but are much more rare. You should generally use instance methods instead. A few valid uses of static methods include:
+      </p>
+      <ul>
+        <li>general-purpose stateless "pure" functions</li>
+        <li>factories (when dealing with complex configuration or class heirarchies)</li>
+        <li>routines that use multiple instances, where no one is the clear actor</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="task1">
+    <h2>Task 1: class Square</h2>
+    <figure class="uml">
+      <figcaption>Square</figcaption>
+      <ul>
+        <li>- size: int</li>
+        <li><b>/</b> height: int</li>
+        <li><b>/</b> width: int</li>
+        <li><b>/</b> perimeter: int</li>
+        <li><b>/</b> area: int</li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li>+ Square()</li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li>+ getSize(): int</li>
+        <li>+ setSize(int): void</li>
+      </ul>
+    </figure>
+    <p>The <var>size</var> of a <samp>Square</samp> must always be greater than 0.</p>
+    <p>Note that there is only one actual primitive field (<var>size</var>) in this class; all other fields are <strong>derived fields</strong> that should be defined with additional <em>getters</em> and <em>setters</em>.</p>
+  </section>
+
+  <section id="task2">
+    <h2>Task 2: Improved class Point</h2>
+    <figure class="uml">
+      <figcaption>Point</figcaption>
+      <ul>
+        <li><ins>+ <u>ORIGIN: Point</u></ins></li>
+        <li>+ X: double</li>
+        <li>+ Y: double</li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li><del>+ Point()</del></li>
+        <li>+ Point(double, double)</li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li><ins>+ <u>random(min: int, max: int): Point</u></ins></li>
+        <li><ins>+ <u>furthestFromOrigin(Point[]): Point</u></ins></li>
+        <li>+ distanceFrom(double, double): double</li>
+        <li>+ distanceFrom(Point): double</li>
+        <li>+ toString(): String</li>
+      </ul>
+    </figure>
+    <p>The static <samp>random(int, int)</samp> method should create a new Point at a random position. <var>min</var> gives the lower limit (inclusive) for both X and Y of the new Point, and <var>max</var> similarly gives the upper limit (inclusive) for both X and Y.</p>
+    <p><samp>furthestFromOrigin(Point[])</samp> returns the Point in the input array that returns the highest value from <code class="language-java">.distanceFrom(ORIGIN)</code>.</p>
+  </section>
+
+  <section id="task3">
+    <h2>Task 3: Improved class Car</h2>
+    <figure class="uml">
+      <figcaption>Car</figcaption>
+      <ul>
+        <li>+ make: String</li>
+        <li>+ model: String</li>
+        <li>+ year: int</li>
+        <li>+ owner: Person</li>
+        <li><del>+ odometer: long</del></li>
+        <li><ins><b>–</b> odometer: long</ins></li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li>+ Car(String, String, int)</li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li>+ drive(long): long</li>
+        <li><ins>+ readOdometer(): long</ins></li>
+        <li>+ toString(): String</li>
+      </ul>
+    </figure>
+    <p>The <samp>readOdometer()</samp> method should return the current value of <var>odometer</var>. The odometer reading can <em>only</em> be changed by calling the <samp>drive(long)</samp> method.</p>
+  </section>
+
+  <section id="task4">
+    <h2>Task 4: Improved class Person</h2>
+    <figure class="uml">
+      <figcaption>Person</figcaption>
+      <ul>
+        <li>+ ID: String</li>
+        <li>+ firstName: String</li>
+        <li>+ lastName: String</li>
+        <li><ins>- age: int</ins></li>
+        <li><ins>- <u>lastID: int</u></ins></li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li><span class="changed">+ Person(String, String)</span></li>
+        <li>+ Person(String, String, String)</li>
+      </ul>
+      <hr class="uml-divide" />
+      <ul>
+        <li><ins>- <u>nextID(): String</u></ins></li>
+        <li><ins>+ getAge(): int</ins></li>
+        <li><ins>+ setAge(int): void</ins></li>
+        <li>+ sayHelloTo(String): void</li>
+        <li>+ sayHelloTo(Person): void</li>
+        <li>+ toString(): String</li>
+      </ul>
+    </figure>
+    <p>The 2-argument constructor for the Person class should generate an <var>ID</var> for the new Person using the <samp>nextID()</samp> method.</p>
+    <p>The private static <samp>nextID()</samp> method should make use of the static <var>lastID</var> variable to create a unique ID string every time it is called.</p>
+    <aside>
+      Hint: you can use the the <a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/lang/String.html#format(java.lang.String,java.lang.Object...)"><samp>String.format(String, ...args)</samp></a> method to make a pretty zero-padded 7-digit C# (eg. C#0099999) like this: <code class="language-java">String.format("C#%07d", lastID)</code>.
+    </aside>
+    <p><samp>getAge()</samp> should be a little coy for people aged 25–64. If the person's age is less than 25 or is 65 or higher, return the actual value of <var>age</var>. If the person's age is between 25 and 49 (inclusive), always return 30. If the person's age is between 50 and 64 (inclusive), always return 40.</p>
+  </section>
+
+  <section id="submission">
+    <h2>Submission and Grading</h2>
+    <p>
+      Completing all tasks in this lab should result in <em>five</em> separate Java files within a single package: one class for each task, plus a main-method class named <strong><samp>TestingObjects</samp></strong>. Compress the package directory into a ZIP archive and submit it to the Lab 8 - Objects, part 2 assignment.
+    </p>
+    <p>
+      Your lab package must be named following the normal convention for labs (<samp>LastnameFirstname_lab8</samp>), or it will not be marked.
+    </p>
+    <table class="marks">
+      <thead>
+        <tr>
+          <th>Criteria</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Code compiles and runs</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Good code style</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Meets Task requirements</td>
+          <td>1</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Total</th>
+          <td>3</td>
+        </tr>
+      </tfoot>
+    </table>
+  </section>
+
+	<script src="https://camosun-cs.github.io/comp-132-139/labs/template/bundle.js" async defer></script>
+</body>
+</html>
