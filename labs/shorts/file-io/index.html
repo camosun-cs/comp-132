@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>File IO Exercise - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<!-- comment out the base element to work locally -->
+	<base href="https://camosun-cs.github.io/comp-132-139/labs/shorts/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - File IO</h1>
+		<nav><ol>
+			<li><a href="#task">Task</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="task">
+		<h2>Task</h2>
+		<p>Write a program that reads data from a file, computes something interesting, and writes the results to another file.</p>
+		<p>There are many ways to do this, but these classes from the Java standard library will be particularly helpful:</p>
+		<ul>
+			<li><a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.desktop/javax/swing/JFileChooser.html">javax.swing.JFileChooser</a></li>
+			<li><a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/io/File.html">java.io.File</a></li>
+			<li><a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/util/Scanner.html">java.util.Scanner</a></li>
+			<li><a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/io/PrintStream.html">java.io.PrintStream</a></li>
+			<li><a href="https://docs.oracle.com/en/java/javase/14/docs/api/java.base/java/io/FileOutputStream.html">java.io.FileOutputStream</a></li>
+		</ul>
+		<p>You can use <samp>Scanner</samp> to read data from files in the same way you've used it to read user input from the keyboard. The only difference will be the <em>source</em> of the Scanner's data, given in its constructor.</p>
+		<p>You should also already be familiar with how to use <samp>PrintStream</samp>: we've been using one since the beginning of this course called <code class="language-java">System.out</code>. For this task, you'll need to instantiate one yourself, giving it the file to output to as a parameter to the constructor.</p>
+
+		<p>Working with file paths in NetBeans can sometimes be a little tricky. <samp>JFileChooser</samp> provides a graphical file picker that will make it easier to get started. If you use any literal Strings for paths on Windows, make sure that the <samp>\</samp> back-slash directory separators are <em>escaped</em> (eg. <code class="language-java">"C:<b>\\</b>file<b>\\</b>path"</code>), since this character has special meaning inside of Java String values.</p>
+
+		<p>There are many things out of your control that could go wrong while working with files: OS permissions can prevent you from reading or writing data, disks can run out of space, users can unexpectedly delete thnigs, etc... Java signals these potential problems using <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/">Exceptions</a>. We haven't had time to talk about Exceptions in this course, so for now you can avoid the issue by telling Java that you don't mind letting your program crash if one of these problems occurs. To do this, add <code class="language-java">throws Exception</code> to any method that works with Files like this:</p>
+		<pre><code class="language-java">
+			public static void main(String[] args) <b>throws Exception</b> {
+				// do work with Files, and just crash if anything goes wrong!
+			}
+		</code></pre>
+	</section>
+
+	<section id="submission">
+		<h2>Submission</h2>
+		<p>
+			Submit a ZIP archive of your package folder to the
+			"File IO Exercise" assignment on D2L.
+		</p>
+		<p>
+			This assignment must be handed in individually, but you are
+			encouraged to work together in groups and share code with one
+			another to help you to understand the concepts!
+		</p>
+		<p>
+			You will receive a 100% completion mark as long as you hand in
+			some code that demonstrates your understanding of the exercise.
+		</p>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
