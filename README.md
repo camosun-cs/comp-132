@@ -9,7 +9,7 @@ Course materials for COMP132 and COMP139 at Camosun College
 1. [Repetition](labs/repetition/) - [condensed](labs/repetition/short.html)
 1. [Methods and Modularization Techniques](labs/methods/) - [condensed](labs/methods/short.html)
 1. [Introduction to Data Structures: Arrays](labs/arrays/) - [condensed](labs/arrays/short.html)
-1. [Introduction to Classes and Objects](labs/objects/) - [condensed part 1](labs/objects/short.html), [part 2](labs/objects/short-pt.html)
+1. [Introduction to Classes and Objects](labs/objects/) - [condensed part 1](labs/objects/short.html), [part 2](labs/objects/short-pt2.html)
 1. ~~Inheritance and Exceptions~~
 
 ## Exercises
