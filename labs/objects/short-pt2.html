@@ -142,11 +142,11 @@
     <figure class="uml">
       <figcaption>Square</figcaption>
       <ul>
-        <li>- size: int</li>
-        <li><b>/</b> height: int</li>
-        <li><b>/</b> width: int</li>
-        <li><b>/</b> perimeter: int</li>
-        <li><b>/</b> area: int</li>
+        <li>- size: double</li>
+        <li><b>/</b> height: double</li>
+        <li><b>/</b> width: double</li>
+        <li><b>/</b> perimeter: double</li>
+        <li><b>/</b> area: double</li>
       </ul>
       <hr class="uml-divide" />
       <ul>
@@ -154,8 +154,8 @@
       </ul>
       <hr class="uml-divide" />
       <ul>
-        <li>+ getSize(): int</li>
-        <li>+ setSize(int): void</li>
+        <li>+ getSize(): double</li>
+        <li>+ setSize(double): void</li>
       </ul>
     </figure>
     <p>The <var>size</var> of a <samp>Square</samp> must always be greater than 0.</p>
@@ -178,14 +178,14 @@
       </ul>
       <hr class="uml-divide" />
       <ul>
-        <li><ins>+ <u>random(min: int, max: int): Point</u></ins></li>
+        <li><ins>+ <u>random(min: double, max: double): Point</u></ins></li>
         <li><ins>+ <u>furthestFromOrigin(Point[]): Point</u></ins></li>
         <li>+ distanceFrom(double, double): double</li>
         <li>+ distanceFrom(Point): double</li>
         <li>+ toString(): String</li>
       </ul>
     </figure>
-    <p>The static <samp>random(int, int)</samp> method should create a new Point at a random position. <var>min</var> gives the lower limit (inclusive) for both X and Y of the new Point, and <var>max</var> similarly gives the upper limit (inclusive) for both X and Y.</p>
+    <p>The static <samp>random(double, double)</samp> method should create a new Point at a random position. <var>min</var> gives the lower limit (inclusive) for both X and Y of the new Point, and <var>max</var> similarly gives the upper limit (inclusive) for both X and Y.</p>
     <p><samp>furthestFromOrigin(Point[])</samp> returns the Point in the input array that returns the highest value from <code class="language-java">.distanceFrom(ORIGIN)</code>.</p>
   </section>
 
