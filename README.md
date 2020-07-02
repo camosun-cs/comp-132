@@ -1,6 +1,4 @@
-Course materials for COMP132 and COMP139 at Camosun College
-
-# comp-132
+Course materials for COMP132 at Camosun College
 
 ## Labs
 1. [Introduction to NetBeans](labs/netbeans/) - [condensed](labs/netbeans/short.html)
