@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Methods and Arrays (Lab 5) - COMP 132</title>
+	<meta name="viewport" content="width=device-width"/>
+	<base href="https://camosun-cs.github.io/comp-132/labs/methods/" target="_blank"/>
+	<link rel="stylesheet" href="../template/bundle.css"/>
+</head>
+<body>
+	<header>
+		<h1>COMP 132 - Lab 5 - Methods and Arrays</h1>
+		<nav><ol>
+			<li><a href="#outcomes">Learning Outcomes and Introduction</a></li>
+			<li><a href="#task1"><strong>Task 1</strong>: Restructure "Play The Lottery"</a></li>
+			<li><a href="#task2"><strong>Task 2</strong>: Class Statistics</a></li>
+			<li><a href="#submission">Submission</a></li>
+		</ol></nav>
+	</header>
+
+	<section id="outcomes">
+		<h2>Learning Outcomes and Introduction</h2>
+		<p>In this lab assignment you will practice:</p>
+		<ul>
+			<li>Creating and using methods</li>
+			<li>Creating and modifying arrays</li>
+			<li>Passing parameters and receiving return values</li>
+			<li>Using multi-dimensional arrays</li>
+		</ul>
+	</section>
+
+	<section id="task1">
+		<h2>Task 1: Restructure "Play The Lottery"</h2>
+		<ol class="instructions">
+			<li>
+				<p>Recreate your "Play The Lottery" program from Lab 3 Task 2 using methods.</p>
+				<p>Your program should be composed of at least 4 different methods:</p>
+				<ul>
+					<li>a method that generates a lottery number</li>
+					<li>a method that prompts the user for a guess and ensures that their input is valid</li>
+					<li>a method that compares a guess to a lottery number and determines whether or not the guess was correct (or partially correct)</li>
+					<li>the <code>main</code> method which controls the flow of the program and determines how much money should be awarded</li>
+				</ul>
+				<aside>
+					Hint: use some <code class="language-java">static final</code> constants as return values from your guess-checking method to
+					signal the different kinds of win or loss conditions.
+				</aside>
+			</li>
+			<li>
+				Write appropriate JavaDoc comments for all of your methods and static variables.
+			</li>
+			<li>
+				Modify your <code>main</code> method create a new kind of game <em>without changing the other methods</em>
+				(perhaps with multiple lottery numbers or more than one guess). Be creative!
+			</li>
+		</ol>
+	</section>
+
+	<section id="task2">
+		<h2>Task 2: Class Statistics</h2>
+		<p>Write a program that will process a list of students' grades to calculate a <abbr title="Grade point average">GPA</abbr> for each student and the class average.</p>
+		<p><strong>Use methods</strong> to organize your program and keep the main method easy to read. For example, you might write separate methods for:</p>
+		<ul>
+			<li>Collecting input for (or randomly generating) student names and grades</li>
+			<li>Calculating the average of a single array of numbers</li>
+			<li>Reducing all of the class grades down to a single array of GPA values</li>
+			<li>Printing the list of names and averages</li>
+		</ul>
+		<p>Your program should work with two chunks of data stored as two-dimensional arrays:</p>
+		<ol>
+			<li>Student names, stored as an array of [<samp>Lastname</samp>, <samp>First name</samp>] arrays.</li>
+			<li>Grades for each assignment, stored as an array of arrays of doubles.</li>
+		</ol>
+		<p>Store the data for each student at equivalent indexes in each array. That is, index 0 in one array will store a student's name, and index 0 in the other array will store the grades for that same student.</p>
+		<p>Start with the following <strong>example input</strong> to test your program:</p>
+		<aside>
+			Note: Your code should work for <strong>any</strong> input data that is structured similarly, and should support tables of grades with any number of elements.
+		</aside>
+		<pre><code class="language-java">
+			String[][] names = {
+				{ "Ewell", "Nate" },
+				{ "Smurthwaite", "Adelina" },
+				{ "Bernollet", "Maryjane" },
+				{ "Chalfain", "Karlis" },
+				{ "Huckabe", "Almire" }
+			};
+			double[][] grades = {
+				{ 3.83, 9.21, 9.25, 0.84, 1.40, 7.90, 1.41, 5.15 },
+				{ 5.09, 3.66, 3.04, 3.02, 8.59, 2.34, 8.86, 7.40 },
+				{ 5.35, 0.85, 8.56, 7.37, 2.78, 3.19, 2.04, 5.70 },
+				{ 9.25, 9.62, 7.08, 7.27, 9.86, 5.88, 9.86, 9.70 },
+				{ 3.39, 2.75, 1.23, 1.04, 3.87, 8.72, 4.60, 6.21 }
+			};
+		</code></pre>
+		<p>Using these values, your program should output:</p>
+		<samp><pre>Student GPAs:
+Nate Ewell: 4.87
+Adelina Smurthwaite: 5.25
+Maryjane Bernollet: 4.48
+Karlis Chalfain: 8.57
+Almire Huckabe: 3.98
+
+Class average: 5.43</pre></samp>
+		<details>
+			<summary>More test data</summary>
+			<p>If you would like some more grades to test with, try using this code to generate some random data:</p>
+			<pre><code class="language-java">
+			public static double[][] generateMarks(int students, int assignments) {
+				double[][] grades = new double[students][assignments];
+				for (int i = 0; i < students; i++) {
+					for (int j = 0; j < assignments; j++) {
+						grades[i][j] = (Math.random() * 10);
+					}
+				}
+				return grades;
+			}
+			</code></pre>
+			<p>Make sure to print out the values you actually end up with so that you can manually verify the results of your program!</p>
+		</details>
+	</section>
+
+	<section id="submission">
+		<h2>Submission and Grading</h2>
+		<p>
+			Completing all tasks in this lab should result in <em>two</em> separate Java files within a single package. Compress the package directory into a ZIP archive and submit it to the Lab 5 assignment.
+		</p>
+		<p>
+			Your lab package must be named following the normal convention for labs (<samp>LastnameFirstname_lab5</samp>), or it will not be marked.
+		</p>
+		<table class="marks">
+			<thead>
+				<tr>
+					<th>Criteria</th>
+					<th>Marks</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Code compiles and runs</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Good code style</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>Meets Task requirements</td>
+					<td>1</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th>Total</th>
+					<td>3</td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+
+	<script src="../template/bundle.js" async defer></script>
+</body>
+</html>
