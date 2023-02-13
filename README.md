@@ -5,7 +5,7 @@ Course materials for COMP132 at Camosun College
 1. [Variables and Operators](labs/vars-and-ops/) - [condensed](labs/vars-and-ops/short.html)
 1. [Conditional Logic](labs/conditional-logic/) - [condensed](labs/conditional-logic/short.html)
 1. [Repetition](labs/repetition/) - [condensed](labs/repetition/short.html)
-1. [Methods and Modularization Techniques](labs/methods/) - [condensed](labs/methods/short.html)
+1. [Methods and Modularization Techniques](labs/methods/) - [condensed](labs/methods/short.html) - [mixed with arrays](labs/methods/mixed.html)
 1. [Introduction to Data Structures: Arrays](labs/arrays/) - [condensed](labs/arrays/short.html)
 1. [Introduction to Classes and Objects](labs/objects/) - [condensed part 1](labs/objects/short.html), [part 2](labs/objects/short-pt2.html)
 1. ~~Inheritance and Exceptions~~
